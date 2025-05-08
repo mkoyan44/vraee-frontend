@@ -1,0 +1,70 @@
+.btn {
+  display: inline-flex;
+  background: rgba(var(--btn-bg),1);
+  color: rgba(var(--btn-text),1);
+  border-radius: var(--btn-border-radius);
+  transition: all var(--duration) ease;
+  padding: 0.625rem  /* 10/16 */ 1.875rem  /* 30/16 */;
+}
+
+.btn-primary {
+  @extend .btn;
+  --btn-bg: var(--btn-primary-bg);
+  --btn-text: var(--btn-primary-text);
+  --btn-border-radius: 6px;
+  &:hover {
+    --btn-bg: var(--btn-primary-hover-bg);
+    --btn-text: var(--btn-primary-hover-text);
+    --btn-border-radius: 16px;
+    scale: 1.1;
+    box-shadow: 0 10px 20px 10px rgba(var(--btn-text),0.1);
+  }
+}
+.btn-simple {
+  @extend .btn;
+  --btn-text: var(--btn-simple-text);
+  --border-width: 100%;
+  font-weight: 700;
+  position: relative;
+  padding: 0;
+  &:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: var(--border-width);
+    height: 1px;
+    background: currentColor;
+    transform: translateX(-50%);
+    transition: inherit;
+  }
+  &:hover{
+    --border-width: 0%;
+    scale: 1.1;
+  }
+}
+
+.hovered_link {
+  @extend .btn-simple;
+  --border-width: 0%;
+  font-weight: inherit;
+  &:hover{
+    --border-width: 100%;
+    scale: 1;
+  }
+}
+
+.swiper-button-next,.swiper-button-prev{
+  @extend .btn-primary;
+  width: 4.5rem;  /* 72/16 */
+  height: 4.5rem;  /* 72/16 */
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  --swiper-navigation-size: 16px;
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 2rem;
+}

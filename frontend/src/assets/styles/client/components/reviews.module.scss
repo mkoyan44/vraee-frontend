@@ -1,0 +1,27 @@
+.reviews {
+  .wrapper{
+    padding-left: 10rem;  /* 160/16 */
+  }
+  .review_header{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  /* 8/16 */
+    margin-bottom: 1rem; /* 16/16 */
+  }
+  .review_img {
+
+  }
+  .review_info {
+
+  }
+  .name {
+
+  }
+  .stars {
+    display: flex;
+    gap: 0.25rem; /* 4/16 */
+  }
+  .content {
+
+  }
+}

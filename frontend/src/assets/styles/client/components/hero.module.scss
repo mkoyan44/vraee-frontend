@@ -1,0 +1,51 @@
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.hero_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background-image: url("/hero-bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.hero_wrapper {
+  display: grid;
+  grid-template-columns: 31.25rem 1fr;   /* 500/16 */
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero_content {
+
+}
+
+.hero_title {
+  margin-bottom: 1.5rem; /* 24/16 */
+}
+
+.hero_desc {
+  margin-bottom: 3.5rem; /* 56/16 */
+}
+
+.hero_image {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+  }
+}

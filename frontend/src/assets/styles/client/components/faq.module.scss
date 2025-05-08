@@ -1,0 +1,43 @@
+.faq {
+  padding: var(--top-space) 0 var(--bottom-space);
+  .wrapper {
+
+  }
+  .title {
+    margin-bottom: 2em;
+  }
+
+  .item {
+    border-radius: 1rem; /* 16/16 */
+    padding: 1.5rem; /* 24/16 */
+    &:not(:last-child){
+      margin-bottom: 2rem;  /* 32/16 */
+    }
+  }
+
+  .item_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0;
+    font-weight: 400;
+
+    svg {
+      transition: all var(--duration) linear;
+    }
+
+    &.active {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .item_description {
+    padding-top: 1em;
+    height: 0;
+    overflow: hidden;
+    display: none;
+  }
+}

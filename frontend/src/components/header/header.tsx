@@ -53,7 +53,7 @@ const components: { title: string; href: string; description: string }[] = [
     },
 ]
 
-export function Header() {
+const Header: React.FC = ()=> {
     return (
         <header className="py-4">
             <div className="container">
@@ -151,3 +151,5 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
+
+export default Header;

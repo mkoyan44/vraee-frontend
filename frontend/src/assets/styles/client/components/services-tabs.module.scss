@@ -40,21 +40,25 @@
 }
 .tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-}
-
-.tab-content {
-  h3 {
-    font-weight: 600;
-    font-size: 1.3125rem ; /* 21/16 */
-    padding-bottom: 1.75em;
-  }
+  padding-top: 4.5rem;  /* 72/16 */
 }
 
 .tab {
   display: none;
   &.active{
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;  /* 48/16 */
+    width: 100%;
   }
+}
+
+.tab-content {
+  max-width: 30rem; /* 480/16 */
+}
+.tab-media {
+  max-width: 725px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
 }

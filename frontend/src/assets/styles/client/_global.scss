@@ -1,0 +1,29 @@
+@use "tailwindcss";
+@plugin "tailwindcss-animate";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  --font-title: var(--font-inter);
+  --font-text: var(--font-inter);
+  --radius: 0.625rem;
+  --duration: .3s;
+  --top-space:5rem;
+  --bottom-space:5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.mh-full-screen {
+  min-height: calc(100vh - 68px);
+}
+
+#root {
+}

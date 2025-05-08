@@ -1,0 +1,20 @@
+.multi_column {
+  padding: var(--top-space) 0 var(--bottom-space);
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .item {
+    text-align: center;
+  }
+
+  .item_title {
+    font-size: 7.5rem; /* 120/16 */
+  }
+
+  .item_desc {
+
+  }
+}

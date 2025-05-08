@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import styles from "@/assets/styles/services-tabs.module.scss";
+import styles from "@/assets/styles/client/components/services-tabs.module.scss";
 import Link from "next/link"
 
 const tabs = [
@@ -12,6 +12,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
     {
         "header": "MODELING",
@@ -21,6 +22,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
     {
         "header": "Rendering",
@@ -30,6 +32,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
     {
         "header": "Animation",
@@ -39,6 +42,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
     {
         "header": "3D Jewelry Design",
@@ -48,6 +52,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
     {
         "header": "Jewelry CAD Design",
@@ -57,6 +62,7 @@ const tabs = [
             "label":"Learn more",
             "href":"/",
         },
+        "image": "/services-image.png",
     },
 ];
 
@@ -64,7 +70,7 @@ type CSSVars = React.CSSProperties & {
     [key: `--${string}`]: string;
 };
 
-function ServicesTabs() {
+const ServicesTabs: React.FC = ()=> {
     const ulRef = useRef<HTMLUListElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [tabStyle, setTabStyle] = useState<CSSVars>({
@@ -91,6 +97,7 @@ function ServicesTabs() {
     return (
         <section>
             <div className="container">
+                <h2 className="text-center">Services</h2>
                 <nav>
                     <ul
                         ref={ulRef}
@@ -116,12 +123,12 @@ function ServicesTabs() {
                             key={i}
                         >
                             <div className={styles['tab-content']}>
-                                <h3>{tab.title}</h3>
-                                <div className="rte" dangerouslySetInnerHTML={{__html: tab.description}}></div>
-                                <Link href={tab.link.href}>{tab.link.label}</Link>
+                                <h3 className={`h6`}>{tab.title}</h3>
+                                <div className="rte mb-5" dangerouslySetInnerHTML={{__html: tab.description}}></div>
+                                <Link href={tab.link.href} className="btn-simple">{tab.link.label}</Link>
                             </div>
                             <div className={styles['tab-media']}>
-
+                                <img src={tab.image} alt={tab.header}/>
                             </div>
                         </div>
                     ))}
