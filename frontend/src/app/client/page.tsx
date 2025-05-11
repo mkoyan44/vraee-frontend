@@ -5,6 +5,8 @@ import TextWithMedia from "@/components/text-with-media/text-with-media";
 import Faq from "@/components/faq/faq";
 import MultiColumn from "@/components/multi-column/multi-column";
 import Reviews from "@/components/reviews/reviews";
+import TabsContent from "@/components/tabs-content/tabs-content";
+import MediaGrid from "@/components/media-grid/media-grid";
 
 export default function Page() {
     return (
@@ -12,8 +14,10 @@ export default function Page() {
             <Hero/>
             <ServicesTabs/>
             <TextWithMedia/>
+            <TabsContent/>
             <MultiColumn/>
             <Reviews/>
+            <MediaGrid/>
             <Faq/>
         </>
     );

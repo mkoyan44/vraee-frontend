@@ -47,8 +47,8 @@
 
 .scheme-dark, .scheme-light {
   color: rgb(var(--color-text));
+}
 
-  &.background {
-    background-color: rgba(var(--color-bg), var(--color-bg-alpha, 1));
-  }
+.background {
+  background-color: rgba(var(--color-bg), var(--color-bg-alpha, 1));
 }

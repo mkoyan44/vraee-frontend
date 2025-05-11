@@ -95,7 +95,7 @@ const ServicesTabs: React.FC = ()=> {
     }, [activeIndex]);
     let index = 1
     return (
-        <section>
+        <section className={styles.services_tabs}>
             <div className="container">
                 <h2 className="text-center">Services</h2>
                 <nav>

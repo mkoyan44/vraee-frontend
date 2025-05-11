@@ -2,8 +2,11 @@
   padding: var(--top-space) 0 var(--bottom-space);
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .item {
@@ -12,6 +15,7 @@
 
   .item_title {
     font-size: 7.5rem; /* 120/16 */
+    margin-bottom: 0.6em;
   }
 
   .item_desc {

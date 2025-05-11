@@ -1,59 +1,114 @@
 .footer {
   padding: var(--top-space) 0 0;
+
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr;
     gap: 3rem;
     padding-bottom: var(--bottom-space);
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
 
   .menus {
-    grid-column: 1/3;
     display: flex;
     align-items: flex-start;
     gap: 3.5rem;
+    @media screen and (min-width: 1024px) {
+      order: -1;
+      grid-column: 1/4;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-column: 1/3;
+    }
+
     li {
-      &:not(:last-child){
+      &:not(:last-child) {
         margin-bottom: 0.5em;
       }
     }
   }
 
   .contacts {
-    grid-column: 3/4;
-    .contact_item{
-      &:not(:last-child){
-        margin-bottom: 3rem;
+    .contact_item {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+        @media screen and (min-width: 1366px) {
+          margin-bottom: 3rem;
+        }
       }
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-column: 1/4;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-column: 3/4;
     }
   }
 
   .newsletter {
-    grid-column: 4/6;
-    padding-left: 5rem;
+    line-height: 1.2;
+
+    h3 {
+      font-weight: 500;
+      margin-bottom: 0.5rem; /* 12/16 */
+    }
+
+    @media screen and (min-width: 1024px) {
+      order: -1;
+      grid-column: 4/6;
+      .newsletter_wrapper {
+        margin: 0 auto;
+      }
+    }
+    @media screen and (min-width: 1366px) {
+      order: unset;
+      .newsletter_wrapper {
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
   }
 
+  .social_wrapper,
+  .newsletter_wrapper {
+    max-width: 22.5rem; /* 360/16 */
+    @media screen and (min-width: 1024px) {
+      margin-left: auto;
+    }
+  }
+
+
   .payments {
-    grid-column: 1/3;
+    @media screen and (min-width: 1024px) {
+      grid-column: 1/3;
+    }
   }
 
   .social {
-    grid-column: 5/6;
+    @media screen and (min-width: 1024px) {
+      grid-column: 4/6;
+    }
 
     .social_list {
       display: flex;
       gap: 0.5rem;
+
       a {
         display: inline-flex;
         transition: all var(--duration) ease;
-        &:hover{
+
+        &:hover {
           scale: 1.1;
         }
       }
     }
   }
+
   .bottom {
-    border-top: 1px solid rgba(var(--color-border),var(--color-border-alpha));
+    border-top: 1px solid rgba(var(--color-border), var(--color-border-alpha));
     padding: 3rem 0;
   }
 }

@@ -1,5 +1,7 @@
 .btn {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(var(--btn-bg),1);
   color: rgba(var(--btn-text),1);
   border-radius: var(--btn-border-radius);
@@ -16,7 +18,7 @@
     --btn-bg: var(--btn-primary-hover-bg);
     --btn-text: var(--btn-primary-hover-text);
     --btn-border-radius: 16px;
-    scale: 1.1;
+    scale: 1.03;
     box-shadow: 0 10px 20px 10px rgba(var(--btn-text),0.1);
   }
 }
@@ -40,7 +42,7 @@
   }
   &:hover{
     --border-width: 0%;
-    scale: 1.1;
+    scale: 1.03;
   }
 }
 
@@ -62,6 +64,10 @@
   justify-content: center;
   line-height: 1;
   --swiper-navigation-size: 16px;
+  display: none;
+  @media screen and (min-width: 1200px){
+    display: inline-flex;
+  }
 }
 
 .swiper-pagination {

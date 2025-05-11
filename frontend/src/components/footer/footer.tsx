@@ -3,7 +3,7 @@ import styles from "@/assets/styles/client/components/footer.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-const Footer: React.FC = ()=> {
+const Footer: React.FC = () => {
     const menus = [
         {
             'id': '1',
@@ -132,6 +132,8 @@ const Footer: React.FC = ()=> {
             'url': '#',
         },
     ];
+    const xmas = new Date();
+    const year = xmas.getFullYear();
     return (
         <footer className={`${styles.footer} scheme-dark background`}>
             <div className="container">
@@ -147,7 +149,8 @@ const Footer: React.FC = ()=> {
                                                 menu.menu.map((item) => {
                                                     return (
                                                         <li key={item.id}>
-                                                            <Link href={item.url} className="hovered_link">{item.label}</Link>
+                                                            <Link href={item.url}
+                                                                  className="hovered_link">{item.label}</Link>
                                                         </li>
                                                     )
                                                 })
@@ -169,40 +172,45 @@ const Footer: React.FC = ()=> {
                         </div>
                     </div>
                     <div className={styles.newsletter}>
-                        <div className="rte">
-                            <h3>Subscribe to our emails</h3>
-                            <p>Be the first to know about new collections and exclusive offers.</p>
+                        <div className={styles.newsletter_wrapper}>
+                            <div className="rte">
+                                <h3>Subscribe to our emails</h3>
+                                <p>Be the first to know about new collections and exclusive offers.</p>
+                            </div>
+                            <form action="">
+                                <input type="text"/>
+                                <button type="submit" className="btn-primary w-full mb-2">Subscribe</button>
+                                <small className="opacity-60">By subscribing you agree to the Terms of Use and Privacy
+                                    Policy.</small>
+                            </form>
                         </div>
-                        <form action="">
-                            <input type="text"/>
-                            <button>Subscribe</button>
-                            <small>By subscribing you agree to the Terms of Use and Privacy Policy.</small>
-                        </form>
                     </div>
                     <div className={styles.payments}>
                         <div className="mb-3">Payment Available:</div>
                         <Image src={'/payments.png'} alt={''} width={'453'} height={'28'}/>
                     </div>
                     <div className={styles.social}>
-                        <div className="mb-3">We Are in Social:</div>
-                        <ul className={styles.social_list}>
-                            {
-                                socials.map(item => {
-                                    return (
-                                        <li key={item.id}>
-                                            <Link href={item.url} target="_blank"
-                                                  dangerouslySetInnerHTML={{__html: item.icon}}></Link>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        <div className={styles.social_wrapper}>
+                            <div className="mb-3">We Are in Social:</div>
+                            <ul className={styles.social_list}>
+                                {
+                                    socials.map(item => {
+                                        return (
+                                            <li key={item.id}>
+                                                <Link href={item.url} target="_blank"
+                                                      dangerouslySetInnerHTML={{__html: item.icon}}></Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className={styles.bottom}>
                 <div className="container">
-                    <p className="opacity-60">© 2023 All rights reserved.</p>
+                    <p className="opacity-60">© {year} All rights reserved.</p>
                 </div>
             </div>
         </footer>

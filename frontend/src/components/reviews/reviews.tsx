@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, {useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Pagination} from 'swiper/modules';
 import styles from "@/assets/styles/client/components/reviews.module.scss";
@@ -48,17 +48,41 @@ const Reviews: React.FC = () => {
             description: 'I had an excellent experience with this service. The team was professional, responsive, and very knowledgeable. They handled everything efficiently and exceeded my expectations. I highly recommend them!',
         },
     ]
+
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
     return (
         <section className={styles.reviews}>
             <div className={`container`}>
                 <h2>Reviews from our clients</h2>
                 <div className={styles.wrapper}>
+                    <div className={styles.navigation_wrapper}>
+                        <button ref={prevRef} className={`${styles.nav_btn} swiper-button-prev`}/>
+                        <button ref={nextRef} className={`${styles.nav_btn} swiper-button-next`}/>
+                    </div>
                     <Swiper
                         modules={[Navigation, Pagination]}
                         spaceBetween={24}
-                        slidesPerView={3}
-                        navigation
+                        slidesPerView={1}
                         pagination={{clickable: true}}
+                        onBeforeInit={(swiper) => {
+                            if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+                                swiper.params.navigation.prevEl = prevRef.current;
+                                swiper.params.navigation.nextEl = nextRef.current;
+                            }
+                        }}
+                        navigation={{
+                            prevEl: prevRef.current,
+                            nextEl: nextRef.current,
+                        }}
+                        breakpoints={{
+                            1024: {
+                                slidesPerView:2,
+                            },
+                            1366: {
+                                slidesPerView:3,
+                            }
+                        }}
                     >
                         {reviews.map((item) => (
                             <SwiperSlide key={item.id}>

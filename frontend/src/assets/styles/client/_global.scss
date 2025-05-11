@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  font-size: 12px;
+  @media screen and (min-width: 1366px) {
+    font-size: 16px;
+  }
+}
+
 #root {
   --font-title: var(--font-inter);
   --font-text: var(--font-inter);
@@ -11,6 +18,7 @@
   --duration: .3s;
   --top-space:5rem;
   --bottom-space:5rem;
+  --header-z-index: 1000;
 }
 
 button {
@@ -26,4 +34,8 @@ button {
 }
 
 #root {
+}
+
+.container {
+  padding: 0 1rem;
 }
