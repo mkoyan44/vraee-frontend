@@ -1,4 +1,4 @@
-import Image from "next/image";
+import React from "react";
 import ServicesTabs from "@/components/services-tabs/services-tabs";
 import Hero from "@/components/hero/hero";
 import TextWithMedia from "@/components/text-with-media/text-with-media";
@@ -8,7 +8,7 @@ import Reviews from "@/components/reviews/reviews";
 import TabsContent from "@/components/tabs-content/tabs-content";
 import MediaGrid from "@/components/media-grid/media-grid";
 
-export default function Page() {
+const Page: React.FC = () => {
     return (
         <>
             <Hero/>
@@ -22,3 +22,4 @@ export default function Page() {
         </>
     );
 }
+export default Page;

@@ -75,6 +75,7 @@ const MediaGrid: React.FC = () => {
                                             />
                                         </a>
                                     ) : (
+                                        <>
                                         <a
                                             href={item.video}
                                             data-fancybox="gallery"
@@ -86,10 +87,11 @@ const MediaGrid: React.FC = () => {
                                                 width={400}
                                                 height={300}
                                             />
-                                            <span className={styles.play_button}>
-                                                <Icon icon={'play'} />
-                                            </span>
                                         </a>
+                                            <a href={item.video} className={`play_button`}>
+                                                <Icon icon={'play'} />
+                                            </a>
+                                        </>
                                     )}
                                 </div>
                             )

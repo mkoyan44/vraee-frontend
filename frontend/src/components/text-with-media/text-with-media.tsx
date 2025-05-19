@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from "@/assets/styles/client/components/text-with-media.module.scss";
 import Image from "next/image";
-
-const TextWithMedia: React.FC = ()=> {
+interface TextWithMediaProps {
+    scheme?: string,
+    has_background?: boolean,
+}
+const TextWithMedia: React.FC<TextWithMediaProps> = ({scheme = 'scheme-light-1', has_background = true })=> {
     return (
-        <section className={styles.text_with_media + ' scheme-light-1 background'}>
+        <section className={`${styles.text_with_media} ${scheme} ${has_background ? 'background' : ''}`}>
             <div className="container">
                 <div className={styles.wrapper}>
                     <div className={styles.content}>

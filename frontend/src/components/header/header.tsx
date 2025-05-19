@@ -16,7 +16,7 @@ const menu: { label: string; href: string }[] = [
     },
     {
         label: "Services",
-        href: "#",
+        href: "/services",
     },
     {
         label: "How it works?",
@@ -28,7 +28,7 @@ const menu: { label: string; href: string }[] = [
     },
     {
         label: "Portfolio",
-        href: "#",
+        href: "/portfolio",
     },
     {
         label: "Contact us",

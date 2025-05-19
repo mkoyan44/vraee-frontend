@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IconProps {
-    icon: 'arrow_down' | 'arrow_right' | 'arrow_left' | 'star' | 'play' | 'close';
+    icon: 'arrow_down' | 'arrow_right' | 'arrow_left' | 'star' | 'play' | 'close' | 'plus';
     fill?: string,
 }
 
@@ -61,6 +61,14 @@ const Icon: React.FC<IconProps> = ({icon,fill = 'currentColor' }) => {
             return (
                 <svg clipRule="evenodd" fill={fill} fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                     <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
+                </svg>
+            )
+        }
+        case 'plus': {
+            return (
+                <svg width="24" height="24" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.487305 8.31848H16.5429V9.84754H0.487305V8.31848Z" fill={fill}/>
+                    <path d="M7.74707 17.1102V1.05469H9.27613V17.1102H7.74707Z" fill={fill}/>
                 </svg>
             )
         }
