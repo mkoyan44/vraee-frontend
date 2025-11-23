@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from "@/assets/styles/client/components/programs-used.module.scss";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Image from 'next/image';
@@ -83,60 +84,123 @@ const ProgramsUsed: React.FC = () => {
                 </div>
 
                 <div className={styles.programs_cards_grid}>
-                    {programs.map((program, index) => (
-                        <a
-                            key={index}
-                            href={program.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.program_card_link}
-                            title={`Visit ${program.name} website`}
-                        >
-                            <Card
-                                className={styles.program_card}
-                                style={{
-                                    backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
-                                    borderColor: 'rgb(var(--color-border))'
-                                }}
+                    {programs.map((program, index) => {
+                        const isBlender = program.name === "Blender";
+                        const linkProps = isBlender
+                            ? { href: "/blender", title: "Learn more about our Blender workflow" }
+                            : {
+                                href: program.url,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                title: `Visit ${program.name} website`
+                            };
+
+                        return isBlender ? (
+                            <Link
+                                key={index}
+                                href="/blender"
+                                className={styles.program_card_link}
+                                title="Learn more about our Blender workflow"
                             >
-                                <CardHeader className="text-center">
-                                    <div className={styles.program_icon_wrapper}>
-                                        {program.icon === "/software/blender.svg" ? (
-                                            <Image
-                                                src={program.icon}
-                                                alt={`${program.name} logo`}
-                                                width={48}
-                                                height={48}
-                                                className={styles.program_icon}
-                                                priority={false}
-                                            />
-                                        ) : (
-                                            <div className={styles.program_icon_fallback}>
-                                                <span className={styles.program_icon_text}>
-                                                    {program.name.split(' ').map(word => word[0]).join('').toUpperCase()}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className={styles.program_meta}>
-                                        <h3 className={styles.program_name} style={{ color: 'rgb(var(--color-title))' }}>
-                                            {program.name}
-                                        </h3>
-                                        <div className={styles.program_category}>
-                                            {program.category}
+                                <Card
+                                    className={styles.program_card}
+                                    style={{
+                                        backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
+                                        borderColor: 'rgb(var(--color-border))'
+                                    }}
+                                >
+                                    <CardHeader className="text-center">
+                                        <div className={styles.program_icon_wrapper}>
+                                            {program.icon === "/software/blender.svg" ? (
+                                                <Image
+                                                    src={program.icon}
+                                                    alt={`${program.name} logo`}
+                                                    width={48}
+                                                    height={48}
+                                                    className={styles.program_icon}
+                                                    priority={false}
+                                                />
+                                            ) : (
+                                                <div className={styles.program_icon_fallback}>
+                                                    <span className={styles.program_icon_text}>
+                                                        {program.name.split(' ').map(word => word[0]).join('').toUpperCase()}
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
-                                </CardHeader>
 
-                                <CardContent>
-                                    <p className={styles.program_description} style={{ color: 'rgb(var(--color-text))' }}>
-                                        {program.description}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </a>
-                    ))}
+                                        <div className={styles.program_meta}>
+                                            <h3 className={styles.program_name} style={{ color: 'rgb(var(--color-title))' }}>
+                                                {program.name}
+                                            </h3>
+                                            <div className={styles.program_category}>
+                                                {program.category}
+                                            </div>
+                                        </div>
+                                    </CardHeader>
+
+                                    <CardContent>
+                                        <p className={styles.program_description} style={{ color: 'rgb(var(--color-text))' }}>
+                                            {program.description}
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </Link>
+                        ) : (
+                            <a
+                                key={index}
+                                href={program.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.program_card_link}
+                                title={`Visit ${program.name} website`}
+                            >
+                                <Card
+                                    className={styles.program_card}
+                                    style={{
+                                        backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
+                                        borderColor: 'rgb(var(--color-border))'
+                                    }}
+                                >
+                                    <CardHeader className="text-center">
+                                        <div className={styles.program_icon_wrapper}>
+                                            {program.icon === "/software/blender.svg" ? (
+                                                <Image
+                                                    src={program.icon}
+                                                    alt={`${program.name} logo`}
+                                                    width={48}
+                                                    height={48}
+                                                    className={styles.program_icon}
+                                                    priority={false}
+                                                />
+                                            ) : (
+                                                <div className={styles.program_icon_fallback}>
+                                                    <span className={styles.program_icon_text}>
+                                                        {program.name.split(' ').map(word => word[0]).join('').toUpperCase()}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className={styles.program_meta}>
+                                            <h3 className={styles.program_name} style={{ color: 'rgb(var(--color-title))' }}>
+                                                {program.name}
+                                            </h3>
+                                            <div className={styles.program_category}>
+                                                {program.category}
+                                            </div>
+                                        </div>
+                                    </CardHeader>
+
+                                    <CardContent>
+                                        <p className={styles.program_description} style={{ color: 'rgb(var(--color-text))' }}>
+                                            {program.description}
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </a>
+                        );
+                    })}
                 </div>
             </div>
         </section>
