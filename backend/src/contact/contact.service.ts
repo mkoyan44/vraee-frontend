@@ -26,7 +26,7 @@ export class ContactService {
     });
   }
 
-  async getContactById(id: number): Promise<Contact> {
+  async getContactById(id: number): Promise<Contact | null> {
     return await this.contactRepository.findOneBy({ id });
   }
 }

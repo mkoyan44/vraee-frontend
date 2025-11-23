@@ -5,13 +5,13 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { ContactModule } from './contact/contact.module';
-import {User} from "./user/user.entity";
-import {Contact} from "./contact/contact.entity";
+import { User } from './user/user.entity';
+import { Contact } from './contact/contact.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,  // Делает переменные окружения доступными по всему приложению
+      isGlobal: true, // Делает переменные окружения доступными по всему приложению
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

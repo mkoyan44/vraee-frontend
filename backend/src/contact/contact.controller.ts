@@ -8,7 +8,8 @@ export class ContactController {
 
   @Post()
   async submitContact(
-    @Body() body: {
+    @Body()
+    body: {
       name: string;
       email: string;
       company?: string;

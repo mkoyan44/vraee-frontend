@@ -8,58 +8,60 @@ interface Step {
   icon: React.ElementType;
   title: string;
   description: string;
-  details: string[];
-  duration: string;
+  cta: string;
+  link?: string;
+  details?: string[];
 }
 
 const steps: Step[] = [
   {
     stepNumber: 1,
     icon: MessageCircle,
-    title: "Consultation and brief",
-    description: "Discuss ideas, requirements and budget",
-    details: ["Free consultation", "Technical specification", "Cost calculation", "Timeline planning"],
-    duration: "1-2 days"
+    title: "Submit Your Project",
+    description: "Start by selecting your required service (CAD, Rendering, or Animation) or upload your sketch/reference file for a custom quote. We guarantee the confidentiality of your designs.",
+    cta: "Start Your Project",
+    link: "/pricing"
   },
   {
     stepNumber: 2,
     icon: PenTool,
-    title: "Sketch creation",
-    description: "Develop detailed sketches and concepts",
-    details: ["Multiple variants", "Detailed development", "Client approval", "Corrections"],
-    duration: "2-3 days"
+    title: "Transparent Pricing & Quote",
+    description: "Our system calculates the exact cost and timeline based on complexity and volume. You receive a fixed price with no hidden fees, ensuring budget certainty.",
+    cta: "View Pricing",
+    details: ["Interactive Calculator", "Clear Pricing Table", "Fixed Price Guarantee", "No Hidden Fees"]
   },
   {
     stepNumber: 3,
     icon: Cpu,
-    title: "3D Modeling",
-    description: "Create precise 3D model with accurate dimensions",
-    details: ["High detail", "Precise dimensions", "All materials", "Technical verification"],
-    duration: "3-5 days"
+    title: "Order Confirmation & Access",
+    description: "Once the quote is approved, we begin work immediately. You receive unique access to your dedicated Client Portal for all project management.",
+    cta: "Go to Client Portal",
+    details: ["Immediate Work Start", "Dedicated Portal", "Project Management", "Secure Access"]
   },
   {
     stepNumber: 4,
     icon: Eye,
-    title: "Rendering and visualization",
-    description: "Create photorealistic images with professional lighting",
-    details: ["Photorealism", "Multiple angles", "Studio quality", "4K resolution"],
-    duration: "1-2 days"
+    title: "Dynamic Status Tracking",
+    description: "Track your order's progress in real-time, 24/7. You always know the exact stage of your CAD model creation or rendering process.",
+    cta: "Track Progress",
+    details: ["Real-Time Updates", "24/7 Access", "Progress Timeline", "Status Notifications"]
   },
   {
     stepNumber: 5,
     icon: CheckCircle,
-    title: "Approval and revisions",
-    description: "Present results and make necessary corrections",
-    details: ["Work presentation", "Feedback", "Corrections", "Final approval"],
-    duration: "1-2 days"
+    title: "Direct Communication & Revisions",
+    description: "Provide feedback and request revisions directly within the Client Portal. Our dedicated specialist is always on hand for fast, operational communication.",
+    cta: "Request Revision",
+    details: ["Embedded Chat", "Image Commenting", "Dedicated Specialist", "Fast Communication"]
   },
   {
     stepNumber: 6,
     icon: Rocket,
-    title: "File delivery",
-    description: "Deliver all files and provide technical support",
-    details: ["All file formats", "High quality", "Technical support", "Quality guarantee"],
-    duration: "1 day"
+    title: "Final Delivery & Guarantee",
+    description: "Download your final, e-commerce optimized visuals and production-ready CAD files in high resolution, delivered within our guaranteed timeframe.",
+    cta: "Download Final Files",
+    link: "/portfolio",
+    details: ["High-Resolution Files", "E-commerce Optimized", "Guaranteed Delivery", "Production Ready"]
   }
 ];
 
@@ -74,10 +76,10 @@ const HowItWorks: React.FC = () => {
             How It Works
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{color: 'rgb(var(--color-title))'}}>
-            How It Works
+            Our Transparent Workflow: From Concept to E-commerce Visuals
           </h2>
           <p className="text-lg max-w-2xl mx-auto" style={{color: 'rgb(var(--color-text))'}}>
-            Transparent creative process from idea to final result with quality guarantee at every stage
+            Jewelry 3D rendering workflow, custom jewelry CAD service process, e-commerce rendering process featuring transparent pricing, real-time tracking, and guaranteed delivery.
           </p>
         </div>
 
@@ -93,7 +95,7 @@ const HowItWorks: React.FC = () => {
                 <Card className="group hover:shadow-xl transition-all duration-300 h-full" style={{backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))', borderColor: 'rgb(var(--color-border))'}}>
                   <CardContent className="p-6">
                     {/* Step Number */}
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center mb-4">
                       <div className="flex items-center gap-4">
                         <div className="flex-shrink-0 w-12 h-12 btn-primary rounded-full flex items-center justify-center">
                           <span className="text-white font-bold text-lg">{step.stepNumber}</span>
@@ -101,9 +103,6 @@ const HowItWorks: React.FC = () => {
                         <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:bg-gray-50 transition-colors duration-300" style={{backgroundColor: 'rgba(var(--color-bg), 0.5)'}}>
                           <IconComponent className="h-5 w-5" style={{color: 'rgb(var(--color-text))'}} />
                         </div>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-medium" style={{color: 'rgb(var(--color-text))'}}>{step.duration}</span>
                       </div>
                     </div>
 
@@ -117,14 +116,29 @@ const HowItWorks: React.FC = () => {
                       </p>
 
                       {/* Details List */}
-                      <ul className="space-y-2">
-                        {step.details.map((detail, detailIndex) => (
-                          <li key={detailIndex} className="flex items-start gap-3">
-                            <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2" style={{backgroundColor: 'rgb(var(--color-border))'}}></div>
-                            <span className="text-sm" style={{color: 'rgb(var(--color-text))'}}>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {step.details && (
+                        <ul className="space-y-2">
+                          {step.details.map((detail, detailIndex) => (
+                            <li key={detailIndex} className="flex items-start gap-3">
+                              <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2" style={{backgroundColor: 'rgb(var(--color-border))'}}></div>
+                              <span className="text-sm" style={{color: 'rgb(var(--color-text))'}}>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {/* CTA Button */}
+                      <div className="pt-4">
+                        {step.link ? (
+                          <a href={step.link} className="btn-simple inline-block">
+                            {step.cta}
+                          </a>
+                        ) : (
+                          <button type="button" className="btn-simple">
+                            {step.cta}
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

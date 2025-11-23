@@ -20,10 +20,20 @@
   --top-space: 3rem;
   --bottom-space: 3rem;
   --header-z-index: 1000;
+
+  /* Smooth theme transitions */
+  transition: background-color var(--duration), color var(--duration), border-color var(--duration);
+}
+
+/* Disable transitions during theme switching */
+.theme-switching #root,
+.theme-switching * {
+  transition: none !important;
 }
 
 button {
   cursor: pointer;
+  transition: background-color var(--duration), color var(--duration), border-color var(--duration);
 }
 
 .container {
@@ -32,9 +42,6 @@ button {
 
 .mh-full-screen {
   min-height: calc(100vh - 68px);
-}
-
-#root {
 }
 
 .container {

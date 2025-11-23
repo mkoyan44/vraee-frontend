@@ -1,7 +1,48 @@
 import React from "react";
+import type {Metadata} from "next";
 import ProgramsShowcase from "@/components/programs-showcase";
 import CustomProjectForm from "@/components/custom-project-form";
 import Footer from "@/components/footer/footer";
+
+export const generateMetadata = (): Metadata => {
+    return {
+        title: "Programs We Use",
+        description: "Explore the professional 3D software tools we use for creating stunning architectural visualizations, product renderings, and animations. Blender, Maya, 3ds Max, and more.",
+        keywords: [
+            "3D modeling software",
+            "Blender software",
+            "Autodesk Maya",
+            "3ds Max",
+            "ZBrush sculpting",
+            "Cinema 4D",
+            "rendering software",
+            "3D animation tools",
+            "professional 3D software"
+        ],
+        openGraph: {
+            title: "Professional 3D Software Tools | Render Agency",
+            description: "Discover the industry-leading 3D software we use to create photorealistic architectural visualizations, product renderings, and stunning animations.",
+            type: "website",
+            images: [
+                {
+                    url: "/services-image.png",
+                    width: 1200,
+                    height: 630,
+                    alt: "Professional 3D Software Tools Used by Render Agency",
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: "Professional 3D Software Tools | Render Agency",
+            description: "Industry-leading 3D software tools for architectural visualization, product rendering, and animation services.",
+            images: ["/services-image.png"],
+        },
+        alternates: {
+            canonical: "/programs-we-use",
+        },
+    };
+};
 
 const Page: React.FC = () => {
     return (

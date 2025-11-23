@@ -6,6 +6,7 @@ import "@/assets/styles/client/app.scss";
 import {Inter} from 'next/font/google'
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import ThemeProvider from "@/components/theme/theme-provider";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -16,16 +17,16 @@ const inter = Inter({
 type Props = {
     children: React.ReactNode;
     rootClass?: string;
-    colorScheme?: string;
 };
 
-export default function ClientLayout({ children, rootClass = "", colorScheme="scheme-light" }: Props) {
+export default function ClientLayout({ children, rootClass = "" }: Props) {
     return (
-        <div id="root" className={`${inter.variable} ${colorScheme} ${rootClass}`}>
-            <Header />
-            LAYOUT CLIENT
-            <main>{children}</main>
-            <Footer />
-        </div>
+        <ThemeProvider>
+            <div id="root" className={`${inter.variable} ${rootClass}`}>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+            </div>
+        </ThemeProvider>
     );
 }

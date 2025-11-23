@@ -8,12 +8,12 @@ const Hero: React.FC = ()=> {
                 <div className={styles.hero_bg}></div>
                 <div className={styles.hero_wrapper}>
                     <div className={styles.hero_content}>
-                        <h1 className={styles.hero_title}>Transform Your Jewelry Ideas into 3D Reality</h1>
+                        <h1 className={styles.hero_title}>Professional 3D Architectural Visualization & Product Rendering Services</h1>
                         <div className={styles.hero_desc}>
-                            <p>Professional 3D jewelry modeling and creative content production.
-                               From concept to creation-ready designs with cutting-edge technology.</p>
+                            <p>Expert 3D rendering studio for architects and businesses. Photorealistic architectural visualizations,
+                               product renders, and professional animations. Transparent pricing, fast delivery, global service.</p>
                         </div>
-                        <a href="#" className="btn-primary">Create Order</a>
+                        <a href="/contact" className="btn-primary">Get Your Quote Today</a>
                     </div>
                     <div className={styles.hero_image}>
                         <img src="/hero-image.png" alt=""/>

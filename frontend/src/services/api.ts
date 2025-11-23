@@ -24,6 +24,54 @@ export const getUserData = async () => {
     return response.data;
 };
 
+export const updateProfileStep1 = async (profileData: {
+    fullName?: string;
+    companyName?: string;
+}) => {
+    const response = await axios.post(`${API_URL}/profile/step1`, profileData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const updateProfileStep2 = async (profileData: {
+    clientType?: string;
+    primaryService?: string[];
+    projectVolume?: string;
+}) => {
+    const response = await axios.post(`${API_URL}/profile/step2`, profileData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const updateProfileStep3 = async (profileData: {
+    cadSoftware?: string;
+    requiredOutputs?: string[];
+    referralSource?: string;
+}) => {
+    const response = await axios.post(`${API_URL}/profile/step3`, profileData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const completeProfile = async (profileData: {
+    fullName: string;
+    companyName?: string;
+    clientType: string;
+    primaryService: string[];
+    projectVolume: string;
+    cadSoftware: string;
+    requiredOutputs: string[];
+    referralSource?: string;
+}) => {
+    const response = await axios.post(`${API_URL}/profile/complete`, profileData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
 export const submitContact = async (contactData: {
     name: string;
     email: string;

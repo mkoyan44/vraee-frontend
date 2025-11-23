@@ -8,6 +8,7 @@ import Link from "next/link"
 import Image from "next/image";
 import {usePathname} from 'next/navigation';
 import Icon from "@/components/icon/icon";
+import ThemeToggle from "@/components/theme/theme-toggle";
 
 const menu: { label: string; href: string }[] = [
     {
@@ -102,6 +103,7 @@ const Header: React.FC = () => {
                         }
                     </nav>
                     <div className={styles.buttons}>
+                        <ThemeToggle />
                         <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                         <Link href={'#'} className="btn-primary">Create Order</Link>
                     </div>

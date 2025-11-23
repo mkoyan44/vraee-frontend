@@ -1,3 +1,39 @@
+[data-theme="light"] {
+  --color-title: 45, 45, 45;
+  --color-text: 22, 22, 23;
+  --color-bg: 255, 255, 255;
+  --color-bg-alpha: 1;
+  --color-border: 195, 200, 205;
+  --color-border-alpha: 1;
+
+  --btn-primary-bg: 22, 22, 23;
+  --btn-primary-text: 255, 255, 255;
+  --btn-primary-hover-bg: 255, 255, 255;
+  --btn-primary-hover-text: 22, 22, 23;
+
+  --btn-simple-text: 22, 22, 23;
+
+  --swiper-pagination-color: rgb(22, 22, 23);
+}
+
+[data-theme="dark"] {
+  --color-title: 255, 255, 255;
+  --color-text: 255, 255, 255;
+  --color-bg: 0, 0, 0;
+  --color-bg-alpha: 1;
+  --color-border: 131, 131, 131;
+  --color-border-alpha: 1;
+
+  --btn-primary-bg: 255, 255, 255;
+  --btn-primary-text: 22, 22, 23;
+  --btn-primary-hover-bg: 22, 22, 23;
+  --btn-primary-hover-text: 255, 255, 255;
+
+  --btn-simple-text: 255, 255, 255;
+
+  --swiper-pagination-color: rgb(255, 255, 255);
+}
+
 .scheme-light {
   --color-title: 45, 45, 45;
   --color-text: 22, 22, 23;
@@ -36,22 +72,28 @@
 
 .scheme-light-1 {
   @extend .scheme-light;
-  --color-bg: 0, 0, 0;
-  --color-bg-alpha: 0.07;
+  --color-bg: 255, 255, 255;
+  --color-bg-alpha: 0.02;
 }
 
 .scheme-light-2 {
   @extend .scheme-light;
-  --color-bg: 229, 229, 229;
+  --color-bg: 252, 252, 252;
 }
 
 .scheme-light-3 {
   @extend .scheme-light;
-  --color-bg: 241, 241, 241;
+  --color-bg: 250, 250, 250;
 }
 
-.scheme-dark, .scheme-light {
+.scheme-dark, .scheme-light,
+[data-theme="dark"], [data-theme="light"] {
   color: rgb(var(--color-text));
+}
+
+[data-theme="light"],
+[data-theme="dark"] .scheme-dark {
+  /* Make sure data-theme overrides */
 }
 
 .background {
