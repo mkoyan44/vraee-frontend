@@ -14,6 +14,26 @@ export const login = async (email: string, password: string) => {
     const response = await axios.post(`${API_URL}/auth/login`, {email, password}, {withCredentials: true});
 
     useUserStore.getState().setRole(response.data.role);
+
+    // Fetch and store user profile data
+    try {
+        const userData = await getUserData();
+        useUserStore.getState().setUserData({
+            id: userData.id,
+            email: userData.email,
+            fullName: userData.fullName
+        });
+    } catch (error) {
+        console.warn('Failed to fetch user data after login:', error);
+    }
+
+    return response.data;
+};
+
+export const logout = async () => {
+    const response = await axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true});
+
+    useUserStore.getState().clearRole();
     return response.data;
 };
 

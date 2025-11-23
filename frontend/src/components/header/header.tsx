@@ -6,9 +6,11 @@ import {useHasMounted} from '@/hooks/useHasMounted';
 import React, {useEffect, useState} from "react"
 import Link from "next/link"
 import Image from "next/image";
-import {usePathname} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 import Icon from "@/components/icon/icon";
 import ThemeToggle from "@/components/theme/theme-toggle";
+import { useUserStore } from "@/store/useUserStore";
+import { logout } from "@/services/api";
 
 const menu: { label: string; href: string }[] = [
     {
@@ -43,10 +45,23 @@ const menu: { label: string; href: string }[] = [
 
 const Header: React.FC = () => {
     const pathname = usePathname();
+    const router = useRouter();
+
+    const { role, userData } = useUserStore();
+    const isLoggedIn = !!role;
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { isLaptop} = useBreakpoint();
     const hasMounted = useHasMounted();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            router.push('/');
+        } catch (error) {
+            console.error('Logout failed:', error);
+        }
+    };
     return (
         <header className={`${styles.header} background`}>
             <div className="container">
@@ -91,8 +106,22 @@ const Header: React.FC = () => {
                                                 <Icon icon={'close'}/>
                                             </button>
                                             <div className={styles.nav_buttons}>
-                                                <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign
-                                                    In</Link>
+                                                {isLoggedIn ? (
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                                        <Link href={'/profile'} className={`${styles.header_link} hovered_link`}>
+                                                            {userData?.fullName ? `Hi, ${userData.fullName}` : 'Profile'}
+                                                        </Link>
+                                                        <button
+                                                            onClick={handleLogout}
+                                                            className={`${styles.header_link} hovered_link`}
+                                                            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                                                        >
+                                                            Logout
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
+                                                )}
                                                 <Link href={'#'} className="btn-primary">Create Order</Link>
                                             </div>
                                         </>
@@ -104,7 +133,22 @@ const Header: React.FC = () => {
                     </nav>
                     <div className={styles.buttons}>
                         <ThemeToggle />
-                        <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
+                        {isLoggedIn ? (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                <Link href={'/profile'} className={`${styles.header_link} hovered_link`}>
+                                    {userData?.fullName ? `Hi, ${userData.fullName}` : 'Profile'}
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className={`${styles.header_link} hovered_link`}
+                                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
+                        )}
                         <Link href={'#'} className="btn-primary">Create Order</Link>
                     </div>
                 </div>

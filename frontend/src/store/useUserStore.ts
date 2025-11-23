@@ -3,16 +3,26 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 type UserState = {
     role: string | null;
+    userData: {
+        id: number;
+        email: string;
+        fullName?: string;
+    } | null;
     setRole: (role: string) => void;
+    setUserData: (data: { id: number; email: string; fullName?: string }) => void;
     clearRole: () => void;
+    clearUserData: () => void;
 };
 
 export const useUserStore = create<UserState>()(
     persist(
         (set) => ({
             role: null,
+            userData: null,
             setRole: (role) => set({ role }),
-            clearRole: () => set({ role: null }),
+            setUserData: (userData) => set({ userData }),
+            clearRole: () => set({ role: null, userData: null }),
+            clearUserData: () => set({ userData: null }),
         }),
         {
             name: "user-role",
