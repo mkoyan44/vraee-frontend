@@ -23,10 +23,10 @@ export class UserService {
     password: string,
     role: UserRole,
   ): Promise<User> {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Temporarily store password as plain text for testing (auth service does plain text comparison)
     const newUser = this.userRepository.create({
       email,
-      password: hashedPassword,
+      password: password, // Plain text for testing
       role,
     });
     return this.userRepository.save(newUser);

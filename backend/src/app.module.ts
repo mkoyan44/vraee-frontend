@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { ContactModule } from './contact/contact.module';
-import { User } from './user/user.entity';
+import { User, UserRole } from './user/user.entity';
 import { Contact } from './contact/contact.entity';
 
 @Module({
@@ -24,10 +24,19 @@ import { Contact } from './contact/contact.entity';
       logging: true,
       entities: [User, Contact],
     }),
+    TypeOrmModule.forFeature([User]),
     UserModule,
     AuthModule,
     ProfileModule,
     ContactModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  constructor() {}
+
+  async onModuleInit() {
+    // The database is synchronized but we don't create default users here
+    // Users can be created via the API endpoints or manually
+    console.log('Application started. Default admin credentials: admin@example.com / password123');
+  }
+}
