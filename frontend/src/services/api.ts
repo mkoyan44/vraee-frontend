@@ -23,3 +23,13 @@ export const getUserData = async () => {
     });
     return response.data;
 };
+
+export const submitContact = async (contactData: {
+    name: string;
+    email: string;
+    company?: string;
+    message: string;
+}) => {
+    const response = await axios.post(`${API_URL}/contact`, contactData);
+    return response.data;
+};

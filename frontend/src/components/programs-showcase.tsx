@@ -70,36 +70,20 @@ const programs: SoftwareProgram[] = [
     }
 ];
 
-const ProgramsUsed: React.FC = () => {
+const ProgramsShowcase: React.FC = () => {
     return (
-        <section className={styles.programs_used}>
-            <div className="container">
-                <div className={styles.header}>
-                    <h2>Programs We Use</h2>
-                    <div className="rte">
-                        <p>Our production pipeline utilizes industry-leading software tools that enable us to deliver exceptional 3D visualization and rendering services. Each tool plays a specialized role in our comprehensive workflow, from concept development to final presentation.</p>
-                    </div>
-                    <a href="#contact" className="btn-simple">Get Started</a>
-                </div>
-
-                <div className={styles.programs_cards_grid}>
-                    {programs.map((program, index) => (
-                        <a
-                            key={index}
-                            href={program.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.program_card_link}
-                            title={`Visit ${program.name} website`}
-                        >
-                            <Card
-                                className={styles.program_card}
-                                style={{
-                                    backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
-                                    borderColor: 'rgb(var(--color-border))'
-                                }}
-                            >
-                                <CardHeader className="text-center">
+        <div className={styles.programs_cards_grid}>
+            {programs.map((program, index) => (
+                <a
+                    key={index}
+                    href={program.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.program_card_link}
+                    title={`Visit ${program.name} website`}
+                >
+                    <Card className={styles.program_card}>
+                                <CardHeader className="text-center pb-3">
                                     <div className={styles.program_icon_wrapper}>
                                         {program.icon === "/software/blender.svg" ? (
                                             <Image
@@ -108,8 +92,7 @@ const ProgramsUsed: React.FC = () => {
                                                 width={48}
                                                 height={48}
                                                 className={styles.program_icon}
-                                                priority={false}
-                                            />
+                                              />
                                         ) : (
                                             <div className={styles.program_icon_fallback}>
                                                 <span className={styles.program_icon_text}>
@@ -120,7 +103,7 @@ const ProgramsUsed: React.FC = () => {
                                     </div>
 
                                     <div className={styles.program_meta}>
-                                        <h3 className={styles.program_name} style={{ color: 'rgb(var(--color-title))' }}>
+                                        <h3 className={styles.program_name}>
                                             {program.name}
                                         </h3>
                                         <div className={styles.program_category}>
@@ -129,18 +112,16 @@ const ProgramsUsed: React.FC = () => {
                                     </div>
                                 </CardHeader>
 
-                                <CardContent>
-                                    <p className={styles.program_description} style={{ color: 'rgb(var(--color-text))' }}>
+                                <CardContent className="pt-0">
+                                    <p className={styles.program_description}>
                                         {program.description}
                                     </p>
                                 </CardContent>
-                            </Card>
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </section>
+                    </Card>
+                </a>
+            ))}
+        </div>
     );
 };
 
-export default ProgramsUsed;
+export default ProgramsShowcase;

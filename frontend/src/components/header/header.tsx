@@ -20,7 +20,11 @@ const menu: { label: string; href: string }[] = [
     },
     {
         label: "How it works?",
-        href: "#",
+        href: "/how-it-works",
+    },
+    {
+        label: "Programs We Use",
+        href: "/programs-we-use",
     },
     {
         label: "Pricing",
@@ -32,7 +36,7 @@ const menu: { label: string; href: string }[] = [
     },
     {
         label: "Contact us",
-        href: "#",
+        href: "/contact",
     },
 ]
 

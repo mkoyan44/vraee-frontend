@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
     const xmas = new Date();
     const year = xmas.getFullYear();
     return (
-        <footer className={`${styles.footer} scheme-dark background`}>
+    <footer id="contact" className={`${styles.footer} scheme-dark background`}>
             <div className="container">
                 <div className={styles.wrapper}>
                     <div className={styles.menus}>
