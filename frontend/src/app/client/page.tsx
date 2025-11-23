@@ -1,7 +1,7 @@
 import React from "react";
 import ServicesTabs from "@/components/services-tabs/services-tabs";
 import Hero from "@/components/hero/hero";
-import TextWithMedia from "@/components/text-with-media/text-with-media";
+import ProgramsUsed from "@/components/programs-used/programs-used";
 import Faq from "@/components/faq/faq";
 import MultiColumn from "@/components/multi-column/multi-column";
 import Reviews from "@/components/reviews/reviews";
@@ -13,7 +13,7 @@ const Page: React.FC = () => {
         <>
             <Hero/>
             <ServicesTabs/>
-            <TextWithMedia/>
+            <ProgramsUsed/>
             <TabsContent/>
             <MultiColumn/>
             <Reviews/>

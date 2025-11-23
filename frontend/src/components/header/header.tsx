@@ -24,7 +24,7 @@ const menu: { label: string; href: string }[] = [
     },
     {
         label: "Pricing",
-        href: "#",
+        href: "/pricing",
     },
     {
         label: "Portfolio",

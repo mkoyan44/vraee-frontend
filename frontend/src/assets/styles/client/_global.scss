@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 :root {
-  font-size: 12px;
+  font-size: 14px;
   @media screen and (min-width: 1366px) {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
@@ -17,8 +17,8 @@
   --radius: 0.625rem;
   --duration: .3s;
   --duration-short: .15s;
-  --top-space:5rem;
-  --bottom-space:5rem;
+  --top-space: 3rem;
+  --bottom-space: 3rem;
   --header-z-index: 1000;
 }
 
