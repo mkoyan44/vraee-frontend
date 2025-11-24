@@ -11,6 +11,7 @@ import Icon from "@/components/icon/icon";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { useUserStore } from "@/store/useUserStore";
 import { logout } from "@/services/api";
+import ProjectCreationModal from "@/components/modal/project-creation-modal";
 
 const menu: { label: string; href: string }[] = [
     {
@@ -51,6 +52,7 @@ const Header: React.FC = () => {
     const isLoggedIn = !!role;
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { isLaptop} = useBreakpoint();
     const hasMounted = useHasMounted();
 
@@ -122,7 +124,12 @@ const Header: React.FC = () => {
                                                 ) : (
                                                     <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                                                 )}
-                                                <Link href={'#'} className="btn-primary">Create Order</Link>
+                                                <button
+                                                    onClick={() => setIsModalOpen(true)}
+                                                    className="btn-primary"
+                                                >
+                                                    Open Project
+                                                </button>
                                             </div>
                                         </>
                                     )
@@ -149,10 +156,19 @@ const Header: React.FC = () => {
                         ) : (
                             <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                         )}
-                        <Link href={'#'} className="btn-primary">Create Order</Link>
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="btn-primary"
+                        >
+                            Open Project
+                        </button>
                     </div>
                 </div>
             </div>
+            <ProjectCreationModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </header>
     )
 }

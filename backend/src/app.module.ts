@@ -5,8 +5,10 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { ContactModule } from './contact/contact.module';
+import { ProjectModule } from './project/project.module';
 import { User, UserRole } from './user/user.entity';
 import { Contact } from './contact/contact.entity';
+import { Project } from './project/project.entity';
 
 @Module({
   imports: [
@@ -22,21 +24,24 @@ import { Contact } from './contact/contact.entity';
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
-      entities: [User, Contact],
+      entities: [User, Contact, Project],
     }),
     TypeOrmModule.forFeature([User]),
     UserModule,
     AuthModule,
     ProfileModule,
     ContactModule,
+    ProjectModule,
   ],
 })
 export class AppModule implements OnModuleInit {
   constructor() {}
 
-  async onModuleInit() {
+  onModuleInit() {
     // The database is synchronized but we don't create default users here
     // Users can be created via the API endpoints or manually
-    console.log('Application started. Default admin credentials: admin@example.com / password123');
+    console.log(
+      'Application started. Default admin credentials: admin@example.com / password123'
+    );
   }
 }

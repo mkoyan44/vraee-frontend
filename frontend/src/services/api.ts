@@ -101,3 +101,20 @@ export const submitContact = async (contactData: {
     const response = await axios.post(`${API_URL}/contact`, contactData);
     return response.data;
 };
+
+export const createProject = async (projectData: {
+    serviceType: string;
+    description?: string;
+}) => {
+    const response = await axios.post(`${API_URL}/project/create`, projectData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const getUserProjects = async () => {
+    const response = await axios.get(`${API_URL}/project/list`, {
+        withCredentials: true,
+    });
+    return response.data;
+};
