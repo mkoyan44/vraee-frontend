@@ -473,8 +473,12 @@ const Profile = () => {
                 // Fetch projects if user is logged in and profile is complete
                 if (userData?.isProfileComplete) {
                     const projectsResponse = await getUserProjects();
-                    if (projectsResponse.status === 'success') {
-                        setProjects(projectsResponse.data);
+                    if (Array.isArray(projectsResponse)) {
+                        setProjects(projectsResponse);
+                    } else if (projectsResponse.status === 'success') {
+                        setProjects(projectsResponse.data || []);
+                    } else {
+                        setProjects([]);
                     }
                 }
             } catch (err) {
@@ -485,7 +489,7 @@ const Profile = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [searchParams]); // Re-run when URL searchParams change (including success parameter)
 
     useEffect(() => {
         // Check URL hash to determine initial tab
