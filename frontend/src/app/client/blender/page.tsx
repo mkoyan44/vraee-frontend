@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/assets/styles/client/components/programs-used.module.scss';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import BlenderGalleryCard from '@/components/ui/blender-gallery-card';
 
 const BlenderPage: React.FC = () => {
     return (
@@ -17,102 +18,119 @@ const BlenderPage: React.FC = () => {
                 </Link>
             </div>
 
-            <div className={styles.header}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            {/* Hero Section */}
+            <div className={styles.header} style={{
+                background: 'linear-gradient(135deg, rgba(var(--color-primary), 0.05) 0%, rgba(var(--color-secondary), 0.05) 100%)',
+                padding: '3rem',
+                borderRadius: '12px',
+                marginBottom: '3rem',
+                position: 'relative',
+                overflow: 'hidden'
+            }}>
+                <div style={{
+                    position: 'absolute',
+                    top: '10%',
+                    right: '5%',
+                    width: '120px',
+                    height: '120px',
+                    opacity: '0.05',
+                    zIndex: 0
+                }}>
                     <Image
                         src="/software/blender.svg"
-                        alt="Blender logo"
-                        width={64}
-                        height={64}
+                        alt="Blender"
+                        width={120}
+                        height={120}
+                        style={{ filter: 'grayscale(100%)' }}
                     />
-                    <div>
-                        <h1>Blender Workflow</h1>
-                        <div className={styles.program_category}>3D Modeling & Rendering</div>
-                    </div>
                 </div>
-
-                <div className="rte">
-                    <p>Blender is the cornerstone of our 3D production pipeline. As a powerful, open-source 3D creation suite, it enables us to deliver cost-effective, high-quality 3D visualization and rendering services without compromising on professional results.</p>
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                    <h1 style={{
+                        fontSize: '2.5rem',
+                        fontWeight: '700',
+                        color: 'rgb(var(--color-title))',
+                        marginBottom: '1.5rem',
+                        letterSpacing: '-0.02em'
+                    }}>
+                        Blender in Our Pipeline
+                    </h1>
+                    <div className="rte" style={{
+                        fontSize: '1.125rem',
+                        lineHeight: '1.7',
+                        color: 'rgb(var(--color-text))',
+                        maxWidth: '600px'
+                    }}>
+                        <p>Our production pipeline utilizes industry-leading software tools that enable us to deliver exceptional 3D visualization and rendering services. Each tool plays a specialized role in our comprehensive workflow, from concept development to final presentation.</p>
+                    </div>
                 </div>
             </div>
 
-            <div style={{ display: 'grid', gap: '2rem', marginTop: '2rem' }}>
-                <Card
-                    className={styles.program_card}
-                    style={{
-                        backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
-                        borderColor: 'rgb(var(--color-border))'
-                    }}
-                >
-                    <CardHeader>
-                        <h2 style={{ color: 'rgb(var(--color-title))' }}>Why We Choose Blender</h2>
-                    </CardHeader>
-                    <CardContent>
-                        <div style={{ color: 'rgb(var(--color-text))' }}>
-                            <ul style={{ paddingLeft: '1.5rem' }}>
-                                <li><strong>Cost-Effective:</strong> Free and open-source, eliminating licensing costs</li>
-                                <li><strong>Complete Pipeline:</strong> Modeling, sculpting, animation, texturing, and rendering in one application</li>
-                                <li><strong>Active Community:</strong> Regular updates and extensive plugin ecosystem</li>
-                                <li><strong>Professional Quality:</strong> Industry-standard tools used by major studios</li>
-                                <li><strong>Cross-Platform:</strong> Works seamlessly across Windows, macOS, and Linux</li>
-                            </ul>
-                        </div>
-                    </CardContent>
-                </Card>
+            {/* How We Use It Section */}
+            <div style={{ marginBottom: '4rem' }}>
+                <h2 style={{
+                    fontSize: '2rem',
+                    fontWeight: '600',
+                    color: 'rgb(var(--color-title))',
+                    marginBottom: '2rem',
+                    textAlign: 'center'
+                }}>
+                    How We Use It
+                </h2>
 
-                <Card
-                    className={styles.program_card}
-                    style={{
-                        backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
-                        borderColor: 'rgb(var(--color-border))'
-                    }}
-                >
-                    <CardHeader>
-                        <h2 style={{ color: 'rgb(var(--color-title))' }}>Our Blender Services</h2>
-                    </CardHeader>
-                    <CardContent>
-                        <div style={{ color: 'rgb(var(--color-text))' }}>
-                            <h3>3D Modeling & Prototyping</h3>
-                            <p>We create detailed 3D models for product visualization, architectural elements, and character designs using Blender's comprehensive modeling toolkit.</p>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '2rem',
+                    marginBottom: '3rem'
+                }}>
+                    <BlenderGalleryCard
+                        emoji="🔧"
+                        title="Hard Surface Modeling"
+                        description="Precision modeling for architectural structures, mechanical parts, and industrial designs with exact measurements and clean topology."
+                        category="Modeling"
+                        categoryColor="rgb(var(--color-primary))"
+                        backgroundPrimary="rgba(var(--color-primary), 0.1) 0%, rgba(var(--color-secondary), 0.1) 100%"
+                        iconColor="rgba(var(--color-primary), 0.2)"
+                    />
 
-                            <h3>Realistic Rendering</h3>
-                            <p>Our Cycles rendering engine expertise produces photorealistic results for marketing materials, presentations, and technical documentation.</p>
+                    <BlenderGalleryCard
+                        emoji="🎨"
+                        title="Procedural Shading"
+                        description="Advanced node-based materials using procedural textures, PBR workflows, and physically-based rendering for realistic surface properties."
+                        category="Shading"
+                        categoryColor="rgb(var(--color-secondary))"
+                        backgroundPrimary="rgba(var(--color-secondary), 0.1) 0%, rgba(var(--color-primary), 0.1) 100%"
+                        iconColor="rgba(var(--color-secondary), 0.2)"
+                    />
 
-                            <h3>Animation & Motion Graphics</h3>
-                            <p>From simple product rotations to complex animated sequences, we leverage Blender's animation tools for dynamic visual content.</p>
+                    <BlenderGalleryCard
+                        emoji="⚙️"
+                        title="Geometry Nodes"
+                        description="Parametric modeling and procedural generation for complex repeating patterns, instancing, and dynamic scene creation."
+                        category="Procedural"
+                        categoryColor="rgb(var(--color-accent))"
+                        backgroundPrimary="rgba(var(--color-primary), 0.1) 0%, rgba(var(--color-accent), 0.1) 100%"
+                        iconColor="rgba(var(--color-accent), 0.2)"
+                    />
 
-                            <h3>Texture Creation & Materials</h3>
-                            <p>We develop custom PBR materials and textures that bring your 3D models to life with realistic surface properties.</p>
-                        </div>
-                    </CardContent>
-                </Card>
+                    <BlenderGalleryCard
+                        emoji="✨"
+                        title="Advanced Rendering"
+                        description="Photorealistic rendering with Cycles engine, advanced lighting setups, and post-processing for professional-quality visual output."
+                        category="Rendering"
+                        categoryColor="rgb(var(--color-primary))"
+                        backgroundPrimary="rgba(var(--color-secondary), 0.1) 0%, rgba(var(--color-primary), 0.15) 100%"
+                        iconColor="rgba(var(--color-primary), 0.2)"
+                    />
+                </div>
 
-                <Card
-                    className={styles.program_card}
-                    style={{
-                        backgroundColor: 'rgba(var(--color-bg), var(--color-bg-alpha, 1))',
-                        borderColor: 'rgb(var(--color-border))'
-                    }}
-                >
-                    <CardHeader>
-                        <h2 style={{ color: 'rgb(var(--color-title))' }}>Technical Specifications</h2>
-                    </CardHeader>
-                    <CardContent>
-                        <div style={{ color: 'rgb(var(--color-text))' }}>
-                            <ul style={{ paddingLeft: '1.5rem' }}>
-                                <li><strong>Rendering Engine:</strong> Cycles (CPU & GPU rendering)</li>
-                                <li><strong>Output Formats:</strong> PNG, JPEG, EXR, MP4, and more</li>
-                                <li><strong>Export Compatibility:</strong> STL, OBJ, FBX, glTF, USD</li>
-                                <li><strong>Integration:</strong> Python scripting for automation</li>
-                                <li><strong>Performance:</strong> Multi-threaded rendering with GPU acceleration</li>
-                            </ul>
-                        </div>
-                    </CardContent>
-                </Card>
-
-                <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                    <Link href="/contact" className="btn-simple">
-                        Discuss Your Blender Project
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <Link href="/contact" className="btn-simple" style={{
+                        padding: '0.75rem 2rem',
+                        fontSize: '1.1rem',
+                        fontWeight: '500'
+                    }}>
+                        Start Your Blender Project
                     </Link>
                 </div>
             </div>
