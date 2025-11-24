@@ -104,7 +104,10 @@ export const submitContact = async (contactData: {
 
 export const createProject = async (projectData: {
     serviceType: string;
+    serviceDetail?: string;
+    projectName: string;
     description?: string;
+    files?: string[];
 }) => {
     const response = await axios.post(`${API_URL}/project/create`, projectData, {
         withCredentials: true,
@@ -116,5 +119,29 @@ export const getUserProjects = async () => {
     const response = await axios.get(`${API_URL}/project/list`, {
         withCredentials: true,
     });
+    return response.data;
+};
+
+export const getProjectById = async (projectId: number) => {
+    const response = await axios.get(`${API_URL}/project/${projectId}`, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const updateProjectStatus = async (projectId: number, updateData: {
+    status: string;
+    projectManager?: string;
+    estimatedDelivery?: string;
+    progress?: number;
+}) => {
+    const response = await axios.put(`${API_URL}/project/${projectId}/status`, updateData, {
+        withCredentials: true,
+    });
+    return response.data;
+};
+
+export const getProjectStatusText = async (status: string) => {
+    const response = await axios.get(`${API_URL}/project/status-text/${status}`);
     return response.data;
 };

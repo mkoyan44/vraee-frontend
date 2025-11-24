@@ -34,14 +34,6 @@ import { Project } from './project/project.entity';
     ProjectModule,
   ],
 })
-export class AppModule implements OnModuleInit {
+export class AppModule {
   constructor() {}
-
-  onModuleInit() {
-    // The database is synchronized but we don't create default users here
-    // Users can be created via the API endpoints or manually
-    console.log(
-      'Application started. Default admin credentials: admin@example.com / password123'
-    );
-  }
 }

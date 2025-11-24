@@ -3,7 +3,7 @@ import styles from "@/assets/styles/client/components/header.module.scss";
 import {useBreakpoint} from '@/hooks/useBreakpoint';
 import {useHasMounted} from '@/hooks/useHasMounted';
 
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import Link from "next/link"
 import Image from "next/image";
 import {usePathname, useRouter} from 'next/navigation';
@@ -64,6 +64,7 @@ const Header: React.FC = () => {
             console.error('Logout failed:', error);
         }
     };
+
     return (
         <header className={`${styles.header} background`}>
             <div className="container">
@@ -124,13 +125,20 @@ const Header: React.FC = () => {
                                                 ) : (
                                                     <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                                                 )}
-                                                <button
-                                                    onClick={() => setIsModalOpen(true)}
-                                                    className="btn-primary"
-                                                >
-                                                    Open Project
-                                                </button>
                                             </div>
+                                            <button
+                                                onClick={() => {
+                                                    if (isLoggedIn) {
+                                                        setIsModalOpen(true);
+                                                    } else {
+                                                        router.push('/login');
+                                                    }
+                                                }}
+                                                className="btn-primary"
+                                                style={{ marginTop: '16px' }}
+                                            >
+                                                Open Project
+                                            </button>
                                         </>
                                     )
                                 }
@@ -157,7 +165,13 @@ const Header: React.FC = () => {
                             <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                         )}
                         <button
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={() => {
+                                if (isLoggedIn) {
+                                    setIsModalOpen(true);
+                                } else {
+                                    router.push('/login');
+                                }
+                            }}
                             className="btn-primary"
                         >
                             Open Project

@@ -10,7 +10,7 @@ const tabs = [
         "description":"<p>Transform your jewelry concepts into detailed hand-drawn sketches. Our expert designers capture the essence of your vision through meticulous concept art, hand drawing, and creative ideation processes that bring your jewelry designs to life on paper.</p><ul><li>Detailed jewelry sketches and technical drawings</li><li>Concept art development and refinement</li><li>Hand-drawn renderings with technical accuracy</li><li>Creative ideation and design exploration</li></ul>",
         "link":{
             "label":"Learn more",
-            "href":"/services/sketches",
+            "href":"/services/sketching",
         },
         "image": "/services-jewelry-sketches.png",
     },

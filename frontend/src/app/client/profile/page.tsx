@@ -12,10 +12,16 @@ interface Project {
   id: number;
   userId: number;
   serviceType: string;
+  serviceDetail?: string;
+  projectName: string;
   createdAt: string;
   status: string;
   description?: string;
   files?: string[];
+  projectManager?: string;
+  estimatedDelivery?: string;
+  progress: number;
+  updatedAt: string;
 }
 
 // Profile tabbed view component
@@ -80,12 +86,46 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ u
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case 'New': return 'bg-green-100 text-green-800';
-            case 'In Progress': return 'bg-blue-100 text-blue-800';
-            case 'Ready for Review': return 'bg-yellow-100 text-yellow-800';
-            case 'Completed': return 'bg-gray-100 text-gray-800';
+            case 'QUOTE_PENDING': return 'bg-gray-100 text-gray-800';
+            case 'AWAITING_PAYMENT': return 'bg-yellow-100 text-yellow-800';
+            case 'PREPARATION': return 'bg-blue-100 text-blue-800';
+            case 'CAD_SCENE_SETUP': return 'bg-blue-100 text-blue-800';
+            case 'CAD_MODEL_CREATION': return 'bg-blue-100 text-blue-800';
+            case 'CAD_MODEL_AWAITING_APPROVAL': return 'bg-orange-100 text-orange-800';
+            case 'CAD_FINAL_OPTIMIZATION': return 'bg-blue-100 text-blue-800';
+            case 'CAD_FINAL_FILE_READY': return 'bg-green-100 text-green-800';
+            case 'CAD_FILE_PREPARATION': return 'bg-blue-100 text-blue-800';
+            case 'SCENE_MATERIAL_SETUP': return 'bg-blue-100 text-blue-800';
+            case 'DRAFT_RENDER_AWAITING_APPROVAL': return 'bg-orange-100 text-orange-800';
+            case 'FINAL_HIGH_RES_RENDERING': return 'bg-blue-100 text-blue-800';
+            case 'FINAL_VISUALS_READY': return 'bg-green-100 text-green-800';
+            case 'READY_FOR_DOWNLOAD': return 'bg-green-100 text-green-800';
+            case 'COMPLETED': return 'bg-green-100 text-green-800';
+            case 'CANCELLED': return 'bg-red-100 text-red-800';
             default: return 'bg-gray-100 text-gray-800';
         }
+    };
+
+    const getStatusText = (status: string) => {
+        const statusMap: Record<string, string> = {
+            'QUOTE_PENDING': 'Quote Pending',
+            'AWAITING_PAYMENT': 'Awaiting Payment',
+            'PREPARATION': 'In Progress: Preparation',
+            'CAD_SCENE_SETUP': 'CAD Scene Setup',
+            'CAD_MODEL_CREATION': 'CAD Model Creation (WIP)',
+            'CAD_MODEL_AWAITING_APPROVAL': 'CAD Model Awaiting Approval',
+            'CAD_FINAL_OPTIMIZATION': 'Final Optimization for Printing',
+            'CAD_FINAL_FILE_READY': 'Final File Ready',
+            'CAD_FILE_PREPARATION': 'CAD File Preparation',
+            'SCENE_MATERIAL_SETUP': 'Scene & Material Setup',
+            'DRAFT_RENDER_AWAITING_APPROVAL': 'Draft Render Awaiting Approval',
+            'FINAL_HIGH_RES_RENDERING': 'Final High-Res Rendering',
+            'FINAL_VISUALS_READY': 'Final Visuals Ready',
+            'READY_FOR_DOWNLOAD': 'Ready for Download',
+            'COMPLETED': 'Project Completed',
+            'CANCELLED': 'Project Cancelled',
+        };
+        return statusMap[status] || status;
     };
 
     const formatDate = (dateString: string) => {
@@ -94,6 +134,42 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ u
             month: 'short',
             day: 'numeric'
         });
+    };
+
+    const getActionRequired = (status: string, projectName: string) => {
+        switch (status) {
+            case 'AWAITING_PAYMENT':
+                return `Your quote for "${projectName}" is ready. Please review the details and confirm payment to start the project.`;
+            case 'CAD_MODEL_AWAITING_APPROVAL':
+                return 'The CAD model is ready for review. Your approval is required to proceed to final optimization.';
+            case 'DRAFT_RENDER_AWAITING_APPROVAL':
+                return 'The draft render is ready. Please approve the angles and composition to begin final high-resolution rendering.';
+            case 'READY_FOR_DOWNLOAD':
+                return 'Your project is complete! Final files are ready for download.';
+            default:
+                return null;
+        }
+    };
+
+    const getActionButtons = (status: string) => {
+        switch (status) {
+            case 'AWAITING_PAYMENT':
+                return [{ text: 'Confirm Order & Pay', primary: true }];
+            case 'CAD_MODEL_AWAITING_APPROVAL':
+                return [
+                    { text: 'Approve Model', primary: true },
+                    { text: 'Request Revisions', primary: false }
+                ];
+            case 'DRAFT_RENDER_AWAITING_APPROVAL':
+                return [
+                    { text: 'Approve Model', primary: true },
+                    { text: 'Request Revisions', primary: false }
+                ];
+            case 'READY_FOR_DOWNLOAD':
+                return [{ text: 'Download Project Files', primary: true }];
+            default:
+                return null;
+        }
     };
 
     return (
@@ -240,35 +316,103 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ u
                                 </CardContent>
                             </Card>
                         ) : (
-                            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                {projects.map((project) => (
-                                    <Card key={project.id}>
-                                        <CardHeader>
-                                            <div className="flex justify-between items-start">
-                                                <CardTitle className="text-lg">
-                                                    {services[project.serviceType]?.title || project.serviceType}
-                                                </CardTitle>
-                                                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
-                                                    {project.status}
-                                                </span>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <div className="space-y-3">
-                                                <div>
-                                                    <label className="text-sm font-medium text-gray-500">Created</label>
-                                                    <p className="text-gray-900">{formatDate(project.createdAt)}</p>
-                                                </div>
-                                                {project.description && (
+                            <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+                                {projects.map((project) => {
+                                    const actionRequired = getActionRequired(project.status, project.projectName);
+                                    const actionButtons = getActionButtons(project.status);
+
+                                    return (
+                                        <Card key={project.id} className="relative">
+                                            <CardHeader>
+                                                <div className="flex justify-between items-start">
                                                     <div>
-                                                        <label className="text-sm font-medium text-gray-500">Description</label>
-                                                        <p className="text-gray-900 text-sm">{project.description}</p>
+                                                        <CardTitle className="text-lg font-semibold text-gray-900">
+                                                            Project #{project.id}: {project.projectName}
+                                                        </CardTitle>
+                                                        <p className="text-sm text-gray-600 mt-1">
+                                                            {project.serviceType}
+                                                            {project.serviceDetail && ` - ${project.serviceDetail}`}
+                                                        </p>
                                                     </div>
-                                                )}
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                ))}
+                                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
+                                                        {getStatusText(project.status)}
+                                                    </span>
+                                                </div>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <div className="space-y-4">
+                                                    {/* Project Manager */}
+                                                    {project.projectManager && (
+                                                        <div>
+                                                            <label className="text-sm font-medium text-gray-500">Project Manager</label>
+                                                            <p className="text-gray-900">Manager: {project.projectManager}</p>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Estimated Delivery */}
+                                                    {project.estimatedDelivery && (
+                                                        <div>
+                                                            <label className="text-sm font-medium text-gray-500">Estimated Delivery</label>
+                                                            <p className="text-gray-900">{formatDate(project.estimatedDelivery)}</p>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Current Status */}
+                                                    <div>
+                                                        <label className="text-sm font-medium text-gray-500">Current Status</label>
+                                                        <p className="text-gray-900">{getStatusText(project.status)}</p>
+                                                    </div>
+
+                                                    {/* Progress */}
+                                                    <div>
+                                                        <div className="flex justify-between items-center mb-1">
+                                                            <label className="text-sm font-medium text-gray-500">Progress</label>
+                                                            <span className="text-sm text-gray-600">{project.progress}%</span>
+                                                        </div>
+                                                        <div className="w-full bg-gray-200 rounded-full h-2">
+                                                            <div
+                                                                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                                                                style={{ width: `${project.progress}%` }}
+                                                            ></div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Description */}
+                                                    {project.description && (
+                                                        <div>
+                                                            <label className="text-sm font-medium text-gray-500">Description</label>
+                                                            <p className="text-gray-900 text-sm">{project.description}</p>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Action Required */}
+                                                    {actionRequired && (
+                                                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                                                            <h4 className="text-lg font-semibold text-orange-800 mb-2">Action Required</h4>
+                                                            <p className="text-orange-700 text-sm">{actionRequired}</p>
+                                                            {actionButtons && (
+                                                                <div className="flex gap-2 mt-3">
+                                                                    {actionButtons.map((button, index) => (
+                                                                        <button
+                                                                            key={index}
+                                                                            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                                                                                button.primary
+                                                                                    ? 'bg-orange-600 text-white hover:bg-orange-700'
+                                                                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                                                            }`}
+                                                                        >
+                                                                            {button.text}
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    );
+                                })}
                             </div>
                         )}
                     </div>

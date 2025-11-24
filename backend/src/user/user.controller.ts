@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, ValidationPipe } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserRole } from './user.entity';
 
@@ -8,7 +8,12 @@ export class UserController {
 
   @Post('create')
   async createUser(
-    @Body() body: { email: string; password: string; role: UserRole },
+    @Body(ValidationPipe)
+    body: {
+      email: string;
+      password: string;
+      role: UserRole;
+    },
   ) {
     const { email, password, role } = body;
     return this.userService.createUser(email, password, role);
