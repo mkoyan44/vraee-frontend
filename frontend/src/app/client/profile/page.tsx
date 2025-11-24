@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import UserDTO from "@/interfaces/userDTO";
 import { getUserData, getUserProjects } from "@/services/api";
 import { useUserStore } from "@/store/useUserStore";
@@ -25,8 +26,24 @@ interface Project {
 }
 
 // Profile tabbed view component
-const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ user, projects }) => {
+const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[]; successMessage?: boolean }> = ({ user, projects, successMessage }) => {
     const [activeTab, setActiveTab] = useState<'profile' | 'projects'>('profile');
+    const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+    useEffect(() => {
+        // Check URL hash to determine initial tab
+        if (window.location.hash === '#projects' || successMessage) {
+            setActiveTab('projects');
+        }
+
+        // Show success message if coming from project creation
+        if (successMessage) {
+            setShowSuccess(true);
+            // Auto-hide success message after 5 seconds
+            const timer = setTimeout(() => setShowSuccess(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [successMessage]);
 
     const formatServices = (services: string[] | undefined) => {
         if (!services || services.length === 0) return 'Not specified';
@@ -299,6 +316,18 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ u
 
                 {activeTab === 'projects' && (
                     <div className="space-y-6">
+                        {/* Success Message */}
+                        {showSuccess && (
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+                                <div className="text-green-600 text-lg">✅</div>
+                                <div>
+                                    <h4 className="text-green-800 font-semibold">Project Created Successfully!</h4>
+                                    <p className="text-green-700 text-sm">
+                                        Your new project has been submitted. You'll receive a quote shortly to start the process.
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                         {projects.length === 0 ? (
                             <Card>
                                 <CardContent className="text-center py-12">
@@ -423,11 +452,14 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[] }> = ({ u
 };
 
 const Profile = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const [user, setUser] = useState<UserDTO | null>(null);
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const { role } = useUserStore();
+    const successMessage = searchParams?.get('success') === 'true';
 
     useEffect(() => {
         const fetchData = async () => {
@@ -519,7 +551,7 @@ const Profile = () => {
     }
 
     // Show profile view if profile is complete
-    return <ProfileTabbedView user={user} projects={projects} />;
+    return <ProfileTabbedView user={user} projects={projects} successMessage={successMessage} />;
 };
 
 export default Profile;

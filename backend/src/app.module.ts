@@ -9,6 +9,7 @@ import { ProjectModule } from './project/project.module';
 import { User, UserRole } from './user/user.entity';
 import { Contact } from './contact/contact.entity';
 import { Project } from './project/project.entity';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -34,6 +35,21 @@ import { Project } from './project/project.entity';
     ProjectModule,
   ],
 })
-export class AppModule {
-  constructor() {}
+export class AppModule implements OnModuleInit {
+  constructor(private dataSource: DataSource) {}
+
+  async onModuleInit() {
+    // Create a test user
+    const userRepository = this.dataSource.getRepository(User);
+    const existingUser = await userRepository.findOne({ where: { email: 'test@example.com' } });
+    if (!existingUser) {
+      const testUser = userRepository.create({
+        email: 'test@example.com',
+        password: 'password123',
+        role: UserRole.USER,
+      });
+      await userRepository.save(testUser);
+      console.log('Test user created: test@example.com / password123');
+    }
+  }
 }

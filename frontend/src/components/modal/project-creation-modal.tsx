@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createProject } from '@/services/api';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -16,6 +17,7 @@ interface ProjectCreationModalProps {
 }
 
 const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({ isOpen, onClose, onProjectCreated }) => {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         serviceType: '',
         serviceDetail: '',
@@ -107,7 +109,7 @@ const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({ isOpen, onC
                 onProjectCreated();
             }
 
-            // Reset form and close modal
+            // Reset form and redirect to profile page with success message
             setFormData({
                 serviceType: '',
                 serviceDetail: '',
@@ -116,6 +118,9 @@ const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({ isOpen, onC
                 files: []
             });
             onClose();
+
+            // Redirect to profile page with success message and switch to projects tab
+            router.push('/profile?success=true#projects');
         } catch (err: any) {
             setError(err.message || 'Failed to create project');
         } finally {
