@@ -12,7 +12,7 @@ const BlenderPage: React.FC = () => {
         <div className="container" style={{ padding: '2rem 0' }}>
             <div style={{ marginBottom: '2rem' }}>
                 <Link
-                    href="/programs-we-use"
+                    href="/client/programs-we-use"
                     className="btn-simple"
                     style={{ marginBottom: '1rem', display: 'inline-block' }}
                 >
@@ -35,7 +35,7 @@ const BlenderPage: React.FC = () => {
                     right: '5%',
                     width: '120px',
                     height: '120px',
-                    opacity: '0.05',
+                    opacity: '0.15',
                     zIndex: 0
                 }}>
                     <Image
@@ -43,7 +43,6 @@ const BlenderPage: React.FC = () => {
                         alt="Blender"
                         width={120}
                         height={120}
-                        style={{ filter: 'grayscale(100%)' }}
                     />
                 </div>
                 <div style={{ position: 'relative', zIndex: 1 }}>
