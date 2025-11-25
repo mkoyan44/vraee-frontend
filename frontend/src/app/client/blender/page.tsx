@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/assets/styles/client/components/programs-used.module.scss';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import BlenderGalleryCard from '@/components/ui/blender-gallery-card';
+import WorkExamples from '@/components/work-examples';
 
 const BlenderPage: React.FC = () => {
     return (
@@ -131,6 +133,243 @@ const BlenderPage: React.FC = () => {
                         fontWeight: '500'
                     }}>
                         Start Your Blender Project
+                    </Link>
+                </div>
+            </div>
+
+            {/* Examples of Our Work Section */}
+            <WorkExamples />
+
+            {/* File Download Area */}
+            <div style={{ marginBottom: '4rem' }}>
+                <h2 style={{
+                    fontSize: '2rem',
+                    fontWeight: '600',
+                    color: 'rgb(var(--color-title))',
+                    marginBottom: '2rem',
+                    textAlign: 'center'
+                }}>
+                    Download Resources
+                </h2>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                    gap: '2rem',
+                    maxWidth: '1200px',
+                    margin: '0 auto'
+                }}>
+                    <Card className="p-6">
+                        <CardContent className="p-0">
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    background: 'linear-gradient(135deg, rgba(var(--color-primary), 0.1) 0%, rgba(var(--color-secondary), 0.1) 100%)',
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '1rem',
+                                    fontSize: '1.5rem'
+                                }}>
+                                    📁
+                                </div>
+                                <h3 style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '600',
+                                    color: 'rgb(var(--color-title))',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    Blender Templates
+                                </h3>
+                                <p style={{
+                                    color: 'rgb(var(--color-text))',
+                                    fontSize: '0.95rem',
+                                    lineHeight: '1.6',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    Pre-configured scene templates with optimized lighting rigs, camera setups, and render settings for quick project starts.
+                                </p>
+                            </div>
+                            <Button
+                                variant="outline"
+                                className="w-full"
+                                size="lg"
+                                disabled
+                                style={{
+                                    border: '1px solid rgb(var(--color-primary))',
+                                    color: 'rgb(var(--color-primary))',
+                                    fontWeight: '500'
+                                }}
+                            >
+                                Download Templates
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="p-6">
+                        <CardContent className="p-0">
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    background: 'linear-gradient(135deg, rgba(var(--color-secondary), 0.1) 0%, rgba(var(--color-primary), 0.1) 100%)',
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '1rem',
+                                    fontSize: '1.5rem'
+                                }}>
+                                    🎨
+                                </div>
+                                <h3 style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '600',
+                                    color: 'rgb(var(--color-title))',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    Material Library
+                                </h3>
+                                <p style={{
+                                    color: 'rgb(var(--color-text))',
+                                    fontSize: '0.95rem',
+                                    lineHeight: '1.6',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    Professional material presets including PBR metals, fabrics, glass, and organic surfaces ready to use in your projects.
+                                </p>
+                            </div>
+<Button
+    variant="outline"
+    size="lg"
+    className="w-full"
+    disabled
+    style={{
+        border: '1px solid rgb(var(--color-secondary))',
+        color: 'rgb(var(--color-secondary))',
+        fontWeight: '500'
+    }}
+>
+    Download Materials
+</Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="p-6">
+                        <CardContent className="p-0">
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    background: 'linear-gradient(135deg, rgba(var(--color-accent), 0.1) 0%, rgba(var(--color-primary), 0.1) 100%)',
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '1rem',
+                                    fontSize: '1.5rem'
+                                }}>
+                                    ⚙️
+                                </div>
+                                <h3 style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '600',
+                                    color: 'rgb(var(--color-title))',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    Add-on Scripts
+                                </h3>
+                                <p style={{
+                                    color: 'rgb(var(--color-text))',
+                                    fontSize: '0.95rem',
+                                    lineHeight: '1.6',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    Custom Python scripts and add-ons for workflow automation, batch processing, and specialized rendering tasks.
+                                </p>
+                            </div>
+<Button
+    variant="outline"
+    size="lg"
+    className="w-full"
+    disabled
+    style={{
+        border: '1px solid rgb(var(--color-accent))',
+        color: 'rgb(var(--color-accent))',
+        fontWeight: '500'
+    }}
+>
+    Download Scripts
+</Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="p-6">
+                        <CardContent className="p-0">
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    background: 'linear-gradient(135deg, rgba(var(--color-primary), 0.1) 0%, rgba(var(--color-accent), 0.1) 100%)',
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '1rem',
+                                    fontSize: '1.5rem'
+                                }}>
+                                    📚
+                                </div>
+                                <h3 style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '600',
+                                    color: 'rgb(var(--color-title))',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    Learning Guides
+                                </h3>
+                                <p style={{
+                                    color: 'rgb(var(--color-text))',
+                                    fontSize: '0.95rem',
+                                    lineHeight: '1.6',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    Step-by-step tutorials and documentation covering advanced techniques, best practices, and optimization workflows.
+                                </p>
+                            </div>
+<Button
+    variant="outline"
+    size="lg"
+    className="w-full"
+    disabled
+    style={{
+        border: '1px solid rgb(var(--color-primary))',
+        color: 'rgb(var(--color-primary))',
+        fontWeight: '500'
+    }}
+>
+    Download Guides
+</Button>
+                        </CardContent>
+                    </Card>
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <p style={{
+                        color: 'rgb(var(--color-text))',
+                        fontSize: '0.95rem',
+                        marginBottom: '1rem'
+                    }}>
+                        Need custom resources or have questions about our Blender workflow?
+                    </p>
+                    <Link href="/contact" className="btn-simple" style={{
+                        padding: '0.75rem 2rem',
+                        fontSize: '1.1rem',
+                        fontWeight: '500'
+                    }}>
+                        Contact Our Team
                     </Link>
                 </div>
             </div>
