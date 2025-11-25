@@ -96,27 +96,16 @@ export default function RootLayout({children}: Readonly<{
         <head>
             {/* Favicon and app icons */}
             <link rel="icon" href="/favicon.ico" sizes="any" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
-            <link rel="apple-touch-icon" href="/icons/apple-icon.png" />
-            <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57.png" />
-            <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72.png" />
-            <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114.png" />
-            <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144.png" />
-            <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60.png" />
-            <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120.png" />
-            <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76.png" />
-            <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152.png" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180.png" />
-            <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
-            <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/icons/v-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/icons/v-16x16.png" />
+            <link rel="icon" type="image/png" sizes="64x64" href="/icons/v-64x64.png" />
 
             {/* Web app manifest */}
             <link rel="manifest" href="/site.webmanifest" />
 
             {/* Microsoft tiles */}
             <meta name="msapplication-TileColor" content="#16161a" />
-            <meta name="msapplication-TileImage" content="/icons/icon-144.png" />
+            <meta name="msapplication-TileImage" content="/icons/v-32x32.png" />
             <meta name="theme-color" content="#16161a" />
 
             {/* JSON-LD Structured Data */}
@@ -129,7 +118,7 @@ export default function RootLayout({children}: Readonly<{
                         "name": "Render Agency",
                         "description": "Professional 3D rendering and visualization services specializing in architectural visualization, product rendering, and animation services.",
                         "url": "https://render-agency.com",
-                        "logo": "https://render-agency.com/logo.svg",
+                        "logo": "https://render-agency.com/logo-vraee-studio.svg",
                         "image": "https://render-agency.com/hero-image.png",
                         "telephone": "+554877784558",
                         "address": {

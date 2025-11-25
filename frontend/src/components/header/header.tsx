@@ -76,7 +76,7 @@ const Header: React.FC = () => {
                         <span></span><span></span><span></span>
                     </button>
                     <Link href={'/'} className={styles.logo}>
-                        <Image src={'/logo.svg'} alt={''} width={'100'} height={'45'}/>
+                        <Image src={'/logo-vraee-studio.svg'} alt={''} width={'200'} height={'75'}/>
                     </Link>
                     <nav className={`${styles.nav} ${isLaptop && isMenuOpen ? styles.open : ''}`}>
                         <ul className={styles.menu}>
