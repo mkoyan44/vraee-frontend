@@ -49,46 +49,29 @@ const Faq: React.FC = () => {
     const refs = useRef<Map<number, HTMLDivElement | null>>(new Map());
 
     const toggleFaq = (id: number) => {
+        // Simply toggle the active class - CSS handles the smooth animation
         if (openId === id) {
-            collapse(id);
+            const el = refs.current.get(id);
+            if (el) {
+                el.classList.remove(styles.active);
+            }
             setOpenId(null);
         } else {
-            if (openId !== null) collapse(openId);
-            expand(id);
-            setOpenId(id);
-        }
-    };
-
-    const expand = (id: number) => {
-        const el = refs.current.get(id);
-        if (el) {
-            // Add active class first
-            el.classList.add(styles.active);
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(-10px)';
-
-            // Then animate
-            gsap.to(el, {
-                opacity: 1,
-                y: 0,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        }
-    };
-
-    const collapse = (id: number) => {
-        const el = refs.current.get(id);
-        if (el) {
-            gsap.to(el, {
-                opacity: 0,
-                y: -10,
-                duration: 0.4,
-                ease: "power2.in",
-                onComplete: () => {
-                    el.classList.remove(styles.active);
+            if (openId !== null) {
+                // Close previously open item
+                const prevEl = refs.current.get(openId);
+                if (prevEl) {
+                    prevEl.classList.remove(styles.active);
                 }
-            });
+            }
+            // Open new item with smooth animation
+            setOpenId(id);
+            const el = refs.current.get(id);
+            if (el) {
+                requestAnimationFrame(() => {
+                    el.classList.add(styles.active);
+                });
+            }
         }
     };
 
