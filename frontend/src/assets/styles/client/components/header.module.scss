@@ -1,20 +1,35 @@
+// Reduced height by ~25-30% (from 1rem/16px to 0.5rem/8px for compact, professional look)
 .header{
   position: sticky;
   top: 0;
-  padding: 1rem 0;  /* 16/16 */
+  padding: 0.5rem 0;  /* 8/16 - Further reduced for tighter navbar */
   z-index: var(--header-z-index,1000);
+  // Premium look with subtle border
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.875rem; /* Smaller base font size for compact navbar items */
+  font-weight: 500; /* Consistent medium weight for professional look */
+
+  .logo {
+    max-width: 120px; /* Smaller logo for compact navbar */
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
   .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem;  /* Further reduced for tighter spacing */
+    min-height: 2rem; /* Ensure consistent vertical centering */
   }
   .menu {
     display: flex;
     align-items: center;
-    gap: 1.5rem;  /* 24/16 */
+    gap: 1rem;  /* Tighter menu spacing for compact look */
+    white-space: nowrap; /* Prevent text wrapping */
     @media screen and (min-width: 1366px)  {
-      gap: 3rem;  /* 48/16 */
+      gap: 2rem;  /* Proportionally reduced for larger screens */
     }
   }
   .nav{
@@ -39,7 +54,10 @@
 
     @media screen and (min-width: 1200px) {
       display: block;
-      margin-left: auto;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 0;
     }
 
     .nav_buttons {
@@ -53,7 +71,7 @@
   .buttons {
     display: flex;
     align-items: center;
-    gap: 2.25rem;  /* 36/16 */
+    gap: 1.5rem;  /* Reduced for tighter button spacing */
     margin-left: auto;
   }
   .menu_link {
@@ -84,10 +102,11 @@
     }
     &:hover{
       span {
-        scale: 1.03;
+        opacity: 0.8; /* Minimal modern hover effect */
       }
       &:before{
         scale: 1;
+        opacity: 0.6; /* Softer indicator appearance */
       }
     }
     &.current {

@@ -9,12 +9,12 @@ module.exports = {
         container: {
             center: true,
             padding: {
-                DEFAULT: '1rem',
-                sm: '1rem',
-                md: '2rem',
-                lg: '4rem',
-                xl: '8rem',
-                '2xl': '10rem',
+                DEFAULT: '0.875rem', // Reduced from 1rem to 0.875rem
+                sm: '0.875rem', // Reduced from 1rem to 0.875rem
+                md: '1.75rem', // Reduced from 2rem to 1.75rem
+                lg: '3.5rem', // Reduced from 4rem to 3.5rem
+                xl: '7rem', // Reduced from 8rem to 7rem
+                '2xl': '8.75rem', // Reduced from 10rem to 8.75rem
             },
             maxWidth: {
                 none: '100%',

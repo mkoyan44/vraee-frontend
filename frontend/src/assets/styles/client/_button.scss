@@ -6,7 +6,7 @@
   color: rgba(var(--btn-text),1);
   border-radius: var(--btn-border-radius);
   transition: all var(--duration) ease;
-  padding: 0.625rem  /* 10/16 */ 1.875rem  /* 30/16 */;
+  padding: 0.5rem  /* Reduced from 0.625rem (10px) to 0.5rem (8px) */ 1.5rem  /* Reduced from 1.875rem (30px) to 1.5rem (24px) */;
 }
 
 .btn-primary {

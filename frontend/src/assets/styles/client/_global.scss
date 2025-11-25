@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 :root {
-  font-size: 14px;
+  font-size: 13px; /* Reduced by 1px for more compact UI */
   @media screen and (min-width: 1366px) {
-    font-size: 15px;
+    font-size: 14px; /* Reduced by 1px for more compact UI */
   }
 }
 
@@ -17,8 +17,8 @@
   --radius: 0.625rem;
   --duration: .3s;
   --duration-short: .15s;
-  --top-space: 3rem;
-  --bottom-space: 3rem;
+  --top-space: 2.5rem; /* Reduced from 3rem to 2.5rem (~17% reduction) */
+  --bottom-space: 2.5rem; /* Reduced from 3rem to 2.5rem (~17% reduction) */
   --header-z-index: 1000;
 
   /* Smooth theme transitions */
