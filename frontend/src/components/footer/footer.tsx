@@ -7,63 +7,73 @@ const Footer: React.FC = () => {
     const menus = [
         {
             'id': '1',
-            'title': 'Presets',
+            'title': 'Services',
             'menu': [
                 {
                     'id': '1',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': '3D Modeling',
+                    'url': '/services/modeling',
                 },
                 {
                     'id': '2',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': 'Jewelry Sketching',
+                    'url': '/services/sketching',
                 },
                 {
                     'id': '3',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': 'Photorealistic Rendering',
+                    'url': '/services/rendering',
                 },
                 {
                     'id': '4',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': 'Jewelry Animation',
+                    'url': '/services/animation',
                 },
                 {
                     'id': '5',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': '3D CAD Design',
+                    'url': '/services/cad-design',
                 },
                 {
                     'id': '6',
-                    'label': 'Name',
-                    'url': '#',
+                    'label': 'Custom Designs',
+                    'url': '/services/3d-design',
                 },
             ],
         },
         {
             'id': '2',
-            'title': 'Shop',
+            'title': 'Technology',
             'menu': [
                 {
                     'id': '1',
-                    'label': 'Shop All',
-                    'url': '#',
+                    'label': 'Blender',
+                    'url': '/client/blender',
                 },
                 {
                     'id': '2',
-                    'label': 'Sale',
-                    'url': '#',
+                    'label': 'Cinema 4D',
+                    'url': '/client/cinema-4d',
                 },
                 {
                     'id': '3',
-                    'label': 'New Arrivals',
-                    'url': '#',
+                    'label': 'ZBrush',
+                    'url': '/client/zbrush',
                 },
                 {
                     'id': '4',
-                    'label': 'Collections',
-                    'url': '#',
+                    'label': 'Rhino',
+                    'url': '/client/rhino',
+                },
+                {
+                    'id': '5',
+                    'label': 'After Effects',
+                    'url': '/client/after-effects',
+                },
+                {
+                    'id': '6',
+                    'label': 'Matrix Platform',
+                    'url': '/client/matrix',
                 },
             ],
         },
@@ -74,48 +84,53 @@ const Footer: React.FC = () => {
                 {
                     'id': '1',
                     'label': 'About Us',
-                    'url': '#',
+                    'url': '/#hero',
                 },
                 {
                     'id': '2',
-                    'label': 'Journal',
-                    'url': '#',
+                    'label': 'Portfolio',
+                    'url': '/portfolio',
                 },
                 {
                     'id': '3',
-                    'label': 'Contacts',
-                    'url': '#',
+                    'label': 'Programs',
+                    'url': '/#programs-used',
+                },
+                {
+                    'id': '4',
+                    'label': 'Contact',
+                    'url': '/#contact',
                 },
             ],
         },
         {
             'id': '4',
-            'title': 'Information',
+            'title': 'Resources',
             'menu': [
                 {
                     'id': '1',
-                    'label': 'Orders & Shipping',
-                    'url': '#',
+                    'label': 'Help & FAQ',
+                    'url': '/#faq',
                 },
                 {
                     'id': '2',
-                    'label': 'Exchange & Returns',
-                    'url': '#',
+                    'label': 'Pricing Calculator',
+                    'url': '/pricing',
                 },
                 {
                     'id': '3',
-                    'label': 'Account',
-                    'url': '#',
+                    'label': 'Our Process',
+                    'url': '/#how-it-works',
                 },
                 {
                     'id': '4',
-                    'label': 'FAQs',
-                    'url': '#',
+                    'label': 'Reviews',
+                    'url': '/#reviews',
                 },
                 {
                     'id': '5',
-                    'label': 'Privacy Policy',
-                    'url': '#',
+                    'label': 'File Formats',
+                    'url': '/#faq',
                 },
             ],
         },
@@ -137,7 +152,8 @@ const Footer: React.FC = () => {
     return (
     <footer id="contact" className={`${styles.footer} scheme-dark background`}>
             <div className="container">
-                <div className={styles.wrapper}>
+                {/* Menu Bar at Top */}
+                <div className={styles.menu_bar}>
                     <div className={styles.menus}>
                         {
                             menus.map((menu) => {
@@ -161,37 +177,40 @@ const Footer: React.FC = () => {
                             })
                         }
                     </div>
-                    <div className={styles.contacts}>
-                        <div className={styles.contact_item}>
-                            <div className="large-font subtitle mb-3">Contact us</div>
-                            <Link href="tel:+554877784558" className="hovered_link">+554877784558</Link>
-                        </div>
-                        <div className={styles.contact_item}>
-                            <div className="large-font subtitle mb-3">Address</div>
-                            <p>10902 Firestone Blvd, Norwalk, CA 90650,</p>
-                        </div>
+                </div>
+
+                {/* Main Footer Grid */}
+                <div className={styles.wrapper}>
+                    <div className={styles.contact_info}>
+                        <div className="large-font subtitle mb-3">Contact us</div>
+                        <p>
+                            <Link href="tel:+5055551234" className="hovered_link">+505-555-1234</Link>
+                            <br />
+                            <Link href="mailto:info@vraee-jewelry3d.com" className="hovered_link">info@vraee-jewelry3d.com</Link>
+                        </p>
                     </div>
+
+                    <div className={styles.address_info}>
+                        <div className="large-font subtitle mb-3">Address</div>
+                        <p>308 Negra Arroyo Lane<br />Albuquerque, New Mexico 87104</p>
+                    </div>
+
                     <div className={styles.newsletter}>
                         <div className={styles.newsletter_wrapper}>
                             <div className="rte">
-                                <h3>Subscribe to our emails</h3>
-                                <p>Be the first to know about new collections and exclusive offers.</p>
+                                <h3>Stay Updated</h3>
+                                <p>Get the latest in jewelry 3D technology.</p>
                             </div>
                             <form action="">
-                                <input type="text"/>
+                                <input type="email" placeholder="Enter your email"/>
                                 <button type="submit" className="btn-primary w-full mb-2">Subscribe</button>
-                                <small className="opacity-60">By subscribing you agree to the Terms of Use and Privacy
-                                    Policy.</small>
                             </form>
                         </div>
                     </div>
-                    <div className={styles.payments}>
-                        <div className="mb-3">Payment Available:</div>
-                        <Image src={'/payments.png'} alt={''} width={'453'} height={'28'}/>
-                    </div>
+
                     <div className={styles.social}>
                         <div className={styles.social_wrapper}>
-                            <div className="mb-3">We Are in Social:</div>
+                            <div><strong>Follow Us</strong></div>
                             <ul className={styles.social_list}>
                                 {
                                     socials.map(item => {
@@ -206,11 +225,19 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                     </div>
+
+                    <div className={styles.payments_right}>
+                        <div className={styles.payments_label}>Payment Methods</div>
+                        <Image src={'/payments.png'} alt='Accepted payment methods' width={'280'} height={'28'}/>
+                    </div>
                 </div>
             </div>
-            <div className={styles.bottom}>
+            <div className={styles.copyright_bottom}>
                 <div className="container">
-                    <p className="opacity-60">© {year} All rights reserved.</p>
+                    <div className={styles.copyright}>
+                        <p>© {year} Vraee Jewelry 3D. All rights reserved.</p>
+                        <span className={styles.company}>Albuquerque, New Mexico</span>
+                    </div>
                 </div>
             </div>
         </footer>
