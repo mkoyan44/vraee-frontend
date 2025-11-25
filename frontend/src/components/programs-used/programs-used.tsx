@@ -21,39 +21,11 @@ const programs: SoftwareProgram[] = [
         description: "Open-source 3D creation suite used for comprehensive modeling, sculpting, animation, texturing, and rendering. We leverage its full 3D pipeline for cost-effective, flexible project workflows and rapid prototyping of complex scenes."
     },
     {
-        name: "Autodesk Maya",
-        url: "https://www.autodesk.com/products/maya/overview",
-        icon: "/software/maya.svg",
-        category: "3D Animation",
-        description: "Industry-standard 3D animation and modeling software used for creating detailed character animations and complex geometric models. Essential for our technical visualization projects requiring precise character work and rigging."
-    },
-    {
-        name: "Autodesk 3ds Max",
-        url: "https://www.autodesk.com/products/3ds-max/overview",
-        icon: "/software/3ds-max.svg",
-        category: "Technical Visualization",
-        description: "Powerful 3D modeling, animation, and rendering platform particularly strong in technical visualization and architectural renderings. We use it for complex mechanical modeling and high-quality architectural visualizations."
-    },
-    {
-        name: "ZBrush",
-        url: "https://pixologic.com",
-        icon: "/software/zbrush.svg",
-        category: "Digital Sculpting",
-        description: "Digital sculpting and painting software designed for organic modeling and texturing. Critical in our workflow for creating detailed character designs, organic shapes, and highly realistic surface details."
-    },
-    {
         name: "Cinema 4D",
         url: "https://www.maxon.net/en/cinema-4d",
         icon: "/software/cinema-4d.svg",
         category: "Motion Graphics",
         description: "User-friendly 3D modeling, animation, and rendering software with strong motion graphics capabilities. Perfect for our interior design visualizations and architectural presentations with animated elements."
-    },
-    {
-        name: "Adobe Photoshop",
-        url: "https://www.adobe.com/products/photoshop.html",
-        icon: "/software/photoshop.svg",
-        category: "Post-production",
-        description: "Industry-standard digital imaging software for image editing, compositing, and texture creation. Essential for post-processing our rendered images and creating custom textures and materials for realistic results."
     },
     {
         name: "Adobe After Effects",
@@ -63,11 +35,25 @@ const programs: SoftwareProgram[] = [
         description: "Motion graphics and visual effects software used for compositing, animation, and adding sophisticated effects to our renderings. Key for creating dynamic presentations and video content for client presentations."
     },
     {
-        name: "SketchUp",
-        url: "https://www.sketchup.com",
-        icon: "/software/sketchup.svg",
-        category: "Architectural Design",
-        description: "Intuitive 3D modeling software optimized for architectural visualization and basic conceptual modeling. We use it for quick architectural concepts and early-stage design visualization requiring fast iteration."
+        name: "ZBrush",
+        url: "https://pixologic.com",
+        icon: "/software/zbrush.svg",
+        category: "Digital Sculpting",
+        description: "Digital sculpting and painting software designed for organic modeling and texturing. Critical in our workflow for creating detailed character designs, organic shapes, and highly realistic surface details."
+    },
+    {
+        name: "Rhino",
+        url: "https://www.rhino3d.com",
+        icon: "/software/rhino.svg",
+        category: "Technical Modeling",
+        description: "Advanced NURBS-based modeling software ideal for precise technical modeling, architecture, and product design. Essential for our complex geometric modeling requiring mathematical accuracy and precision."
+    },
+    {
+        name: "Matrix",
+        url: "https://matrix.org",
+        icon: "/software/matrix.svg",
+        category: "Communication & Collaboration",
+        description: "Open standard for interoperable, decentralized and end-to-end encrypted communication. We use it for secure client communication, project collaboration, and real-time feedback sharing in our workflow."
     }
 ];
 
