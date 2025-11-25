@@ -16,7 +16,7 @@ const Hero: React.FC = ()=> {
                         <a href="/contact" className="btn-primary">Get Your Quote Today</a>
                     </div>
                     <div className={styles.hero_image}>
-                        <img src="/hero-image.png" alt=""/>
+                        <img src="/portfolio/photo_2025-11-15_18-07-41.jpg" alt=""/>
                     </div>
                 </div>
             </div>
