@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styles from "@/assets/styles/client/components/programs-used.module.scss";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Image from 'next/image';
+import { Box, Palette, Video } from 'lucide-react';
 
 interface SoftwareProgram {
     name: string;
@@ -84,14 +85,20 @@ const ProgramsUsed: React.FC = () => {
                             >
                                 <CardHeader className="text-center">
                                     <div className={styles.program_icon_wrapper}>
-                                        <Image
-                                            src={program.icon}
-                                            alt={`${program.name} logo`}
-                                            width={48}
-                                            height={48}
-                                            className={styles.program_icon}
-                                            priority={false}
-                                        />
+                                        {program.name === "Blender" ? (
+                                            <Box className="w-12 h-12 text-blue-500" />
+                                        ) : program.name === "After Effects" ? (
+                                            <Video className="w-12 h-12 text-purple-500" />
+                                        ) : (
+                                            <Image
+                                                src={program.icon}
+                                                alt={`${program.name} logo`}
+                                                width={48}
+                                                height={48}
+                                                className={styles.program_icon}
+                                                priority={false}
+                                            />
+                                        )}
                                     </div>
 
                                     <div className={styles.program_meta}>

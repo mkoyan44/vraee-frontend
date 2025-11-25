@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { MessageCircle, PenTool, Cpu, Eye, CheckCircle, Rocket } from 'lucide-react';
+import { Hash, Calculator, User, Eye, CheckCircle, Send, Cpu } from 'lucide-react';
 import HowItWorksCTA from './how-it-works-cta';
 
 interface Step {
@@ -16,7 +16,7 @@ interface Step {
 const steps: Step[] = [
   {
     stepNumber: 1,
-    icon: MessageCircle,
+    icon: Hash,
     title: "Share Your Jewelry Vision",
     description: "Upload your jewelry sketches, technical drawings, or reference photos. Describe your design vision, metal type, gemstones, and any specific requirements. Our expert team understands jewelry nuances.",
     cta: "Start Your Quote",
@@ -25,7 +25,7 @@ const steps: Step[] = [
   },
   {
     stepNumber: 2,
-    icon: PenTool,
+    icon: Calculator,
     title: "Custom Jewelry Pricing & Timeline",
     description: "Receive instant pricing based on jewelry complexity, metal finish accuracy, and rendering requirements. Our transparent calculator shows exactly what you pay for jewelry CAD and 3D visualization.",
     cta: "Get Instant Quote",
@@ -33,7 +33,7 @@ const steps: Step[] = [
   },
   {
     stepNumber: 3,
-    icon: Cpu,
+    icon: User,
     title: "Dedicated Jewelry CAD Specialist",
     description: "Your project gets assigned to a dedicated jewelry 3D expert. You gain immediate access to your personal Client Portal with real-time tracking of your CAD modeling and rendering progress.",
     cta: "Access Portal",
@@ -57,7 +57,7 @@ const steps: Step[] = [
   },
   {
     stepNumber: 6,
-    icon: Rocket,
+    icon: Send,
     title: "E-commerce Jewelry Delivery",
     description: "Receive production-ready jewelry CAD files optimized for manufacturing, plus photorealistic renderings perfect for online stores. All files delivered with lifetime support guarantee.",
     cta: "View Our Jewelry",
@@ -97,13 +97,10 @@ const HowItWorks: React.FC = () => {
                   <CardContent className="p-6">
                     {/* Step Number */}
                     <div className="flex items-center mb-4">
-                      <div className="flex items-center gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 btn-primary rounded-full flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">{step.stepNumber}</span>
-                        </div>
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:bg-gray-50 transition-colors duration-300" style={{backgroundColor: 'rgba(var(--color-bg), 0.5)'}}>
-                          <IconComponent className="h-5 w-5" style={{color: 'rgb(var(--color-text))'}} />
-                        </div>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style={{
+                        backgroundColor: index === 0 ? '#10B981' : index === 1 ? '#F59E0B' : index === 2 ? '#8B5CF6' : index === 3 ? '#3B82F6' : index === 4 ? '#EF4444' : '#EC4899'
+                      }}>
+                        <IconComponent className="h-6 w-6 text-white" />
                       </div>
                     </div>
 
