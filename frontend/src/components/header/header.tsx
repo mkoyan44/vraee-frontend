@@ -9,7 +9,7 @@ import Image from "next/image";
 import {usePathname, useRouter} from 'next/navigation';
 import Icon from "@/components/icon/icon";
 import ThemeToggle from "@/components/theme/theme-toggle";
-import { useUserStore } from "@/store/useUserStore";
+import { useUserStore, useThemeStore } from "@/store/useUserStore";
 import { logout } from "@/services/api";
 import ProjectCreationModal from "@/components/modal/project-creation-modal";
 
@@ -49,6 +49,7 @@ const Header: React.FC = () => {
     const router = useRouter();
 
     const { role, userData } = useUserStore();
+    const { theme } = useThemeStore();
     const isLoggedIn = !!role;
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,7 +77,7 @@ const Header: React.FC = () => {
                         <span></span><span></span><span></span>
                     </button>
                     <Link href={'/'} className={styles.logo}>
-                        <Image src={'/logo-vraee-studio.svg'} alt={''} width={'200'} height={'75'}/>
+                        <Image src={theme === 'dark' ? '/vraee-logo-dark.svg' : '/vraee-logo-light.svg'} alt={''} width={'200'} height={'75'}/>
                     </Link>
                     <nav className={`${styles.nav} ${isLaptop && isMenuOpen ? styles.open : ''}`}>
                         <ul className={styles.menu}>
