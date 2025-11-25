@@ -25,9 +25,9 @@
   }
 
   .menu_bar {
-    padding: 3rem 0 2rem;
+    padding: 2.5rem 0 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     @media screen and (max-width: 767px) {
       padding: 2rem 0 1.5rem;
@@ -98,13 +98,14 @@
         }
 
         li {
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.625rem;
 
           a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             font-weight: 400;
+            line-height: 1.5;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             display: inline-block;
@@ -137,8 +138,8 @@
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 3rem 0 4rem;
+    gap: 1.5rem;
+    padding: 2.5rem 0 3rem;
     position: relative;
 
     &::after {
@@ -157,8 +158,9 @@
       grid-template-columns: repeat(2, 1fr) 2fr 2fr;
       grid-template-areas:
         "contact address newsletter newsletter"
-        "social payments newsletter newsletter";
-      gap: 2.5rem;
+        "social . newsletter newsletter";
+      gap: 2rem;
+      margin-bottom: 2rem;
 
       .contact_info {
         grid-area: contact;
@@ -178,15 +180,21 @@
         margin-top: 0;
       }
 
-      .payments_right {
-        grid-area: payments;
-        margin-top: 0;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 25%;
+        right: 25%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       }
     }
 
     @media screen and (min-width: 1024px) {
-      grid-template-columns: 2fr 2fr 2fr 1.8fr 1.8fr;
-      grid-template-areas: "contact address newsletter social payments";
+      grid-template-columns: 2fr 2fr 2.5fr 2fr;
+      grid-template-areas: "contact address newsletter social";
       gap: 2.5rem;
     }
 
@@ -203,7 +211,7 @@
     position: relative;
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
     border-radius: 1.5rem;
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255,255,255,0.08);
     position: relative;
@@ -225,31 +233,31 @@
 
       h3 {
         color: #f1f5f9;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 700;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
         letter-spacing: -0.025em;
       }
 
       .rte > p {
         color: #cbd5e1;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        max-width: 300px;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        max-width: 280px;
         margin-left: auto;
         margin-right: auto;
       }
 
       input {
         width: 100%;
-        padding: 1rem 1.25rem;
+        padding: 0.75rem 1rem;
         border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 0.75rem;
+        border-radius: 0.5rem;
         background: rgba(255,255,255,0.05);
         color: #e2e8f0;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
         transition: all 0.3s ease;
 
         &::placeholder {
@@ -266,15 +274,15 @@
 
       button {
         width: 100%;
-        padding: 0.875rem 1.5rem;
+        padding: 0.75rem 1.25rem;
         background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.5rem;
         color: white;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
 
         &:hover {
           transform: translateY(-1px);
@@ -303,8 +311,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    padding: 2rem;
+    gap: 1.25rem;
+    padding: 1.5rem;
     background: rgba(255,255,255,0.02);
     border-radius: 1rem;
     backdrop-filter: blur(10px);
@@ -315,15 +323,15 @@
 
       div:first-child {
         color: #f1f5f9;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         letter-spacing: 0.025em;
       }
 
       .social_list {
         display: flex;
-        gap: 1rem;
+        gap: 0.875rem;
         justify-content: center;
         align-items: center;
 
@@ -331,8 +339,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 48px;
-          height: 48px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(255,255,255,0.1);
@@ -340,8 +348,8 @@
           position: relative;
 
           svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
           }
 
           &::before {

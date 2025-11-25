@@ -225,11 +225,6 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                     </div>
-
-                    <div className={styles.payments_right}>
-                        <div className={styles.payments_label}>Payment Methods</div>
-                        <Image src={'/payments.png'} alt='Accepted payment methods' width={'280'} height={'28'}/>
-                    </div>
                 </div>
             </div>
             <div className={styles.copyright_bottom}>
