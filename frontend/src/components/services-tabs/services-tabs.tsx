@@ -7,7 +7,7 @@ const tabs = [
     {
         "header": "Sketching",
         "title":"Professional Jewelry Sketch Creation",
-        "description":"<p>Transform your jewelry concepts into detailed hand-drawn sketches. Our expert designers capture the essence of your vision through meticulous concept art, hand drawing, and creative ideation processes that bring your jewelry designs to life on paper.</p><ul><li>Detailed jewelry sketches and technical drawings</li><li>Concept art development and refinement</li><li>Hand-drawn renderings with technical accuracy</li><li>Creative ideation and design exploration</li></ul>",
+        "description":"<p>Transform your jewelry vision into detailed technical sketches that capture every detail. Our expert designers specialize in jewelry forms, creating technical drawings that manufacturers understand while maintaining artistic beauty.</p><ul><li>Technical jewelry drawings for manufacturing</li><li>Concept visualization and design refinement</li><li>Gemstone and metal specifications</li><li>Multiple design variations and options</li></ul>",
         "link":{
             "label":"Learn more",
             "href":"/services/sketching",
@@ -16,8 +16,8 @@ const tabs = [
     },
     {
         "header": "MODELING",
-        "title":"Jewelry 3D Modeling Services",
-        "description":"<p>Create precise 3D models of your jewelry designs using industry-leading software like Blender, Rhino, and ZBrush. Our modeling process focuses on creating production-ready CAD structures with proper topology and surface details.</p><ul><li>3D modeling in Blender, Rhino, and ZBrush</li><li>Precise CAD structure development</li><li>Optimal topology for manufacturing</li><li>Model preparation for rendering</li></ul>",
+        "title":"Precision Jewelry 3D Modeling",
+        "description":"<p>Transform your jewelry sketches into accurate, manufacturing-ready 3D models. Our specialized team ensures every curve, prong, and setting is anatomically precise, creating models trusted by master jewelers worldwide.</p><ul><li>Anatomically precise ring and pendant modeling</li><li>Gemstone setting and prong configuration</li><li>Metal weight calculations and adjustment</li><li>Production-ready CAD files for casting</li></ul>",
         "link":{
             "label":"Learn more",
             "href":"/services/modeling",
@@ -26,8 +26,8 @@ const tabs = [
     },
     {
         "header": "Rendering",
-        "title":"Photorealistic Jewelry Rendering",
-        "description":"<p>Produce stunning photorealistic visualizations of your jewelry pieces with professional lighting setups, material accuracy, and high-definition outputs perfect for marketing and e-commerce platforms.</p><ul><li>Professional lighting and shadow setups</li><li>Accurate material rendering (metals, gems, finishes)</li><li>High-resolution photorealistic outputs</li><li>Multi-angle and composition variations</li></ul>",
+        "title":"E-commerce Jewelry Visualization",
+        "description":"<p>Create stunning jewelry photography that converts browsers to buyers. Our photorealistic renderings feature accurate material simulation, professional studio lighting, and 360° views that showcase your pieces perfectly on any sales platform.</p><ul><li>Lifestyle jewelry photography rendering</li><li>E-commerce product image sets (3-8 angles)</li><li>Accurate metal and gemstone material simulation</li><li>Professional studio lighting and composition</li></ul>",
         "link":{
             "label":"Learn more",
             "href":"/services/rendering",
@@ -36,8 +36,8 @@ const tabs = [
     },
     {
         "header": "Animation",
-        "title":"Jewelry Animation & Motion Graphics",
-        "description":"<p>Bring your jewelry to life with dynamic turntable animations, material transitions, and motion previews that showcase every facet of your design from multiple perspectives.</p><ul><li>Smooth turntable rotation animations</li><li>Material transition effects and highlights</li><li>Motion previews for client presentations</li><li>Frame-by-frame animation sequences</li></ul>",
+        "title":"Jewelry Motion & Presentation",
+        "description":"<p>Showcase your jewelry designs with cinematic quality. Our animations highlight gemstone sparkle, metal reflections, and the intricate details that make each piece unique, perfect for websites, presentations, and social media.</p><ul><li>Elegant jewelry turntable presentations</li><li>Gemstone sparkle and light animations</li><li>Metal texture and finish visualizations</li><li>Cinematic jewelry showcase videos</li></ul>",
         "link":{
             "label":"Learn more",
             "href":"/services/animation",

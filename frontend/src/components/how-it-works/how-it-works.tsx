@@ -17,51 +17,52 @@ const steps: Step[] = [
   {
     stepNumber: 1,
     icon: MessageCircle,
-    title: "Submit Your Project",
-    description: "Start by selecting your required service (CAD, Rendering, or Animation) or upload your sketch/reference file for a custom quote. We guarantee the confidentiality of your designs.",
-    cta: "Start Your Project",
-    link: "/pricing"
+    title: "Share Your Jewelry Vision",
+    description: "Upload your jewelry sketches, technical drawings, or reference photos. Describe your design vision, metal type, gemstones, and any specific requirements. Our expert team understands jewelry nuances.",
+    cta: "Start Your Quote",
+    link: "/pricing",
+    details: ["Sketch Upload", "Design Consultation", "Confidentiality Guarantee", "Jewelry Expertise"]
   },
   {
     stepNumber: 2,
     icon: PenTool,
-    title: "Transparent Pricing & Quote",
-    description: "Our system calculates the exact cost and timeline based on complexity and volume. You receive a fixed price with no hidden fees, ensuring budget certainty.",
-    cta: "View Pricing",
-    details: ["Interactive Calculator", "Clear Pricing Table", "Fixed Price Guarantee", "No Hidden Fees"]
+    title: "Custom Jewelry Pricing & Timeline",
+    description: "Receive instant pricing based on jewelry complexity, metal finish accuracy, and rendering requirements. Our transparent calculator shows exactly what you pay for jewelry CAD and 3D visualization.",
+    cta: "Get Instant Quote",
+    details: ["Jewelry-Specific Calculator", "Metal & Gemstone Pricing", "Fixed Price Guarantee", "No Hidden Costs"]
   },
   {
     stepNumber: 3,
     icon: Cpu,
-    title: "Order Confirmation & Access",
-    description: "Once the quote is approved, we begin work immediately. You receive unique access to your dedicated Client Portal for all project management.",
-    cta: "Go to Client Portal",
-    details: ["Immediate Work Start", "Dedicated Portal", "Project Management", "Secure Access"]
+    title: "Dedicated Jewelry CAD Specialist",
+    description: "Your project gets assigned to a dedicated jewelry 3D expert. You gain immediate access to your personal Client Portal with real-time tracking of your CAD modeling and rendering progress.",
+    cta: "Access Portal",
+    details: ["Jewelry CAD Expert", "Personal Portal Access", "24/7 Project Tracking", "Secure File Management"]
   },
   {
     stepNumber: 4,
     icon: Eye,
-    title: "Dynamic Status Tracking",
-    description: "Track your order's progress in real-time, 24/7. You always know the exact stage of your CAD model creation or rendering process.",
-    cta: "Track Progress",
-    details: ["Real-Time Updates", "24/7 Access", "Progress Timeline", "Status Notifications"]
+    title: "Live Jewelry 3D Modeling Process",
+    description: "Watch your jewelry come to life! Track ring modeling, bracelet fabrication, necklace design, or pendant creation in real-time. We provide milestone previews for your feedback.",
+    cta: "Track Your Ring",
+    details: ["Live CAD Progress", "Milestone Previews", "Jewelry Design Tracking", "Quality Assurance Check"]
   },
   {
     stepNumber: 5,
     icon: CheckCircle,
-    title: "Direct Communication & Revisions",
-    description: "Provide feedback and request revisions directly within the Client Portal. Our dedicated specialist is always on hand for fast, operational communication.",
-    cta: "Request Revision",
-    details: ["Embedded Chat", "Image Commenting", "Dedicated Specialist", "Fast Communication"]
+    title: "Jewelry Client Collaboration",
+    description: "Comment directly on 3D renders using our embedded review system. Adjust metal finishes, gemstone placements, or request customizations. Our jewelry experts respond within 2 hours.",
+    cta: "Provide Feedback",
+    details: ["Embedded Jewelry Reviews", "Material Customization", "Expert Consultations", "Quick Revisions"]
   },
   {
     stepNumber: 6,
     icon: Rocket,
-    title: "Final Delivery & Guarantee",
-    description: "Download your final, e-commerce optimized visuals and production-ready CAD files in high resolution, delivered within our guaranteed timeframe.",
-    cta: "Download Final Files",
+    title: "E-commerce Jewelry Delivery",
+    description: "Receive production-ready jewelry CAD files optimized for manufacturing, plus photorealistic renderings perfect for online stores. All files delivered with lifetime support guarantee.",
+    cta: "View Our Jewelry",
     link: "/portfolio",
-    details: ["High-Resolution Files", "E-commerce Optimized", "Guaranteed Delivery", "Production Ready"]
+    details: ["Production CAD Files", "E-commerce Ready Images", "Manufacturing Optimized", "Lifetime Support"]
   }
 ];
 
