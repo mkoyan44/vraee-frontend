@@ -4,15 +4,15 @@ import Pricing from "@/components/pricing/pricing";
 
 export const generateMetadata = (): Metadata => {
     return {
-        title: "3D Jewelry Services Pricing | CAD Modeling, Rendering & Animation",
-        description: "Professional pricing for CAD jewelry modeling, photorealistic rendering, and animation services. Transparent quotes for manufacturers, jewelry brands, and design studios.",
+        title: "Professional 3D Jewelry Services Pricing | US Market Analysis Based",
+        description: "Industry-standard pricing for CAD modeling ($199-$850+), photorealistic rendering ($75-$250/image), animation ($150-$550+), and consulting. Transparent rates with 50% deposit required.",
         keywords: [
-            "jewelry 3D modeling pricing",
-            "CAD jewelry design cost",
-            "photorealistic jewelry rendering prices",
-            "3D jewelry animation pricing",
-            "jewelry CAD services quotes",
-            "jewelry rendering service tiers"
+            "jewelry CAD modeling pricing",
+            "3D jewelry rendering cost",
+            "jewelry animation pricing",
+            "bulk jewelry rendering rates",
+            "jewelry design retainer pricing",
+            "professional 3D jewelry services"
         ],
         openGraph: {
             title: "3D Jewelry Services Pricing | CAD Modeling, Rendering & Animation",
