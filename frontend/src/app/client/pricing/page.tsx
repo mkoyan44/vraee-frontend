@@ -4,34 +4,34 @@ import Pricing from "@/components/pricing/pricing";
 
 export const generateMetadata = (): Metadata => {
     return {
-        title: "Pricing",
-        description: "Transparent 3D rendering pricing for architectural visualization, product rendering, and animation services. Get competitive quotes for your visualization projects.",
+        title: "3D Jewelry Services Pricing | CAD Modeling, Rendering & Animation",
+        description: "Professional pricing for CAD jewelry modeling, photorealistic rendering, and animation services. Transparent quotes for manufacturers, jewelry brands, and design studios.",
         keywords: [
-            "3D rendering pricing",
-            "architectural visualization cost",
-            "product rendering prices",
-            "3D animation pricing",
-            "rendering service quotes",
-            "visualization pricing tiers"
+            "jewelry 3D modeling pricing",
+            "CAD jewelry design cost",
+            "photorealistic jewelry rendering prices",
+            "3D jewelry animation pricing",
+            "jewelry CAD services quotes",
+            "jewelry rendering service tiers"
         ],
         openGraph: {
-            title: "3D Rendering Pricing & Quotes | Render Agency",
-            description: "Competitive pricing for professional 3D rendering services. Get transparent quotes for architectural visualization, product rendering, and animation projects.",
+            title: "3D Jewelry Services Pricing | CAD Modeling, Rendering & Animation",
+            description: "Professional pricing for CAD jewelry modeling, photorealistic rendering, and animation services. Transparent quotes for manufacturers, jewelry brands, and design studios.",
             type: "website",
             images: [
                 {
-                    url: "/services-image.png",
+                    url: "/portfolio/1.png",
                     width: 1200,
                     height: 630,
-                    alt: "3D Rendering Pricing and Service Packages - Render Agency",
+                    alt: "3D Jewelry Services Pricing - CAD Modeling, Rendering & Animation",
                 },
             ],
         },
         twitter: {
             card: "summary_large_image",
-            title: "3D Rendering Pricing | Render Agency",
-            description: "Transparent pricing for 3D rendering services. Competitive quotes for architectural visualization and product rendering.",
-            images: ["/services-image.png"],
+            title: "3D Jewelry Services Pricing",
+            description: "Professional pricing for CAD jewelry modeling, photorealistic rendering, and animation services.",
+            images: ["/portfolio/1.png"],
         },
         alternates: {
             canonical: "/pricing",

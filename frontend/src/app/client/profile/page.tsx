@@ -25,9 +25,11 @@ interface Project {
   updatedAt: string;
 }
 
+import Link from 'next/link';
+
 // Profile tabbed view component
 const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[]; successMessage?: boolean }> = ({ user, projects, successMessage }) => {
-    const [activeTab, setActiveTab] = useState<'profile' | 'projects'>('profile');
+    const [activeTab, setActiveTab] = useState<'profile' | 'projects' | 'dashboard'>('dashboard');
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
     useEffect(() => {
@@ -203,6 +205,16 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[]; successM
                 <div className="mb-8">
                     <div className="border-b border-gray-200">
                         <nav className="-mb-px flex space-x-8">
+                            <Link
+                                href="/client/dashboard"
+                                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                                    activeTab === 'dashboard'
+                                        ? 'border-blue-500 text-blue-600'
+                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                }`}
+                            >
+                                📊 Dashboard
+                            </Link>
                             <button
                                 onClick={() => setActiveTab('profile')}
                                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
@@ -226,6 +238,45 @@ const ProfileTabbedView: React.FC<{ user: UserDTO; projects: Project[]; successM
                         </nav>
                     </div>
                 </div>
+
+                {/* Dashboard Tab - Redirect Notice */}
+                {activeTab === 'dashboard' && (
+                    <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+                        <CardContent className="text-center py-16">
+                            <div className="text-blue-500 text-6xl mb-4">📊</div>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4">Client Dashboard</h2>
+                            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                                Access your comprehensive project management dashboard with real-time tracking,
+                                analytics, progress monitoring, and all the features you saw on our how-it-works page.
+                            </p>
+                            <div className="space-y-4">
+                                <Link
+                                    href="/client/dashboard"
+                                    className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                                >
+                                    🚀 Open Full Dashboard
+                                </Link>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-8">
+                                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                                        <div className="text-blue-500 text-2xl mb-2">📈</div>
+                                        <h3 className="font-semibold mb-1">Project Analytics</h3>
+                                        <p className="text-sm text-gray-600">Track performance metrics & insights</p>
+                                    </div>
+                                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                                        <div className="text-purple-500 text-2xl mb-2">🎯</div>
+                                        <h3 className="font-semibold mb-1">Live Progress</h3>
+                                        <p className="text-sm text-gray-600">Real-time project tracking</p>
+                                    </div>
+                                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                                        <div className="text-green-500 text-2xl mb-2">🏆</div>
+                                        <h3 className="font-semibold mb-1">Loyalty Program</h3>
+                                        <p className="text-sm text-gray-600">Earn points for exclusive benefits</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                )}
 
                 {activeTab === 'profile' && (
                     <div className="grid gap-6 md:grid-cols-2">
