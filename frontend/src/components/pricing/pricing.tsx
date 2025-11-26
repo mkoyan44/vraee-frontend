@@ -293,11 +293,11 @@ const Pricing: React.FC = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gray-50 py-24">
+            <section className="relative overflow-hidden bg-gray-50 py-16">
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="mx-auto max-w-4xl">
                         <div className="text-center relative">
-                            <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl leading-tight">
+                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl leading-tight">
                                 Professional
                                 <br />
                                 <span className="relative">
@@ -305,9 +305,9 @@ const Pricing: React.FC = () => {
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent opacity-30 -z-10"></div>
                                 </span>
                             </h1>
-                            <div className="mt-6 w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+                            <div className="mt-4 w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
                         </div>
-                        <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                             Industry-standard pricing for CAD modeling, photorealistic rendering, and animation services.
                             Transparent rates with professional contract terms and 50% deposit structure.
                         </p>
@@ -328,97 +328,103 @@ const Pricing: React.FC = () => {
 
             {/* Service Categories */}
             {Object.entries(groupedTiers).map(([category, tiers], categoryIndex) => (
-                <section key={category} className={`py-24 ${categoryIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+                <section key={category} className={`py-16 ${categoryIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-3">
                                 {category}
                             </h2>
-                            <div className="w-24 h-1 bg-gray-300 mx-auto rounded-full"></div>
+                            <div className="w-20 h-1 bg-gray-300 mx-auto rounded-full"></div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {tiers.map((tier, index) => (
                                 <div key={tier.name} className={`relative group ${tier.popular ? 'md:scale-105 lg:scale-110' : ''}`}>
                                     {tier.popular && (
-                                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                                            <span className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                                            <span className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
                                                 Most Popular
                                             </span>
                                         </div>
                                     )}
 
-                                    <div className={`relative h-full bg-white rounded-2xl shadow-lg overflow-hidden border transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2 ${
-                                        tier.popular ? 'ring-2 ring-amber-200 shadow-amber-100' : 'hover:border-amber-200'
+                                    <div className={`relative h-full bg-white rounded-lg shadow-md overflow-hidden border transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 ${
+                                        tier.popular ? 'ring-2 ring-amber-200 shadow-amber-50' : 'hover:border-amber-200'
                                     }`}>
-                                        <div className="p-8">
-                                            <div className="flex items-center justify-between mb-4">
+                                        {/* Header */}
+                                        <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
+                                            <div className="flex items-center justify-between">
                                                 <h3 className="text-xl font-bold text-gray-900">{tier.name}</h3>
                                                 {tier.popular && <span className="text-2xl">⭐</span>}
                                             </div>
+                                        </div>
 
-                                            <div className="mb-6">
-                                                <span className="text-4xl font-bold text-gray-900">
-                                                    {tier.price}
-                                                </span>
-                                                {tier.price !== "Custom Quote" && (
-                                                    <span className="text-gray-600 text-lg ml-1">
-                                                        {tier.category === "Photorealistic Rendering" || category === "Animation & Video" ? "" : "per piece"}
-                                                    </span>
-                                                )}
+                                        {/* Price Section */}
+                                        <div className="px-6 py-6 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100 text-center">
+                                            <div className="text-4xl font-bold text-gray-900 mb-2">
+                                                {tier.price}
                                             </div>
-
-                                            <p className="text-gray-600 mb-6 leading-relaxed">{tier.description}</p>
-
-                                            <div className="space-y-3 mb-6">
-                                                <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                                                    <span className="text-sm font-medium text-gray-500">Turnaround</span>
-                                                    <span className="text-sm text-gray-900 font-medium">{tier.turnaroundTime}</span>
-                                                </div>
-
-                                                {tier.revisions && (
-                                                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                                                        <span className="text-sm font-medium text-gray-500">Free Revisions</span>
-                                                        <span className="text-sm text-gray-900 font-medium">{tier.revisions}</span>
-                                                    </div>
-                                                )}
-
-                                                {tier.includes && tier.includes.length > 0 && (
-                                                    <div className="py-3 space-y-2">
-                                                        <span className="text-sm font-semibold text-amber-700 uppercase tracking-wide">What Includes:</span>
-                                                        <div className="space-y-1">
-                                                            {tier.includes.map((item, idx) => (
-                                                                <div key={idx} className="flex items-center text-sm text-gray-700">
-                                                                    <svg className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                                                    </svg>
-                                                                    {item}
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            </div>
-
-                                            {tier.notes && tier.notes.length > 0 && (
-                                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 space-y-1">
-                                                    <span className="text-sm font-semibold text-amber-800">Important:</span>
-                                                    {tier.notes.map((note, idx) => (
-                                                        <div key={idx} className="text-sm text-amber-700">• {note}</div>
-                                                    ))}
+                                            {tier.price !== "Custom Quote" && (
+                                                <div className="text-gray-600 text-sm">
+                                                    {tier.category === "Photorealistic Rendering" || category === "Animation & Video" ? "Per Image" : "Per Piece"}
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="px-8 pb-8">
+                                        {/* Service Details */}
+                                        <div className="px-6 py-6 space-y-4">
+
+                                            {/* Quick Facts */}
+                                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                                <div className="bg-blue-50 rounded-lg px-3 py-2">
+                                                    <div className="text-xs font-semibold text-blue-700 uppercase tracking-wide">Time</div>
+                                                    <div className="text-sm font-medium text-blue-900">{tier.turnaroundTime}</div>
+                                                </div>
+                                                <div className="bg-green-50 rounded-lg px-3 py-2">
+                                                    <div className="text-xs font-semibold text-green-700 uppercase tracking-wide">Revisions</div>
+                                                    <div className="text-sm font-medium text-green-900">{tier.revisions || 'N/A'}</div>
+                                                </div>
+                                            </div>
+
+                                            {/* What Includes */}
+                                            {tier.includes && tier.includes.length > 0 && (
+                                                <div>
+                                                    <h4 className="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wide">What's Included</h4>
+                                                    <ul className="space-y-2">
+                                                        {tier.includes.map((item, idx) => (
+                                                            <li key={idx} className="flex items-start text-sm text-gray-700">
+                                                                <span className="text-green-500 mr-2 mt-1">•</span>
+                                                                <span>{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            {/* Service Description */}
+                                            <div className="text-sm text-gray-600 leading-relaxed pt-2 border-t border-gray-100">
+                                                {tier.description}
+                                            </div>
+
+                                            {/* Important Notes */}
+                                            {tier.notes && tier.notes.length > 0 && (
+                                                <div className="bg-yellow-50 border border-yellow-200 rounded-lg px-4 py-3">
+                                                    <h4 className="text-sm font-semibold text-yellow-800 mb-2">Important Notes</h4>
+                                                    <ul className="space-y-1">
+                                                        {tier.notes.map((note, idx) => (
+                                                            <li key={idx} className="text-sm text-yellow-700">• {note}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* CTA Button */}
+                                        <div className="px-6 pb-6">
                                             <button className="w-full py-3 px-6 rounded-lg font-semibold bg-gray-900 hover:bg-gray-800 text-white shadow-sm transition-colors duration-200">
                                                 {tier.price === "Custom Quote" ? "Get Custom Quote" : "Start Project"}
                                             </button>
                                         </div>
-
-                                        {/* Decorative elements */}
-                                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-100 to-rose-100 rounded-bl-3xl opacity-30"></div>
-                                        <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-purple-100 to-amber-100 rounded-tr-3xl opacity-30"></div>
                                     </div>
                                 </div>
                             ))}
