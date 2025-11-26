@@ -293,27 +293,33 @@ const Pricing: React.FC = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-white to-rose-50 py-24">
-                <div className="absolute inset-0 bg-[url('/hero-bg.svg')] bg-cover bg-center opacity-5"></div>
+            <section className="relative overflow-hidden bg-gray-50 py-24">
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="mx-auto max-w-4xl">
-                        <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                            Professional 3D Jewelry
-                            <span className="bg-gradient-to-r from-amber-600 via-purple-600 to-rose-600 bg-clip-text text-transparent"> Services</span>
-                        </h1>
+                        <div className="text-center relative">
+                            <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl leading-tight">
+                                Professional
+                                <br />
+                                <span className="relative">
+                                    <span className="relative z-10 text-gray-800">3D Jewelry Services</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent opacity-30 -z-10"></div>
+                                </span>
+                            </h1>
+                            <div className="mt-6 w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+                        </div>
                         <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
                             Industry-standard pricing for CAD modeling, photorealistic rendering, and animation services.
                             Transparent rates with professional contract terms and 50% deposit structure.
                         </p>
                         <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                            <div className="bg-white/80 backdrop-blur-sm border border-amber-200 rounded-full px-4 py-2 text-sm font-medium text-amber-900 shadow-sm">
-                                🚀 3-5 Day Average Turnaround
+                            <div className="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+                                📊 US Market Analysis Based
                             </div>
-                            <div className="bg-white/80 backdrop-blur-sm border border-purple-200 rounded-full px-4 py-2 text-sm font-medium text-purple-900 shadow-sm">
-                                📄 Professional Contracts
+                            <div className="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+                                📋 Professional Contracts
                             </div>
-                            <div className="bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-4 py-2 text-sm font-medium text-rose-900 shadow-sm">
-                                💎 Manufacturing Ready
+                            <div className="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+                                ✅ Manufacturing Ready
                             </div>
                         </div>
                     </div>
@@ -328,7 +334,7 @@ const Pricing: React.FC = () => {
                             <h2 className="text-4xl font-bold text-gray-900 mb-4">
                                 {category}
                             </h2>
-                            <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-rose-500 mx-auto rounded-full"></div>
+                            <div className="w-24 h-1 bg-gray-300 mx-auto rounded-full"></div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -352,9 +358,7 @@ const Pricing: React.FC = () => {
                                             </div>
 
                                             <div className="mb-6">
-                                                <span className={`text-4xl font-bold ${
-                                                    tier.price === "Custom Quote" ? 'text-gray-900' : 'bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent'
-                                                }`}>
+                                                <span className="text-4xl font-bold text-gray-900">
                                                     {tier.price}
                                                 </span>
                                                 {tier.price !== "Custom Quote" && (
@@ -407,11 +411,7 @@ const Pricing: React.FC = () => {
                                         </div>
 
                                         <div className="px-8 pb-8">
-                                            <button className={`w-full py-3 px-6 rounded-xl font-semibold text-white shadow-lg transition-all duration-200 transform hover:scale-105 ${
-                                                tier.popular
-                                                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600'
-                                                    : 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800'
-                                            }`}>
+                                            <button className="w-full py-3 px-6 rounded-lg font-semibold bg-gray-900 hover:bg-gray-800 text-white shadow-sm transition-colors duration-200">
                                                 {tier.price === "Custom Quote" ? "Get Custom Quote" : "Start Project"}
                                             </button>
                                         </div>
@@ -490,35 +490,35 @@ const Pricing: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className="text-center group">
-                            <div className="text-5xl mb-4 p-4 bg-gradient-to-br from-amber-100 to-rose-100 rounded-2xl inline-block group-hover:scale-110 transition-transform">
-                                🎯
+                            <div className="text-5xl mb-4 p-4 bg-gray-100 rounded-xl inline-block">
+                                📊
                             </div>
-                            <h4 className="font-bold text-lg mb-2">US Market Pricing</h4>
-                            <p className="text-gray-600">Real rates based on industry analysis, not made-up numbers</p>
+                            <h4 className="font-bold text-lg mb-2">US Market Analysis</h4>
+                            <p className="text-gray-600">Professional pricing based on actual industry standards</p>
                         </div>
 
                         <div className="text-center group">
-                            <div className="text-5xl mb-4 p-4 bg-gradient-to-br from-purple-100 to-amber-100 rounded-2xl inline-block group-hover:scale-110 transition-transform">
-                                ⚡
+                            <div className="text-5xl mb-4 p-4 bg-gray-100 rounded-xl inline-block">
+                                ⏰
                             </div>
-                            <h4 className="font-bold text-lg mb-2">Fast Delivery</h4>
-                            <p className="text-gray-600">Average 3-7 business days for CAD work, 2-5 days for renders</p>
+                            <h4 className="font-bold text-lg mb-2">Defined Timeframes</h4>
+                            <p className="text-gray-600">Clear delivery expectations with realistic timelines</p>
                         </div>
 
                         <div className="text-center group">
-                            <div className="text-5xl mb-4 p-4 bg-gradient-to-br from-rose-100 to-purple-100 rounded-2xl inline-block group-hover:scale-110 transition-transform">
-                                🔒
+                            <div className="text-5xl mb-4 p-4 bg-gray-100 rounded-xl inline-block">
+                                📋
                             </div>
-                            <h4 className="font-bold text-lg mb-2">Secure & Professional</h4>
-                            <p className="text-gray-600">Confidential projects handled with NDAs and secure file transfer</p>
+                            <h4 className="font-bold text-lg mb-2">Professional Contracts</h4>
+                            <p className="text-gray-600">Written agreements protecting both parties</p>
                         </div>
 
                         <div className="text-center group">
-                            <div className="text-5xl mb-4 p-4 bg-gradient-to-br from-amber-100 to-purple-100 rounded-2xl inline-block group-hover:scale-110 transition-transform">
-                                🏭
+                            <div className="text-5xl mb-4 p-4 bg-gray-100 rounded-xl inline-block">
+                                🛠️
                             </div>
-                            <h4 className="font-bold text-lg mb-2">Manufacturing Ready</h4>
-                            <p className="text-gray-600">All files optimized for production with technical specifications</p>
+                            <h4 className="font-bold text-lg mb-2">Manufacturing Focus</h4>
+                            <p className="text-gray-600">All deliverables optimized for production processes</p>
                         </div>
                     </div>
                 </div>
@@ -571,35 +571,35 @@ const Pricing: React.FC = () => {
             </section>
 
             {/* Final CTA Section */}
-            <section className="py-24 bg-gradient-to-r from-amber-600 via-purple-600 to-rose-600 text-white">
+            <section className="py-24 bg-blue-900 text-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-4xl font-bold mb-6">Ready to Elevate Your Jewelry Business?</h2>
-                    <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                        Join hundreds of satisfied jewelry brands, manufacturers, and designers who trust us with their 3D visualization needs.
-                        Start your project today with our professional team and US market-standard pricing.
+                    <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+                    <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                        Contact us today for a detailed proposal based on your specific needs.
+                        Get a custom quote in just 2 hours with our experienced project managers.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
-                            💬 Get Custom Quote (2-hour response)
+                        <button className="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-gray-50">
+                            📋 Request Detailed Quote
                         </button>
-                        <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200">
+                        <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-900 transition-all duration-200">
                             📞 Schedule Consultation
                         </button>
                     </div>
 
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                            <div className="text-2xl font-bold">95%</div>
-                            <div className="text-sm text-white/80">Client Satisfaction</div>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                        <div className="bg-blue-800/50 rounded-lg p-4 border border-blue-700">
                             <div className="text-2xl font-bold">500+</div>
-                            <div className="text-sm text-white/80">Projects Delivered</div>
+                            <div className="text-sm text-blue-200">Projects Completed</div>
                         </div>
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                        <div className="bg-blue-800/50 rounded-lg p-4 border border-blue-700">
                             <div className="text-2xl font-bold">5 Days</div>
-                            <div className="text-sm text-white/80">Average Turnaround</div>
+                            <div className="text-sm text-blue-200">Average Delivery</div>
+                        </div>
+                        <div className="bg-blue-800/50 rounded-lg p-4 border border-blue-700">
+                            <div className="text-2xl font-bold">2 Hours</div>
+                            <div className="text-sm text-blue-200">Quote Response Time</div>
                         </div>
                     </div>
                 </div>
