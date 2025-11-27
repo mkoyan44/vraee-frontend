@@ -6,10 +6,10 @@ import { PenTool, Box, Image, Play, Sparkles, FileText } from "lucide-react";
 
 const tabs = [
     {
-        "header": "Sketching",
+        "header": "Sculpting",
         "icon": PenTool,
-        "title":"Professional Jewelry Sketch Creation",
-        "description":"<p>Transform your jewelry vision into detailed technical sketches that capture every detail. Our expert designers specialize in jewelry forms, creating technical drawings that manufacturers understand while maintaining artistic beauty.</p><ul><li>Technical jewelry drawings for manufacturing</li><li>Concept visualization and design refinement</li><li>Gemstone and metal specifications</li><li>Multiple design variations and options</li></ul>",
+        "title":"Professional Jewelry Digital Sculpting",
+        "description":"<p>Transform your jewelry vision into stunning digital sculptures that bring your ideas to life in three dimensions. Our expert digital sculptors specialize in organic jewelry forms, creating detailed 3D models that capture artistic beauty and technical precision.</p><ul><li>Organic jewelry sculpting and modeling</li><li>Concept visualization in 3D space</li><li>Gemstone and metal sculptural details</li><li>Multiple design variations and artistic interpretations</li></ul>",
         "link":{
             "label":"Learn more",
             "href":"/services/sketching",

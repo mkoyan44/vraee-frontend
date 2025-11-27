@@ -7,9 +7,9 @@ const ServicesList: React.FC = ()=> {
     const items = [
         {
             image: '/services-item.png',
-            description: '<p>Get your jewelry ideas converted into a sketch in the shortest time. Sarkissian Luxury Studio is here with professionaljewelry sketch designservices to give life to your designs that are still sparking in your mind.</p>',
+            description: '<p>Get your jewelry ideas converted into stunning digital sculptures in the shortest time. Sarkissian Luxury Studio is here with professional jewelry sculpting design services to give life to your designs that are still sparking in your mind.</p>',
             icon: '<svg width="58" height="41" viewBox="0 0 58 41" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4867 39.5479L0.019043 0.0151367H56.9553L28.4867 39.5479Z" fill="#0E0E0E"/></svg>',
-            title: 'Sketching',
+            title: 'Sculpting',
             link: '/services/sketching',
         },
         {

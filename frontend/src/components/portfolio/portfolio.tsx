@@ -20,10 +20,6 @@ const Portfolio: React.FC = ()=> {
             value:'sculpting',
         },
         {
-            label:'Sketching',
-            value:'sketching',
-        },
-        {
             label:'Rendering',
             value:'rendering',
         },
@@ -48,7 +44,7 @@ const Portfolio: React.FC = ()=> {
             id: 2,
             type: 'image',
             image: '/portfolio/2.png',
-            category:'sketching',
+            category:'sculpting',
         },
         {
             id: 3,

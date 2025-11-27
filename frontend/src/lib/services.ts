@@ -6,8 +6,8 @@ type Service = {
 
 export const services: Record<string, Service> = {
     "sketching" : {
-        title:'Sketching',
-        description:"<p>Get your jewelry ideas converted into a sketch in the shortest time. Sarkissian Luxury Studio is here with professionaljewelry sketch designservices to give life to your designs that are still sparking in your mind. </p><p>Whether you are a manufacturer or a jewelry retailer,Sarkissian Luxury Studiois yourjewelry design studiowith the best resources and the most dedicated team of professionals to help you get a fresh jewelry line – starting with sketching. You just need to express your thoughts on a piece of paper, and leave the rest to us. We’ve some of the bestNew York jewelry designerswho can create accurate, easy to understand sketches in just 24 hours.</p>",
+        title:'Sculpting',
+        description:"<p>Get your jewelry ideas converted into stunning digital sculptures in the shortest time. Sarkissian Luxury Studio is here with professional jewelry sculpting design services to give life to your designs that are still sparking in your mind. </p><p>Whether you are a manufacturer or a jewelry retailer, Sarkissian Luxury Studio is your jewelry design studio with the best resources and the most dedicated team of professionals to help you get a fresh jewelry line – starting with sculpting. You just need to express your thoughts on a piece of paper, and leave the rest to us. We’ve some of the best New York jewelry designers who can create accurate, easy to understand digital sculptures in just 24 hours.</p>",
         image:'/services-page.png',
     },
     "modeling" : {
