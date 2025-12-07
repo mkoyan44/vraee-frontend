@@ -1,0 +1,21 @@
+.text_with_media {
+  position: relative;
+  z-index: 1;
+  padding: var(--top-space) 0 var(--bottom-space);
+  .wrapper {
+    display: flex;
+    gap:3.5rem;  /* 56/16 */
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+  .content {
+    max-width: 31rem;  /* 496/16 */
+  }
+  .media {
+
+  }
+}

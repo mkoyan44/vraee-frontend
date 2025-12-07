@@ -1,0 +1,49 @@
+@use "tailwindcss";
+@plugin "tailwindcss-animate";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 13px; /* Reduced by 1px for more compact UI */
+  @media screen and (min-width: 1366px) {
+    font-size: 14px; /* Reduced by 1px for more compact UI */
+  }
+}
+
+#root {
+  --font-title: var(--font-inter);
+  --font-text: var(--font-inter);
+  --radius: 0.625rem;
+  --duration: .3s;
+  --duration-short: .15s;
+  --top-space: 2.5rem; /* Reduced from 3rem to 2.5rem (~17% reduction) */
+  --bottom-space: 2.5rem; /* Reduced from 3rem to 2.5rem (~17% reduction) */
+  --header-z-index: 1000;
+
+  /* Smooth theme transitions */
+  transition: background-color var(--duration), color var(--duration), border-color var(--duration);
+}
+
+/* Disable transitions during theme switching */
+.theme-switching #root,
+.theme-switching * {
+  transition: none !important;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color var(--duration), color var(--duration), border-color var(--duration);
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.mh-full-screen {
+  min-height: calc(100vh - 68px);
+}
+
+.container {
+  padding: 0 1rem;
+}

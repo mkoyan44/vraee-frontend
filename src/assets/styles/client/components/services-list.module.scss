@@ -1,0 +1,115 @@
+.services_list {
+  padding: var(--top-space) 0 var(--bottom-space);
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 4rem 0;
+    gap: 4rem;
+    transition: all var(--duration) linear;
+
+    .content {
+      max-width: 37.5rem; /* 600/16 */
+      margin-left: auto;
+    }
+
+    .image_wrapper {
+      position: relative;
+      width: 100%;
+
+      &:after {
+        content: '';
+        display: block;
+        padding-bottom: 0;
+      }
+    }
+
+    .image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 1.25rem; /* 20/16 */
+      clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0 100%);
+      transition: all var(--duration) linear;
+      margin-top: auto;
+    }
+
+    .btn_icon {
+      transition: all var(--duration-short) linear;
+    }
+
+    .btn {
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: 1rem;
+      --btn-size: 3.25rem;/* 52/16 */
+      min-width: var(--btn-size);
+      min-height: var(--btn-size);
+      max-width: var(--btn-size);
+      max-height: var(--btn-size);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      &:after,
+      &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top:0;
+        height: 100%;
+        transition: all var(--duration) linear;
+      }
+      &:before{
+        width: 100%;
+        background: rgb(var(--color-bg));
+        z-index: -2;
+      }
+      &:after {
+        background: #8198F8;
+        width: 0;
+        z-index: -1;
+      }
+    }
+
+    &.active {
+      .image_wrapper {
+        &:after {
+          padding-bottom: 100%;
+        }
+      }
+
+      .image {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%);
+      }
+
+      .btn_icon {
+        transform: rotate(135deg);
+      }
+
+      .btn {
+        color: rgb(var(--color-bg));
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgb(var(--color-border));
+    }
+  }
+}
