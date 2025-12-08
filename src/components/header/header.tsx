@@ -31,10 +31,6 @@ const menu: { label: string; href: string }[] = [
         href: "/programs-we-use",
     },
     {
-        label: "Knowledge Base",
-        href: "/knowledge-base",
-    },
-    {
         label: "Pricing",
         href: "/pricing",
     },
