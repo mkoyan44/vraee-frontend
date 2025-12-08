@@ -1,0 +1,1 @@
+\"INSERT INTO \\\"user\\\" (email, password, role, \\\"isProfileComplete\\\", \\\"fullName\\\", \\\"createdAt\\\", \\\"updatedAt\\\") VALUES ('test@example.com', 'password123', 'user', true, 'Test User', NOW(), NOW());\" 
