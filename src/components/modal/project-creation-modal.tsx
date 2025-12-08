@@ -14,19 +14,34 @@ interface ProjectCreationModalProps {
     isOpen: boolean;
     onClose: () => void;
     onProjectCreated?: () => void;
+    preselectedService?: {
+        serviceType: string;
+        serviceDetail: string;
+    };
 }
 
-const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({ isOpen, onClose, onProjectCreated }) => {
+const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({ isOpen, onClose, onProjectCreated, preselectedService }) => {
     const router = useRouter();
     const [formData, setFormData] = useState({
-        serviceType: '',
-        serviceDetail: '',
+        serviceType: preselectedService?.serviceType || '',
+        serviceDetail: preselectedService?.serviceDetail || '',
         projectName: '',
         description: '',
         files: [] as File[]
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
+
+    // Update form data when preselectedService changes
+    React.useEffect(() => {
+        if (preselectedService) {
+            setFormData(prev => ({
+                ...prev,
+                serviceType: preselectedService.serviceType || '',
+                serviceDetail: preselectedService.serviceDetail || ''
+            }));
+        }
+    }, [preselectedService]);
 
     if (!isOpen) return null;
 

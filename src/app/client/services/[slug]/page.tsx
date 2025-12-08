@@ -8,11 +8,10 @@ import Reviews from "@/components/reviews/reviews";
 import MediaGrid from "@/components/media-grid/media-grid";
 import Faq from "@/components/faq/faq";
 import ServiceColumns from "@/components/service-columns/service-columns";
-
 interface PageProps {
-    params: Promise<{
+    params: {
         slug: string;
-    }>;
+    };
 }
 
 export async function generateStaticParams() {
@@ -26,6 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const decodedSlug = decodeURIComponent(slug);
     const service = services[decodedSlug];
 
+
     if (!service) {
         return {
             title: "Service not found",
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
         title: `${service.title} | Sarkissian Luxury Studio`,
-        description: service.description.replace(/<[^>]*>?/gm, "").slice(0, 160),
+        description: service.description.replace(/<[^>]*>?/gm, "").slice(0, 160), // Убираем HTML-теги
         openGraph: {
             title: service.title,
             description: service.description.replace(/<[^>]*>?/gm, "").slice(0, 160),
@@ -43,23 +43,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         }
     };
 }
-
 export default async function ServicePage({ params }: PageProps) {
     const { slug } = await params;
     const decodedSlug = decodeURIComponent(slug);
     const service = services[decodedSlug];
-
     if (!service) {
         notFound();
     }
-
     return (
-        <div className="scheme-light-3 background z-10 relative">
-            <ServiceHero
-                title={service.title}
-                description={service.description}
-                image={service.image}
-            />
+        <div className={`scheme-light-3 background z-10 relative`}>
+            <ServiceHero title={service.title} description={service.description} image={service.image}/>
             <ServiceColumns/>
             <TextWithMedia scheme={undefined} has_background={false}/>
             <Reviews/>

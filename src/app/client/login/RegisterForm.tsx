@@ -6,17 +6,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { login } from '@/services/api';
+import { register } from '@/services/api';
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
     const handleSocialLogin = (provider: 'google' | 'linkedin') => {
-        alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login is coming soon! Please use email and password to sign in.`);
+        alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login is coming soon! Please use email and password to sign up.`);
         // window.location.href = `http://localhost:3000/api/auth/${provider}`;
     };
 
@@ -25,12 +27,25 @@ const LoginForm = () => {
         setError('');
         setIsLoading(true);
 
+        // Basic validation
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            setIsLoading(false);
+            return;
+        }
+
+        if (password.length < 6) {
+            setError('Password must be at least 6 characters long');
+            setIsLoading(false);
+            return;
+        }
+
         try {
-            await login(email, password);
+            await register(email, password, name || undefined);
             router.push('/profile');
         } catch (err: any) {
             console.error(err);
-            setError(err.response?.data?.message || 'Invalid email or password');
+            setError(err.response?.data?.message || 'Registration failed');
         } finally {
             setIsLoading(false);
         }
@@ -39,15 +54,27 @@ const LoginForm = () => {
     return (
         <Card className="w-full shadow-lg border-0 bg-card/95 backdrop-blur-sm">
             <CardHeader className="space-y-1 pb-4">
-                <CardTitle className="text-2xl font-semibold text-center">Sign In</CardTitle>
+                <CardTitle className="text-2xl font-semibold text-center">Create Account</CardTitle>
                 <CardDescription className="text-center text-muted-foreground">
-                    Enter your credentials to access your account
+                    Join Render Agency to manage your 3D projects
                 </CardDescription>
             </CardHeader>
 
             <form onSubmit={handleSubmit}>
                 <CardContent className="space-y-4">
                     <div className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
+                            <Input
+                                type="text"
+                                id="name"
+                                value={name}
+                                placeholder="Enter your full name"
+                                onChange={(e) => setName(e.target.value)}
+                                className="h-11"
+                            />
+                        </div>
+
                         <div className="space-y-2">
                             <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
                             <Input
@@ -67,8 +94,21 @@ const LoginForm = () => {
                                 type="password"
                                 id="password"
                                 value={password}
-                                placeholder="Enter your password"
+                                placeholder="Create a password (min 6 characters)"
                                 onChange={(e) => setPassword(e.target.value)}
+                                className="h-11"
+                                required
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="confirmPassword" className="text-sm font-medium">Confirm Password</Label>
+                            <Input
+                                type="password"
+                                id="confirmPassword"
+                                value={confirmPassword}
+                                placeholder="Confirm your password"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                                 className="h-11"
                                 required
                             />
@@ -137,7 +177,7 @@ const LoginForm = () => {
 
                         <div className="text-center">
                             <p className="text-xs text-muted-foreground">
-                                Social login features coming soon. Please use email and password to sign in.
+                                Social login features coming soon. Please use email and password to sign up.
                             </p>
                         </div>
                     </div>
@@ -149,7 +189,7 @@ const LoginForm = () => {
                         disabled={isLoading}
                         className="w-full h-11 text-base font-medium"
                     >
-                        {isLoading ? 'Signing In...' : 'Sign In'}
+                        {isLoading ? 'Creating Account...' : 'Create Account'}
                     </Button>
                 </CardFooter>
             </form>
@@ -157,4 +197,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

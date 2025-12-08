@@ -13,8 +13,8 @@ interface ProfileCreationFlowProps {
 
 interface StepData {
     step1?: { fullName: string; companyName?: string };
-    step2?: { clientType?: string; primaryService?: string[]; projectVolume?: string };
-    step3?: { cadSoftware?: string; requiredOutputs?: string[]; referralSource?: string };
+    step2?: { clientType: string; primaryService: string[]; projectVolume: string };
+    step3?: { cadSoftware: string; requiredOutputs: string[]; referralSource?: string };
 }
 
 const ProfileCreationFlow: React.FC<ProfileCreationFlowProps> = ({ userData }) => {
@@ -45,14 +45,7 @@ const ProfileCreationFlow: React.FC<ProfileCreationFlowProps> = ({ userData }) =
     };
 
     const handleStep2Complete = (data: { clientType: string; primaryService: string[]; projectVolume: string }) => {
-        setStepData(prev => ({ 
-            ...prev, 
-            step2: {
-                clientType: data.clientType,
-                primaryService: data.primaryService,
-                projectVolume: data.projectVolume
-            }
-        }));
+        setStepData(prev => ({ ...prev, step2: data }));
         setCurrentStep(3);
         setError('');
     };
@@ -138,19 +131,11 @@ const ProfileCreationFlow: React.FC<ProfileCreationFlowProps> = ({ userData }) =
             case 3:
                 // Ensure we have step 1 and step 2 data for step 3
                 if (!stepData.step1 || !stepData.step2) return null;
-                
-                // Ensure step2 has all required fields with proper type guards
-                const step2 = stepData.step2;
-                if (!step2.clientType || !step2.primaryService || !step2.projectVolume) return null;
 
                 return (
                     <ProfileStep3
                         step1Data={stepData.step1}
-                        step2Data={{
-                            clientType: step2.clientType,
-                            primaryService: step2.primaryService,
-                            projectVolume: step2.projectVolume
-                        }}
+                        step2Data={stepData.step2}
                         initialData={{
                             cadSoftware: stepData.step3?.cadSoftware,
                             requiredOutputs: stepData.step3?.requiredOutputs,
