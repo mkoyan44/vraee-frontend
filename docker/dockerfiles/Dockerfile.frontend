@@ -1,0 +1,44 @@
+ARG TARGET_ARCH=amd64
+FROM --platform=linux/${TARGET_ARCH} ubuntu:24.04 AS build
+
+SHELL ["/bin/bash", "-c"]
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+WORKDIR /tmp
+
+USER root
+
+# Locale setup
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+RUN set -eux \
+    && apt-get update \
+    && apt-get install --no-install-recommends --yes locales \
+    && dpkg-reconfigure -f noninteractive locales \
+    && locale-gen en_US en_US.UTF-8 \
+    && /usr/sbin/update-locale LANG=C.UTF-8 \
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen
+
+# Install Node.js and npm
+RUN set -eux \
+    && apt-get update -qq \
+    && apt-get install -qq -y ca-certificates curl git unzip less \
+    wget apt-transport-https zip tzdata gnupg lsb-release dnsutils \
+    net-tools netcat-traditional sudo jq iputils-ping \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
+
+# Setup working directory
+WORKDIR /codebase
+
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+COPY . .
+RUN npm run build
+
+COPY docker/entrypoints/docker-entrypoint-frontend.sh /tmp/docker-entrypoint.sh
+RUN chmod +x /tmp/docker-entrypoint.sh
+ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
