@@ -1,0 +1,61 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: {{ NAMESPACE }}
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      imagePullSecrets:
+        - name: github-registry-credentials
+      containers:
+        - name: web
+          image: "{{ WEB_IMAGE_NAME }}:{{ WEB_IMAGE_TAG }}"
+          imagePullPolicy: Always
+          workingDir: "/codebase"
+          tty: true
+          env:
+            - name: PLEASE_REDEPLOY
+              value: "{{ WEB_IMAGE_TAG }}"
+            - name: ENV
+              value: production
+          envFrom:
+            - secretRef:
+                name: vraee-frontend-env
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          ports:
+            - containerPort: 8080
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 2
+            timeoutSeconds: 1
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 2
+            timeoutSeconds: 1
+            failureThreshold: 5
+      terminationGracePeriodSeconds: 10

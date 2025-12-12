@@ -1,0 +1,19 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-skip-verify
+  namespace: {{ NAMESPACE }}
+spec:
+  insecureSkipVerify: true
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: https-redirect
+  namespace: {{ NAMESPACE }}
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true

@@ -1,0 +1,41 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: web-http-redirect-private
+  namespace: {{ NAMESPACE }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`frontend.vraee.net`)
+      kind: Rule
+      middlewares:
+        - name: https-redirect
+          namespace: {{ NAMESPACE }}
+      services:
+        - name: web-internal
+          port: 80
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: web-https-route-private
+  namespace: {{ NAMESPACE }}
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    external-dns.alpha.kubernetes.io/target: "10.233.254.0"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`frontend.vraee.net`)
+      kind: Rule
+      services:
+        - name: web-internal
+          port: 80
+  tls:
+    secretName: private-star-tls

@@ -1,0 +1,19 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: vraee-frontend-env
+  namespace: {{ NAMESPACE }}
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: default
+    kind: ClusterSecretStore
+  target:
+    name: vraee-frontend-env
+    creationPolicy: Owner
+  data:
+    - secretKey: VITE_API_URL
+      remoteRef:
+        key: vraee-frontend/dotenv
+        property: VITE_API_URL
