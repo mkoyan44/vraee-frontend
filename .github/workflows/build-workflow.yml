@@ -13,6 +13,13 @@ on:
           - "minor"
           - "major"
         default: "patch"
+      target_arch:
+        type: choice
+        description: "Target Architecture"
+        options:
+          - "amd64"
+          - "arm64"
+        default: "amd64"
   workflow_call:
     secrets:
       GH_TOKEN:
