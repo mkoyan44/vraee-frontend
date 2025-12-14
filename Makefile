@@ -242,7 +242,7 @@ install:
 .PHONY: nerdctl-web-build nerdctl-web-push sudo-web-build sudo-web-push
 nerdctl-web-build: set-version
 	@echo "$(BLUE)>>> Building web image...$(RESET)"
-	nerdctl build -f docker/dockerfiles/Dockerfile.web $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
+	nerdctl build -f docker/dockerfiles/Dockerfile.frontend $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
 	@echo "$(GREEN)✓ Web image built$(RESET)"
 
 nerdctl-web-push:
@@ -252,7 +252,7 @@ nerdctl-web-push:
 
 sudo-web-build: set-version
 	@echo "$(BLUE)>>> Building web image (sudo)...$(RESET)"
-	sudo nerdctl build -f docker/dockerfiles/Dockerfile.web $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
+	sudo nerdctl build -f docker/dockerfiles/Dockerfile.frontend $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
 	@echo "$(GREEN)✓ Web image built$(RESET)"
 
 sudo-web-push:
