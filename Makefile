@@ -70,7 +70,7 @@ export TARGET_ARCH
 # Registry Configuration
 REGISTRY_FQDN := ghcr.io
 COMPOSED_BUILD_ARGS := --build-arg TARGET_ARCH=$(TARGET_ARCH)
-WEB_IMAGE_NAME := ${REGISTRY_FQDN}/mkoyan44/console-${TARGET_ARCH}
+WEB_IMAGE_NAME := ${REGISTRY_FQDN}/${GH_OWNER}/${PROJECT_NAME}-${TARGET_ARCH}
 WEB_IMAGE_TAG := $(if $(VERSION),$(VERSION),latest)
 
 # Colors
@@ -189,7 +189,6 @@ build: vars network
 	   .
 	@echo "$(GREEN)✓ Frontend built$(RESET)"
 
-# Run
 up:
 	@echo "$(BLUE)>>> Starting frontend container...$(RESET)"
 	@nerdctl run -d --name $(PROJECT) \
@@ -210,7 +209,6 @@ down:
 	@nerdctl rm $(PROJECT) 2>/dev/null || true
 	@echo "$(GREEN)✓ Stopped$(RESET)"
 
-# Main workflow
 run: clean build up
 
 ps:
@@ -242,7 +240,7 @@ install:
 .PHONY: nerdctl-web-build nerdctl-web-push sudo-web-build sudo-web-push
 nerdctl-web-build: set-version
 	@echo "$(BLUE)>>> Building web image...$(RESET)"
-	nerdctl build -f docker/dockerfiles/Dockerfile.frontend $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
+	nerdctl build -f docker/dockerfiles/Dockerfile.web $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
 	@echo "$(GREEN)✓ Web image built$(RESET)"
 
 nerdctl-web-push:
@@ -252,7 +250,7 @@ nerdctl-web-push:
 
 sudo-web-build: set-version
 	@echo "$(BLUE)>>> Building web image (sudo)...$(RESET)"
-	sudo nerdctl build -f docker/dockerfiles/Dockerfile.frontend $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
+	sudo nerdctl build -f docker/dockerfiles/Dockerfile.web $(COMPOSED_BUILD_ARGS) -t ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG} .
 	@echo "$(GREEN)✓ Web image built$(RESET)"
 
 sudo-web-push:
