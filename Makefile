@@ -41,10 +41,10 @@ PACKAGE_JSON := ${REPO_ROOT}/package.json
 
 # Check if .env file exists and is not empty
 ifeq (,$(wildcard $(ENV_FILE)))
-	$(error ".env file not found at $(ENV_FILE)")
+$(error ".env file not found at $(ENV_FILE)")
 endif
 ifeq ($(shell test -s $(ENV_FILE) && echo non-empty || echo empty), empty)
-	$(error ".env file is empty at $(ENV_FILE)")
+$(error ".env file is empty at $(ENV_FILE)")
 endif
 
 include $(ENV_FILE)
