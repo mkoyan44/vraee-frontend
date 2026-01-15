@@ -38,4 +38,4 @@ spec:
         - name: web-internal
           port: 80
   tls:
-    secretName: private-star-tls
+    secretName: public-star-tls
