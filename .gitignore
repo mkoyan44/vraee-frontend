@@ -5,6 +5,11 @@
 /backend/node_modules
 /backend/build
 
+out/
+
+
+.next/
+
 # Logs
 /backend/logs
 /backend/*.log

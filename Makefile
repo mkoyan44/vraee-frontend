@@ -41,10 +41,10 @@ PACKAGE_JSON := ${REPO_ROOT}/package.json
 
 # Check if .env file exists and is not empty
 ifeq (,$(wildcard $(ENV_FILE)))
-	$(error ".env file not found at $(ENV_FILE)")
+$(error ".env file not found at $(ENV_FILE)")
 endif
 ifeq ($(shell test -s $(ENV_FILE) && echo non-empty || echo empty), empty)
-	$(error ".env file is empty at $(ENV_FILE)")
+$(error ".env file is empty at $(ENV_FILE)")
 endif
 
 include $(ENV_FILE)
@@ -70,7 +70,7 @@ export TARGET_ARCH
 # Registry Configuration
 REGISTRY_FQDN := ghcr.io
 COMPOSED_BUILD_ARGS := --build-arg TARGET_ARCH=$(TARGET_ARCH)
-WEB_IMAGE_NAME := ${REGISTRY_FQDN}/mkoyan44/console-${TARGET_ARCH}
+WEB_IMAGE_NAME := ${REGISTRY_FQDN}/${GH_OWNER}/${PROJECT_NAME}-${TARGET_ARCH}
 WEB_IMAGE_TAG := $(if $(VERSION),$(VERSION),latest)
 
 # Colors
@@ -189,7 +189,6 @@ build: vars network
 	   .
 	@echo "$(GREEN)✓ Frontend built$(RESET)"
 
-# Run
 up:
 	@echo "$(BLUE)>>> Starting frontend container...$(RESET)"
 	@nerdctl run -d --name $(PROJECT) \
@@ -210,7 +209,6 @@ down:
 	@nerdctl rm $(PROJECT) 2>/dev/null || true
 	@echo "$(GREEN)✓ Stopped$(RESET)"
 
-# Main workflow
 run: clean build up
 
 ps:
