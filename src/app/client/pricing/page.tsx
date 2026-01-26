@@ -40,11 +40,7 @@ export const generateMetadata = (): Metadata => {
 };
 
 const Page: React.FC = () => {
-    return (
-        <div className="scheme-light-3 background">
-            <Pricing />
-        </div>
-    );
+    return <Pricing />;
 };
 
 export default Page;
