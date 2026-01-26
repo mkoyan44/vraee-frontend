@@ -138,7 +138,7 @@ const Header: React.FC = () => {
                                                 className="btn-primary"
                                                 style={{ marginTop: '16px' }}
                                             >
-                                                Open Project
+                                                Create Project
                                             </button>
                                         </>
                                     )
@@ -175,7 +175,7 @@ const Header: React.FC = () => {
                             }}
                             className="btn-primary"
                         >
-                            Open Project
+                            Create Project
                         </button>
                     </div>
                 </div>
