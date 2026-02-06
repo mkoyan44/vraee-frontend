@@ -20,11 +20,20 @@
     }
     li {
       flex: 0 0 33%;
-      padding: 1rem;
+      padding: 0.75rem 0.5rem;
       cursor: pointer;
       transition: all .2s linear;
       text-align: center;
       position: relative;
+      font-size: 0.75rem;
+      @media screen and (min-width: 480px) {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.875rem;
+      }
+      @media screen and (min-width: 768px) {
+        padding: 1rem;
+        font-size: 1rem;
+      }
       &:not(.active):hover {
         //transform: scale(1.05);
         &:before {
@@ -58,21 +67,53 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column-reverse;
-      gap: 3rem;  /* 48/16 */
+      gap: 2rem;  /* 32/16 */
       width: 100%;
+      @media screen and (min-width: 768px) {
+        gap: 2.5rem;
+      }
       @media screen and (min-width: 1024px) {
         flex-direction:row;
+        gap: 3rem;
       }
     }
   }
 
   .tab-content {
-    max-width: 30rem; /* 480/16 */
+    max-width: 100%;
+    padding: 0 0.5rem;
+    @media screen and (min-width: 768px) {
+      max-width: 30rem; /* 480/16 */
+      padding: 0;
+    }
   }
   .tab-media {
-    max-width: 725px;
+    flex: 1;
+    max-width: 100%;
     width: 100%;
-    object-fit: contain;
-    object-position: center;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(var(--color-bg), 0.5);
+    @media screen and (min-width: 768px) {
+      min-height: 400px;
+      max-width: 600px;
+    }
+    @media screen and (min-width: 1024px) {
+      min-height: 500px;
+      max-width: 725px;
+    }
+    .tab-image {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 8px;
+    }
   }
 }

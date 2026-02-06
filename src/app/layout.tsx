@@ -92,13 +92,13 @@ export default function RootLayout({children}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
         <head>
             {/* Favicon and app icons */}
-            <link rel="icon" href="/favicon.ico" sizes="any" />
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/v-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/v-16x16.png" />
             <link rel="icon" type="image/png" sizes="64x64" href="/icons/v-64x64.png" />
+            <link rel="shortcut icon" type="image/png" href="/icons/v-32x32.png" />
 
             {/* Web app manifest */}
             <link rel="manifest" href="/site.webmanifest" />
@@ -108,6 +108,29 @@ export default function RootLayout({children}: Readonly<{
             <meta name="msapplication-TileImage" content="/icons/v-32x32.png" />
             <meta name="theme-color" content="#16161a" />
 
+            {/* Theme initialization script - prevents flash of unstyled content */}
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        (function() {
+                            try {
+                                var theme = localStorage.getItem('theme');
+                                if (theme) {
+                                    var themeData = JSON.parse(theme);
+                                    var currentTheme = themeData && themeData.state && themeData.state.theme ? themeData.state.theme : 'light';
+                                } else {
+                                    var currentTheme = 'light';
+                                }
+                                document.documentElement.classList.add('scheme-' + currentTheme);
+                                document.documentElement.setAttribute('data-theme', currentTheme);
+                            } catch (e) {
+                                document.documentElement.classList.add('scheme-light');
+                                document.documentElement.setAttribute('data-theme', 'light');
+                            }
+                        })();
+                    `
+                }}
+            />
             {/* JSON-LD Structured Data */}
             <script
                 type="application/ld+json"

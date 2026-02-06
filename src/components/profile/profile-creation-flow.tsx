@@ -65,7 +65,7 @@ const ProfileCreationFlow: React.FC<ProfileCreationFlowProps> = ({ userData }) =
     const handleStep3Complete = () => {
         setError('');
         // Redirect to main dashboard or profile page
-        router.push('/client/dashboard'); // or wherever the main portal is
+        router.push('/app/projects'); // or wherever the main portal is
     };
 
     const handleStep3Back = () => {

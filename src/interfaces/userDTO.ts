@@ -2,6 +2,7 @@ export interface UserDTO {
     id: number;
     email: string;
     role: string;
+    status?: string;
     isProfileComplete: boolean;
     fullName?: string;
     companyName?: string;

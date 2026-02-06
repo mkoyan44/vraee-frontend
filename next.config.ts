@@ -2,23 +2,14 @@
 const nextConfig = {
     async rewrites() {
         return [
-            // Сначала проверяем маршруты, которые НЕ должны переписываться
+            // Keep admin routes as-is
             {
                 source: '/admin_hftasd32cdv/:path*',
-                destination: '/admin_hftasd32cdv/:path*', // Оставляем как есть
+                destination: '/admin_hftasd32cdv/:path*',
             },
             {
                 source: '/api/:path*',
-                destination: '/api/:path*', // Оставляем как есть
-            },
-            {
-                source: '/',
-                destination: '/client',
-            },
-            // Все остальные пути переписываем в client без префикса
-            {
-                source: '/:path((?!admin_hftasd32cdv).*)',
-                destination: '/client/:path',
+                destination: '/api/:path*',
             },
         ];
     },

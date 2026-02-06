@@ -7,26 +7,38 @@
 
   .header {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 3rem;
+      padding: 0;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 3.5rem;
+    }
 
     h2 {
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: -0.015em;
       line-height: 1.3;
       color: rgb(var(--color-title));
-
-      @media screen and (min-width: 768px) {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
+      padding: 0 1rem;
+      @media screen and (min-width: 480px) {
+        font-size: 1.75rem;
+        padding: 0;
       }
-
+      @media screen and (min-width: 768px) {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
       @media screen and (min-width: 1024px) {
         font-size: 3rem;
+        margin-bottom: 2rem;
         letter-spacing: -0.02em;
       }
     }
@@ -75,11 +87,16 @@
 
   .programs_cards_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     margin: 0 auto;
     max-width: 1200px;
-
+    padding: 0 1rem;
+    @media screen and (min-width: 480px) {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 0;
+    }
     @media screen and (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;

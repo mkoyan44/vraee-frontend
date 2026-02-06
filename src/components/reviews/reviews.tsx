@@ -57,8 +57,8 @@ const Reviews: React.FC = () => {
                 <h2>Reviews from our clients</h2>
                 <div className={styles.wrapper}>
                     <div className={styles.navigation_wrapper}>
-                        <button ref={prevRef} className={`${styles.nav_btn} swiper-button-prev`}/>
-                        <button ref={nextRef} className={`${styles.nav_btn} swiper-button-next`}/>
+                        <button ref={prevRef} className={`${styles.nav_btn} swiper-button-prev`} aria-label="Previous review" />
+                        <button ref={nextRef} className={`${styles.nav_btn} swiper-button-next`} aria-label="Next review" />
                     </div>
                     <Swiper
                         modules={[Navigation, Pagination]}

@@ -12,21 +12,35 @@
 
   h2 {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: rgb(var(--color-title));
+    padding: 0 1rem;
+    @media screen and (min-width: 768px) {
+      font-size: 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      padding: 0;
+    }
   }
 
   .review_card {
     background: rgba(var(--color-bg), 0.95);
     border: 1px solid rgba(var(--color-border), 0.2);
-    border-radius: 1rem;
-    padding: 2rem;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
     height: 100%;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    @media screen and (min-width: 768px) {
+      padding: 2rem;
+      border-radius: 1rem;
+    }
 
     &:hover {
       transform: translateY(-2px);

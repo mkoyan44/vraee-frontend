@@ -6,7 +6,7 @@ export interface PricingTier {
     description: string;
     features: string[];
     popular?: boolean;
-    category: '3D CAD Modeling' | '3D Rendering & Animation' | 'Animation & Video' | 'Professional Services';
+    category: '3D CAD Modeling' | '3D Rendering & Animation' | 'Professional Services';
     turnaroundTime: string;
     revisions?: string;
     includes?: string[];
@@ -101,24 +101,28 @@ export const pricingTiers: PricingTier[] = [
     {
         id: 'render-ecom-starter',
         name: 'E-com Starter Pack',
-        price: '$70',
-        description: '3 professional product views optimized for e-commerce platforms. High-resolution white background renders with standard material setup for immediate catalog integration.',
+        price: '$90',
+        description: 'Rendering service for one piece of jewelry. Includes 3 color variations, 3 product views, and 3 360° animations. Price is for rendering only. CAD modeling is priced separately.',
         category: '3D Rendering & Animation',
         turnaroundTime: '2–4 business days',
         revisions: '1 free revision included',
         features: [
-            '3 high-resolution product views',
-            '4K resolution images (2000x2000px)',
-            'White/clean backgrounds',
-            'Standard jewelry materials',
-            'Professional lighting',
-            'High-resolution PNG/JPEG',
-            'Commercial usage rights'
+            '3 color variations',
+            '3 product views',
+            '3 360° animations',
+            'Rendering service only'
+        ],
+        includes: [
+            '3 color variations',
+            '3 product views',
+            '3 360° animations',
+            'Rendering service only'
         ],
         notes: [
+            'Price is for one piece of jewelry',
+            'Rendering service only (CAD priced separately)',
             'Perfect for product listings',
-            'Watermark-free delivery',
-            'Consistent style across views'
+            'Watermark-free delivery'
         ],
         serviceType: '3D Rendering & Animation',
         serviceDetail: 'Still Shots (White Background, 3 Views)'
@@ -126,26 +130,29 @@ export const pricingTiers: PricingTier[] = [
     {
         id: 'render-ecom-pro',
         name: 'E-com Professional Pack',
-        price: '$350',
-        description: '5 comprehensive product views with lifestyle backgrounds. Enhanced material simulation and advanced lighting for premium e-commerce presentation.',
+        price: '$150',
+        description: 'Rendering service for one piece of jewelry. Includes 4-5 product views with lifestyle backgrounds and custom animation. Price is for rendering only. CAD modeling is priced separately.',
         category: '3D Rendering & Animation',
         turnaroundTime: '3–5 business days',
-        revisions: '2 free revisions included',
+        revisions: '2-3 free revisions included',
         popular: true,
         features: [
-            '5 professional product views',
-            '6K+ ultra-high resolution',
-            'Lifestyle background options',
-            'Complex metal materials',
-            'Gemstone dispersion effects',
-            'Advanced lighting setups',
-            'Professional post-processing',
-            'Commercial usage rights'
+            '4-5 product views',
+            'Custom animation',
+            'Lifestyle backgrounds',
+            'Rendering service only'
+        ],
+        includes: [
+            '4-5 product views',
+            'Custom animation',
+            'Lifestyle backgrounds',
+            'Rendering service only'
         ],
         notes: [
-            'For premium product catalogs',
-            'Multiple composition options',
-            'Advanced material shaders'
+            'Price is for one piece of jewelry',
+            'Rendering service only (CAD priced separately)',
+            'Perfect for premium product catalogs',
+            'Watermark-free delivery'
         ],
         serviceType: '3D Rendering & Animation',
         serviceDetail: 'Lifestyle Packshot (Complex Scene, 5 Views)'
@@ -173,94 +180,6 @@ export const pricingTiers: PricingTier[] = [
         ],
         serviceType: '3D Rendering & Animation',
         serviceDetail: 'Still Shots (White Background, 3 Views)'
-    },
-
-    // Animation & Video
-    {
-        id: 'anim-360',
-        name: '360° Product Rotation',
-        price: '$70–$120',
-        description: 'Smooth 360° rotation on white/simple background. Professional turntable animation optimized for e-commerce product pages and digital marketing. 5-10 second loop.',
-        category: 'Animation & Video',
-        turnaroundTime: '3–5 business days',
-        revisions: '1 free revision included',
-        features: [
-            '300° smooth rotation',
-            'Clean backgrounds',
-            'HD video export (1080p)',
-            'Multiple rotation speeds',
-            'MP4 format optimized',
-            'Commercial usage rights',
-            'Social media ready'
-        ],
-        includes: [
-            '5–10 second duration'
-        ],
-        notes: [
-            'E-commerce essential',
-            'Fast turnaround',
-            'SEO-friendly video format'
-        ],
-        serviceType: '3D Rendering & Animation',
-        serviceDetail: '360° Turntable Animation (10-15 sec)'
-    },
-    {
-        id: 'anim-cinematic',
-        name: 'Cinematic Jewelry Showcase',
-        price: '$300–$550',
-        description: 'Dynamic camera movements with focus on gemstone details and metal reflections. Premium marketing content with slow-motion sparkle effects and professional transitions.',
-        category: 'Animation & Video',
-        turnaroundTime: '5–8 business days',
-        revisions: '2 free revisions included',
-        features: [
-            'Dynamic camera movements',
-            'Focus on gemstone details',
-            'Slow-motion sparkle effects',
-            'Professional transitions',
-            '4K video export',
-            'Custom music integration',
-            'Background environments',
-            'Commercial usage rights'
-        ],
-        includes: [
-            '15–30 second duration'
-        ],
-        notes: [
-            'Premium marketing content',
-            'Storytelling approach',
-            'Attention-grabbing effects'
-        ],
-        serviceType: '3D Rendering & Animation',
-        serviceDetail: 'On-Body Video Animation'
-    },
-    {
-        id: 'anim-collection',
-        name: 'Full Collection Video',
-        price: 'Custom Quote',
-        description: 'Comprehensive animation of multiple pieces with complex transitions and storytelling elements. Designed for brand presentations and comprehensive marketing campaigns.',
-        category: 'Animation & Video',
-        turnaroundTime: '10–14 business days',
-        revisions: '3 free revisions included',
-        features: [
-            'Multiple jewelry pieces',
-            'Complex transition effects',
-            'Brand storytelling',
-            'Professional voiceover prep',
-            '4K video production',
-            'Background music integration',
-            'Custom branding elements',
-            'Complete usage rights'
-        ],
-        includes: [
-            '30+ seconds duration'
-        ],
-        notes: [
-            'Brand presentation videos',
-            'Comprehensive marketing content',
-            'Complex production requirements'
-        ],
-        serviceType: '3D Rendering & Animation',
-        serviceDetail: 'On-Body Video Animation'
     },
 
     // Professional Services

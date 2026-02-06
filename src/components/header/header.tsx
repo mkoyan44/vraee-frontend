@@ -10,8 +10,6 @@ import {usePathname, useRouter} from 'next/navigation';
 import Icon from "@/components/icon/icon";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { useUserStore, useThemeStore } from "@/store/useUserStore";
-import { logout } from "@/services/api";
-import ProjectCreationModal from "@/components/modal/project-creation-modal";
 
 const menu: { label: string; href: string }[] = [
     {
@@ -48,23 +46,31 @@ const Header: React.FC = () => {
     const pathname = usePathname();
     const router = useRouter();
 
-    const { role, userData } = useUserStore();
+    const { role } = useUserStore();
     const { theme } = useThemeStore();
     const isLoggedIn = !!role;
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const { isLaptop} = useBreakpoint();
     const hasMounted = useHasMounted();
 
-    const handleLogout = async () => {
-        try {
-            await logout();
-            router.push('/');
-        } catch (error) {
-            console.error('Logout failed:', error);
+    // Prevent hydration mismatch by ensuring consistent initial render
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // If user is logged in, redirect to vraee-app
+    React.useEffect(() => {
+        if (isLoggedIn) {
+            const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3001';
+            window.location.href = `${appUrl}/projects`;
         }
-    };
+    }, [isLoggedIn]);
+
+    // Use consistent theme for SSR (default to light)
+    const currentTheme = mounted ? theme : 'light';
+    const logoSrc = currentTheme === 'dark' ? '/vraee-logo-dark.svg' : '/vraee-logo-light.svg';
 
     return (
         <header className={`${styles.header} background`}>
@@ -73,11 +79,25 @@ const Header: React.FC = () => {
                     <button
                         className={`${styles.burger}`}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
+                        suppressHydrationWarning
                     >
                         <span></span><span></span><span></span>
                     </button>
-                    <Link href={'/'} className={styles.logo}>
-                        <Image src={theme === 'dark' ? '/vraee-logo-dark.svg' : '/vraee-logo-light.svg'} alt={''} width={'200'} height={'75'}/>
+                    <Link 
+                        href={'/'} 
+                        className={styles.logo}
+                        onClick={() => setIsMenuOpen(false)}
+                        aria-label="Vraee Jewelry Studio Home"
+                    >
+                        <Image 
+                            src={logoSrc} 
+                            alt="Vraee Jewelry Studio Logo" 
+                            width={'200'} 
+                            height={'75'}
+                            suppressHydrationWarning
+                        />
                     </Link>
                     <nav className={`${styles.nav} ${isLaptop && isMenuOpen ? styles.open : ''}`}>
                         <ul className={styles.menu}>
@@ -88,7 +108,9 @@ const Header: React.FC = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className={`${styles.menu_link} ${isActive ? styles.current : ''}`}>
+                                                className={`${styles.menu_link} ${isActive ? styles.current : ''}`}
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
                                                 <span>
                                                     {item.label}
                                                 </span>
@@ -106,40 +128,19 @@ const Header: React.FC = () => {
                                             <button
                                                 className={`${styles.close}`}
                                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                                aria-label="Close menu"
                                             >
                                                 <Icon icon={'close'}/>
                                             </button>
                                             <div className={styles.nav_buttons}>
-                                                {isLoggedIn ? (
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                                                        <Link href={'/profile'} className={`${styles.header_link} hovered_link`}>
-                                                            {userData?.fullName ? `Hi, ${userData.fullName}` : 'Profile'}
-                                                        </Link>
-                                                        <button
-                                                            onClick={handleLogout}
-                                                            className={`${styles.header_link} hovered_link`}
-                                                            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-                                                        >
-                                                            Logout
-                                                        </button>
-                                                    </div>
-                                                ) : (
-                                                    <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
-                                                )}
+                                                <Link 
+                                                    href={'/login'} 
+                                                    className={`${styles.header_link} hovered_link`}
+                                                    onClick={() => setIsMenuOpen(false)}
+                                                >
+                                                    Sign In
+                                                </Link>
                                             </div>
-                                            <button
-                                                onClick={() => {
-                                                    if (isLoggedIn) {
-                                                        setIsModalOpen(true);
-                                                    } else {
-                                                        router.push('/login');
-                                                    }
-                                                }}
-                                                className="btn-primary"
-                                                style={{ marginTop: '16px' }}
-                                            >
-                                                Create Project
-                                            </button>
                                         </>
                                     )
                                 }
@@ -149,41 +150,10 @@ const Header: React.FC = () => {
                     </nav>
                     <div className={styles.buttons}>
                         <ThemeToggle />
-                        {isLoggedIn ? (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                                <Link href={'/profile'} className={`${styles.header_link} hovered_link`}>
-                                    {userData?.fullName ? `Hi, ${userData.fullName}` : 'Profile'}
-                                </Link>
-                                <button
-                                    onClick={handleLogout}
-                                    className={`${styles.header_link} hovered_link`}
-                                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-                                >
-                                    Logout
-                                </button>
-                            </div>
-                        ) : (
-                            <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
-                        )}
-                        <button
-                            onClick={() => {
-                                if (isLoggedIn) {
-                                    setIsModalOpen(true);
-                                } else {
-                                    router.push('/login');
-                                }
-                            }}
-                            className="btn-primary"
-                        >
-                            Create Project
-                        </button>
+                        <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
                     </div>
                 </div>
             </div>
-            <ProjectCreationModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            />
         </header>
     )
 }

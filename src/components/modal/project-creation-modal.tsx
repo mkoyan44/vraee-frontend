@@ -101,7 +101,7 @@ const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({
                 setError('You must be logged in to create a project.');
                 setTimeout(() => {
                     onClose();
-                    router.push('/client/login');
+                    router.push('/login');
                 }, 2000);
                 return;
             }
@@ -259,7 +259,7 @@ const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({
             setError('You must be logged in to create a project. Redirecting to login...');
             setTimeout(() => {
                 onClose();
-                router.push('/client/login');
+                router.push('/login');
             }, 2000);
             return;
         }
@@ -312,7 +312,7 @@ const ProjectCreationModal: React.FC<ProjectCreationModalProps> = ({
                 setError('Your session has expired. Please log in again.');
                 setTimeout(() => {
                     onClose();
-                    router.push('/client/login');
+                    router.push('/login');
                 }, 2000);
             } else if (err.response?.status === 403) {
                 setError('You do not have permission to create projects. Please contact support.');

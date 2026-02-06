@@ -85,14 +85,14 @@ const Faq: React.FC = () => {
                 <div className={styles.wrapper}>
                     {faqs.map((item) => (
                         <div key={item.id} className={`${styles.item} scheme-light-2 background`}>
-                            <h4
+                            <h3
                                 className={`${styles.item_title} h3 ${openId == item.id ? styles.active : ''}`}
                                 onClick={() => toggleFaq(item.id)}
                                 style={{cursor: 'pointer'}}
                             >
                                 <span>{item.title}</span>
                                 <Icon icon="arrow_right"/>
-                            </h4>
+                            </h3>
                             <div
                                 ref={(el) => {
                                     refs.current.set(item.id, el)

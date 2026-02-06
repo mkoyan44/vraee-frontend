@@ -15,42 +15,42 @@ interface SoftwareProgram {
 const programs: SoftwareProgram[] = [
     {
         name: "Blender",
-        url: "/client/blender",
+        url: "/blender",
         icon: "/software/blender.svg",
         category: "3D Modeling & Rendering",
         description: "Open-source 3D creation suite used for comprehensive modeling, sculpting, animation, texturing, and rendering. We leverage its full 3D pipeline for cost-effective, flexible project workflows and rapid prototyping of complex scenes."
     },
     {
         name: "Cinema 4D",
-        url: "/client/cinema-4d",
+        url: "/cinema-4d",
         icon: "/software/cinema-4d.svg",
         category: "Motion Graphics",
         description: "User-friendly 3D modeling, animation, and rendering software with strong motion graphics capabilities. Perfect for our interior design visualizations and architectural presentations with animated elements."
     },
     {
         name: "ZBrush",
-        url: "/client/zbrush",
+        url: "/zbrush",
         icon: "/software/zbrush.svg",
         category: "Digital Sculpting",
         description: "Digital sculpting and painting software designed for organic modeling and texturing. Critical in our workflow for creating detailed character designs, organic shapes, and highly realistic surface details."
     },
     {
         name: "After Effects",
-        url: "/client/after-effects",
+        url: "/after-effects",
         icon: "/software/after-effects.svg",
         category: "Visual Effects",
         description: "Motion graphics and visual effects software used for compositing, animation, and adding sophisticated effects to our renderings. Key for creating dynamic presentations and video content for client presentations."
     },
     {
         name: "Rhino",
-        url: "/client/rhino",
+        url: "/rhino",
         icon: "/software/rhino.svg",
         category: "Architectural Design",
         description: "Precision 3D modeling tool used for architectural and product design with mathematical accuracy. Essential for creating parametric models and working with complex curved surfaces in our jewelry and product visualization projects."
     },
     {
         name: "Matrix",
-        url: "/client/matrix",
+        url: "/matrix",
         icon: "/software/matrix.svg",
         category: "In-House Tools",
         description: "Our proprietary VFX orchestration platform for distributed rendering, asset management, and collaborative production workflows. Enables seamless coordination across our entire creative pipeline."
@@ -58,7 +58,7 @@ const programs: SoftwareProgram[] = [
 ];
 
 const ProgramsShowcase: React.FC = () => {
-    const isInternalLink = (url: string) => url.startsWith('/client/');
+    const isInternalLink = (url: string) => url.startsWith('/') && !url.startsWith('http');
 
     return (
         <div className={styles.programs_cards_grid}>
@@ -101,6 +101,7 @@ const ProgramsShowcase: React.FC = () => {
                         href={program.url}
                         className={styles.program_card_link}
                         title={`Learn about our ${program.name} workflow`}
+                        aria-label={`Learn about our ${program.name} workflow`}
                     >
                         {cardElement}
                     </Link>
@@ -112,6 +113,7 @@ const ProgramsShowcase: React.FC = () => {
                         rel="noopener noreferrer"
                         className={styles.program_card_link}
                         title={`Visit ${program.name} website`}
+                        aria-label={`Visit ${program.name} website (opens in new tab)`}
                     >
                         {cardElement}
                     </a>

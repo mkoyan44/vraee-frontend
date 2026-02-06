@@ -2,7 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "@/assets/styles/client/components/services-tabs.module.scss";
 import Link from "next/link";
-import { PenTool, Box, Image, Play, Sparkles, FileText } from "lucide-react";
+import Image from "next/image";
+import { PenTool, Box, Image as ImageIcon, Play, Sparkles, FileText } from "lucide-react";
 
 const tabs = [
     {
@@ -11,10 +12,10 @@ const tabs = [
         "title":"Professional Jewelry Digital Sculpting",
         "description":"<p>Transform your jewelry vision into stunning digital sculptures that bring your ideas to life in three dimensions. Our expert digital sculptors specialize in organic jewelry forms, creating detailed 3D models that capture artistic beauty and technical precision.</p><ul><li>Organic jewelry sculpting and modeling</li><li>Concept visualization in 3D space</li><li>Gemstone and metal sculptural details</li><li>Multiple design variations and artistic interpretations</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about Jewelry Digital Sculpting",
             "href":"/services/sketching",
         },
-        "image": "/services-jewelry-sketches.png",
+        "image": "/portfolio/sculpting/Yellow_Top_000232300.jpg",
     },
     {
         "header": "MODELING",
@@ -22,21 +23,21 @@ const tabs = [
         "title":"Precision Jewelry 3D Modeling",
         "description":"<p>Transform your jewelry sketches into accurate, manufacturing-ready 3D models. Our specialized team ensures every curve, prong, and setting is anatomically precise, creating models trusted by master jewelers worldwide.</p><ul><li>Anatomically precise ring and pendant modeling</li><li>Gemstone setting and prong configuration</li><li>Metal weight calculations and adjustment</li><li>Production-ready CAD files for casting</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about Precision Jewelry 3D Modeling",
             "href":"/services/modeling",
         },
-        "image": "/services-3d-modeling.png",
+        "image": "/portfolio/sculpting/White_Top_01212210000.jpg",
     },
     {
         "header": "Rendering",
-        "icon": Image,
+        "icon": ImageIcon,
         "title":"E-commerce Jewelry Visualization",
         "description":"<p>Create stunning jewelry photography that converts browsers to buyers. Our photorealistic renderings feature accurate material simulation, professional studio lighting, and 360° views that showcase your pieces perfectly on any sales platform.</p><ul><li>Lifestyle jewelry photography rendering</li><li>E-commerce product image sets (3-8 angles)</li><li>Accurate metal and gemstone material simulation</li><li>Professional studio lighting and composition</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about E-commerce Jewelry Visualization",
             "href":"/services/rendering",
         },
-        "image": "/services-jewelry-rendering.png",
+        "image": "/portfolio/rendring/shatlavna.jpg",
     },
     {
         "header": "Animation",
@@ -44,10 +45,10 @@ const tabs = [
         "title":"Jewelry Motion & Presentation",
         "description":"<p>Showcase your jewelry designs with cinematic quality. Our animations highlight gemstone sparkle, metal reflections, and the intricate details that make each piece unique, perfect for websites, presentations, and social media.</p><ul><li>Elegant jewelry turntable presentations</li><li>Gemstone sparkle and light animations</li><li>Metal texture and finish visualizations</li><li>Cinematic jewelry showcase videos</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about Jewelry Motion & Presentation",
             "href":"/services/animation",
         },
-        "image": "/services-jewelry-animation.png",
+        "image": "/portfolio/rendring/anim1.jpg",
     },
     {
         "header": "3D Jewelry Design",
@@ -55,10 +56,10 @@ const tabs = [
         "title":"Creative 3D Jewelry Design Process",
         "description":"<p>Experience our complete creative 3D digital design process, from initial concepts to fully realized CAD development and intricate detail modeling that pushes the boundaries of jewelry artistry.</p><ul><li>Complete 3D digital design workflow</li><li>CAD development and prototyping</li><li>Detailed surface and feature modeling</li><li>Complex CAD structure creation</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about Creative 3D Jewelry Design",
             "href":"/services/3d-design",
         },
-        "image": "/services-3d-jewelry-design.png",
+        "image": "/portfolio/rendring/lavna1.jpg",
     },
     {
         "header": "Jewelry CAD Design",
@@ -66,10 +67,10 @@ const tabs = [
         "title":"Engineering-Level Jewelry CAD",
         "description":"<p>Engineered with precision using parametric CAD design techniques that ensure manufacturing accuracy and technical perfection in every aspect of your jewelry piece.</p><ul><li>Parametric CAD design systems</li><li>Engineering-level jewelry modeling</li><li>Technical specification views</li><li>Manufacturing-ready CAD files</li></ul>",
         "link":{
-            "label":"Learn more",
+            "label":"Learn more about Engineering-Level Jewelry CAD",
             "href":"/services/cad-design",
         },
-        "image": "/services-jewelry-cad.png",
+        "image": "/portfolio/rendring/verjna_00000.jpg",
     },
 ];
 
@@ -144,7 +145,14 @@ const ServicesTabs: React.FC = ()=> {
                                 <Link href={tab.link.href} className="btn-simple">{tab.link.label}</Link>
                             </div>
                             <div className={styles['tab-media']}>
-                                <img src={tab.image} alt={tab.header}/>
+                                <Image
+                                    src={tab.image}
+                                    alt={`${tab.header} service illustration`}
+                                    width={725}
+                                    height={600}
+                                    className={styles['tab-image']}
+                                    style={{ width: 'auto', height: 'auto', objectFit: 'contain' }}
+                                />
                             </div>
                         </div>
                     ))}

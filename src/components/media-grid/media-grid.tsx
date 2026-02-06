@@ -66,10 +66,10 @@ const MediaGrid: React.FC = () => {
                             return (
                                 <div key={item.id} className={`${styles.grid_item}`} style={{flex: `0 0 calc(${flex}% - ${space}rem)`}}>
                                     {item.type === 'image' ? (
-                                        <a href={item.image} data-fancybox="gallery" className={styles.item_wrapper}>
+                                        <a href={item.image} data-fancybox="gallery" className={styles.item_wrapper} aria-label={`View image ${item.id} in gallery`}>
                                             <Image
                                                 src={item.image}
-                                                alt=""
+                                                alt={`Jewelry portfolio image ${item.id}`}
                                                 width={400}
                                                 height={300}
                                             />
@@ -80,15 +80,16 @@ const MediaGrid: React.FC = () => {
                                             href={item.video}
                                             data-fancybox="gallery"
                                             className={styles.item_wrapper}
+                                            aria-label={`View video ${item.id} in gallery`}
                                         >
                                             <Image
                                                 src={item.image}
-                                                alt=""
+                                                alt={`Video thumbnail ${item.id}`}
                                                 width={400}
                                                 height={300}
                                             />
                                         </a>
-                                            <a href={item.video} className={`play_button`}>
+                                            <a href={item.video} className={`play_button`} aria-label={`Play video ${item.id}`}>
                                                 <Icon icon={'play'} />
                                             </a>
                                         </>

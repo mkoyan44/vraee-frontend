@@ -1,0 +1,170 @@
+.about_values {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  @media screen and (min-width: 768px) {
+    padding: 4rem 0;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+    position: relative;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 4rem;
+      padding: 0;
+    }
+  }
+
+  .title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: rgb(var(--color-title));
+    position: relative;
+    display: inline-block;
+    @media screen and (min-width: 768px) {
+      font-size: 2.25rem;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 2.5rem;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(135deg, rgb(var(--btn-primary-bg)), rgba(var(--btn-primary-bg), 0.6));
+      border-radius: 2px;
+      @media screen and (min-width: 768px) {
+        width: 80px;
+        height: 5px;
+      }
+    }
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: rgb(var(--color-text));
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    @media screen and (min-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+
+  .values_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    @media screen and (min-width: 1024px) {
+      gap: 3rem;
+    }
+  }
+
+  .value_card {
+    background: linear-gradient(135deg, rgba(var(--color-bg), 0.98) 0%, rgba(var(--color-bg), 0.95) 100%);
+    border: 1px solid rgba(var(--color-border), 0.2);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    @media screen and (min-width: 768px) {
+      padding: 2.5rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(var(--btn-primary-bg), 0.05), transparent);
+      transition: left 0.5s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      border-color: rgba(var(--btn-primary-bg), 0.4);
+
+      &::before {
+        left: 100%;
+      }
+    }
+  }
+
+  .icon_wrapper {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 1.5rem;
+      background: inherit;
+      opacity: 0;
+      filter: blur(8px);
+      transition: opacity 0.4s ease;
+    }
+
+    .value_card:hover & {
+      transform: scale(1.15) rotate(5deg);
+
+      &::after {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .card_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: rgb(var(--color-title));
+    @media screen and (min-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .card_description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgb(var(--color-text));
+    opacity: 0.8;
+    @media screen and (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
+
