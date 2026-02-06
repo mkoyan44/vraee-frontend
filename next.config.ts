@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async redirects() {
+        return [
+            { source: '/services/sketching', destination: '/services/sculpting', permanent: true },
+        ];
+    },
     async rewrites() {
         return [
             // Keep admin routes as-is

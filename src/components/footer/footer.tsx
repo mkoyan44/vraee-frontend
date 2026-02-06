@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
                 {
                     'id': '2',
                     'label': 'Jewelry Sculpting',
-                    'url': '/services/sketching',
+                    'url': '/services/sculpting',
                 },
                 {
                     'id': '3',

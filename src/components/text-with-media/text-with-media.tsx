@@ -48,8 +48,8 @@ const TextWithMedia: React.FC<TextWithMediaProps> = ({scheme = 'scheme-light-1',
         linkLabel = "Explore Our Design Tools";
     }
 
-    // Custom content for sketching/sculpting
-    if (serviceSlug === 'sketching') {
+    // Custom content for sculpting
+    if (serviceSlug === 'sculpting') {
         title = "Digital Sculpting Software";
         description = "<p>Our digital sculptors use ZBrush and Blender to create organic, lifelike forms that capture the essence of your jewelry vision. These industry-standard tools enable us to create detailed 3D models with precise anatomy and flow.</p>";
         linkHref = "/client/programs-we-use";

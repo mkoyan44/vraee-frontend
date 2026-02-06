@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
 import { submitContact } from '@/services/api';
-import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import styles from '@/assets/styles/client/components/contact.module.scss';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -94,162 +93,110 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-3">
-            <Label
-              htmlFor="name"
-              className="text-lg font-semibold"
-              style={{ color: 'rgb(var(--color-title))' }}
-            >
-              Full Name *
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              required
-              disabled={isSubmitting}
-              className="h-12 text-lg border-2 focus:border-rgb(var(--btn-primary-bg)) transition-colors"
-              style={{
-                backgroundColor: 'rgba(var(--color-bg), 0.8)',
-                borderColor: 'rgb(var(--color-border))',
-                color: 'rgb(var(--color-text))'
-              }}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <Label
-              htmlFor="email"
-              className="text-lg font-semibold"
-              style={{ color: 'rgb(var(--color-title))' }}
-            >
-              Email Address *
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="your@email.com"
-              required
-              disabled={isSubmitting}
-              className="h-12 text-lg border-2 focus:border-rgb(var(--btn-primary-bg)) transition-colors"
-              style={{
-                backgroundColor: 'rgba(var(--color-bg), 0.8)',
-                borderColor: 'rgb(var(--color-border))',
-                color: 'rgb(var(--color-text))'
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <Label
-            htmlFor="company"
-            className="text-lg font-semibold"
-            style={{ color: 'rgb(var(--color-title))' }}
-          >
-            Company Name
+    <form onSubmit={handleSubmit} className={styles.form_inner}>
+      <div className={styles.form_row}>
+        <div className={styles.form_field}>
+          <Label htmlFor="name" className={styles.form_field_label}>
+            Full Name *
           </Label>
           <Input
-            id="company"
-            name="company"
+            id="name"
+            name="name"
             type="text"
-            value={formData.company}
+            value={formData.name}
             onChange={handleChange}
-            placeholder="Your company or organization (optional)"
-            disabled={isSubmitting}
-            className="h-12 text-lg border-2 focus:border-rgb(var(--btn-primary-bg)) transition-colors"
-            style={{
-              backgroundColor: 'rgba(var(--color-bg), 0.8)',
-              borderColor: 'rgb(var(--color-border))',
-              color: 'rgb(var(--color-text))'
-            }}
-          />
-        </div>
-
-        <div className="space-y-3">
-          <Label
-            htmlFor="message"
-            className="text-lg font-semibold"
-            style={{ color: 'rgb(var(--color-title))' }}
-          >
-            Project Details *
-          </Label>
-          <Textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Tell us about your project, timeline, budget, and any specific requirements..."
-            rows={6}
+            placeholder="Enter your full name"
             required
             disabled={isSubmitting}
-            className="text-lg border-2 focus:border-rgb(var(--btn-primary-bg)) transition-colors resize-none"
-            style={{
-              backgroundColor: 'rgba(var(--color-bg), 0.8)',
-              borderColor: 'rgb(var(--color-border))',
-              color: 'rgb(var(--color-text))'
-            }}
+            className={styles.form_field_input}
           />
         </div>
-
-        {/* Status Message */}
-        {submitStatus.message && (
-          <div
-            className={`p-6 rounded-xl border-2 flex items-center gap-4 shadow-lg ${
-              submitStatus.type === 'success'
-                ? 'bg-green-50 border-green-200'
-                : 'bg-red-50 border-red-200'
-            }`}
-          >
-            <div className={`p-2 rounded-full ${
-              submitStatus.type === 'success' ? 'bg-green-100' : 'bg-red-100'
-            }`}>
-              {submitStatus.type === 'success' ? (
-                <CheckCircle className="h-6 w-6 text-green-600" />
-              ) : (
-                <AlertCircle className="h-6 w-6 text-red-600" />
-              )}
-            </div>
-            <p
-              className={`text-lg font-medium ${
-                submitStatus.type === 'success' ? 'text-green-800' : 'text-red-800'
-              }`}
-            >
-              {submitStatus.message}
-            </p>
-          </div>
-        )}
-
-        <div className="text-center">
-          <Button
-            type="submit"
+        <div className={styles.form_field}>
+          <Label htmlFor="email" className={styles.form_field_label}>
+            Email Address *
+          </Label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="your@email.com"
+            required
             disabled={isSubmitting}
-            className="px-12 py-4 text-lg font-semibold btn-primary hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            {isSubmitting ? (
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Sending Message...</span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-3">
-                <Send className="h-5 w-5" />
-                <span>Send Message</span>
-              </div>
-            )}
-          </Button>
+            className={styles.form_field_input}
+          />
         </div>
-      </form>
-    </div>
+      </div>
+
+      <div className={styles.form_field}>
+        <Label htmlFor="company" className={styles.form_field_label}>
+          Company Name
+        </Label>
+        <Input
+          id="company"
+          name="company"
+          type="text"
+          value={formData.company}
+          onChange={handleChange}
+          placeholder="Your company or organization (optional)"
+          disabled={isSubmitting}
+          className={styles.form_field_input}
+        />
+      </div>
+
+      <div className={styles.form_field}>
+        <Label htmlFor="message" className={styles.form_field_label}>
+          Project Details *
+        </Label>
+        <Textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Tell us about your project, timeline, budget, and any specific requirements..."
+          rows={6}
+          required
+          disabled={isSubmitting}
+          className={`${styles.form_field_input} ${styles.form_field_textarea}`}
+        />
+      </div>
+
+      {submitStatus.message && (
+        <div
+          className={`${styles.form_status} ${
+            submitStatus.type === 'success' ? styles.form_status_success : styles.form_status_error
+          }`}
+        >
+          {submitStatus.type === 'success' ? (
+            <CheckCircle className="w-5 h-5 flex-shrink-0" aria-hidden />
+          ) : (
+            <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden />
+          )}
+          <p className="font-medium text-sm">{submitStatus.message}</p>
+        </div>
+      )}
+
+      <div className={styles.form_actions}>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={styles.form_submit_btn}
+        >
+          {isSubmitting ? (
+            <>
+              <span className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="w-5 h-5" aria-hidden />
+              Send Message
+            </>
+          )}
+        </button>
+      </div>
+    </form>
   );
 };
 

@@ -64,13 +64,11 @@ const ProgramsUsed: React.FC = () => {
     return (
         <section className={styles.programs_used}>
             <div className="container">
-                <div className={styles.header}>
-                    <h2>Programs We Use</h2>
-                    <div className="rte">
-                        <p>Our production pipeline utilizes industry-leading software tools that enable us to deliver exceptional 3D visualization and rendering services. Each tool plays a specialized role in our comprehensive workflow, from concept development to final presentation.</p>
-                    </div>
-                    <a href="#contact" className="btn-simple">Get Started</a>
-                </div>
+                <header className={styles.header}>
+                    <span className={styles.section_label}>Our stack</span>
+                    <h2 className={styles.section_title}>Programs We Use</h2>
+                    <p className={styles.section_desc}>Industry-leading tools power our pipeline—from concept and sculpting to CAD, rendering, and delivery. Each application is chosen for a specific role in bringing your jewelry to life.</p>
+                </header>
 
                 <div className={styles.programs_cards_grid}>
                     {programs.map((program, index) => {
@@ -86,9 +84,9 @@ const ProgramsUsed: React.FC = () => {
                                 <CardHeader className="text-center">
                                     <div className={styles.program_icon_wrapper}>
                                         {program.name === "Blender" ? (
-                                            <Box className="w-12 h-12 text-blue-500" />
+                                            <Box className={styles.program_icon_fallback_icon} />
                                         ) : program.name === "After Effects" ? (
-                                            <Video className="w-12 h-12 text-purple-500" />
+                                            <Video className={styles.program_icon_fallback_icon} />
                                         ) : (
                                             <Image
                                                 src={program.icon}

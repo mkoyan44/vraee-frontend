@@ -1,12 +1,13 @@
 import type {Metadata} from "next";
 import React from "react";
+import ScrollRestorationFix from "@/components/scroll-restoration-fix";
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://render-agency.com'),
 
     title: {
         default: "3D Architectural Visualization & Product Rendering Services | Professional Studio",
-        template: "%s | Render Agency"
+        template: "%s | Vraee Studio",
     },
 
     description: "Hire expert 3D rendering studio for architectural visualization, product renders & animations. Transparent pricing, fast turnaround. Start your 3D project today.",
@@ -94,7 +95,8 @@ export default function RootLayout({children}: Readonly<{
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
-            {/* Favicon and app icons */}
+            {/* Favicon and app icons - SVG for crisp scaling, PNG fallbacks */}
+            <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/v-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/v-16x16.png" />
             <link rel="icon" type="image/png" sizes="64x64" href="/icons/v-64x64.png" />
@@ -174,6 +176,7 @@ export default function RootLayout({children}: Readonly<{
         <body
             className={`antialiased`}
         >
+        <ScrollRestorationFix />
         {children}
         </body>
         </html>

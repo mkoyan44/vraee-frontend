@@ -91,6 +91,11 @@
   color: rgb(var(--color-text));
 }
 
+[data-theme="light"] body,
+[data-theme="dark"] body {
+  background-color: rgba(var(--color-bg), var(--color-bg-alpha, 1));
+}
+
 [data-theme="light"],
 [data-theme="dark"] .scheme-dark {
   /* Make sure data-theme overrides */

@@ -11,7 +11,7 @@ import MediaGrid from "@/components/media-grid/media-grid";
 
 export const generateMetadata = (): Metadata => {
     return {
-        title: "Home",
+        title: "Professional 3D Jewelry Design, CAD Modeling & Rendering Studio",
         description: "Jewelry 3D rendering workflow, custom jewelry CAD service process, e-commerce rendering process featuring transparent pricing, real-time tracking, and guaranteed delivery.",
         keywords: [
             "jewelry 3d rendering workflow",

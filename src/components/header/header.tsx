@@ -42,6 +42,8 @@ const menu: { label: string; href: string }[] = [
     },
 ]
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3001';
+
 const Header: React.FC = () => {
     const pathname = usePathname();
     const router = useRouter();
@@ -63,14 +65,19 @@ const Header: React.FC = () => {
     // If user is logged in, redirect to vraee-app
     React.useEffect(() => {
         if (isLoggedIn) {
-            const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3001';
-            window.location.href = `${appUrl}/projects`;
+            window.location.href = `${APP_URL}/projects`;
         }
     }, [isLoggedIn]);
 
     // Use consistent theme for SSR (default to light)
     const currentTheme = mounted ? theme : 'light';
     const logoSrc = currentTheme === 'dark' ? '/vraee-logo-dark.svg' : '/vraee-logo-light.svg';
+
+    // Sign In: same markup on server and first client to avoid hydration mismatch; after mount use app URL + new tab
+    const signInHref = mounted ? APP_URL : '/login';
+    const signInProps = mounted
+        ? { href: signInHref, target: '_blank' as const, rel: 'noopener noreferrer' }
+        : { href: signInHref };
 
     return (
         <header className={`${styles.header} background`}>
@@ -99,6 +106,10 @@ const Header: React.FC = () => {
                             suppressHydrationWarning
                         />
                     </Link>
+                    <div className={styles.buttons_mobile}>
+                        <ThemeToggle />
+                        <a {...signInProps} className={`${styles.header_link} btn-primary`}>Sign In</a>
+                    </div>
                     <nav className={`${styles.nav} ${isLaptop && isMenuOpen ? styles.open : ''}`}>
                         <ul className={styles.menu}>
                             {
@@ -120,6 +131,10 @@ const Header: React.FC = () => {
                                 })
                             }
                         </ul>
+                        <div className={styles.buttons}>
+                            <ThemeToggle />
+                            <a {...signInProps} className={`${styles.header_link} btn-primary`}>Sign In</a>
+                        </div>
                         {
                             function () {
                                 if (isLaptop && hasMounted) {
@@ -133,13 +148,13 @@ const Header: React.FC = () => {
                                                 <Icon icon={'close'}/>
                                             </button>
                                             <div className={styles.nav_buttons}>
-                                                <Link 
-                                                    href={'/login'} 
-                                                    className={`${styles.header_link} hovered_link`}
+                                                <a 
+                                                    {...signInProps}
+                                                    className={`${styles.header_link} btn-primary`}
                                                     onClick={() => setIsMenuOpen(false)}
                                                 >
                                                     Sign In
-                                                </Link>
+                                                </a>
                                             </div>
                                         </>
                                     )
@@ -148,10 +163,6 @@ const Header: React.FC = () => {
                             }()
                         }
                     </nav>
-                    <div className={styles.buttons}>
-                        <ThemeToggle />
-                        <Link href={'/login'} className={`${styles.header_link} hovered_link`}>Sign In</Link>
-                    </div>
                 </div>
             </div>
         </header>

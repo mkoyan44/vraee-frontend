@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { useThemeStore } from '@/store/useUserStore';
 
 interface ThemeProviderProps {
@@ -8,28 +8,32 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-    const { theme } = useThemeStore();
+    const { theme, setTheme } = useThemeStore();
+    const hasSyncedFromScript = useRef(false);
 
-    // Use useLayoutEffect to apply theme synchronously before paint
     useLayoutEffect(() => {
         const root = document.documentElement;
-        // Remove any existing theme classes
-        root.classList.remove('scheme-light', 'scheme-dark');
-        // Add the current theme class
-        root.classList.add(`scheme-${theme}`);
-        // Also set data attribute as backup
-        root.setAttribute('data-theme', theme);
-    }, [theme]);
+        const scriptTheme = root.getAttribute('data-theme');
+        const fromScript = scriptTheme === 'light' || scriptTheme === 'dark';
 
-    // Also handle theme changes with useEffect for smooth transitions
+        let toApply = theme;
+        if (fromScript && !hasSyncedFromScript.current) {
+            setTheme(scriptTheme as 'light' | 'dark');
+            hasSyncedFromScript.current = true;
+            toApply = scriptTheme;
+        }
+
+        root.classList.remove('scheme-light', 'scheme-dark');
+        root.classList.add(`scheme-${toApply}`);
+        root.setAttribute('data-theme', toApply);
+    }, [theme, setTheme]);
+
     useEffect(() => {
-        // Temporarily disable animations during theme switch (only for changes, not initial load)
         const root = document.documentElement;
         if (root.classList.contains('scheme-light') || root.classList.contains('scheme-dark')) {
             root.classList.add('theme-switching');
-            setTimeout(() => {
-                root.classList.remove('theme-switching');
-            }, 10);
+            const t = setTimeout(() => root.classList.remove('theme-switching'), 10);
+            return () => clearTimeout(t);
         }
     }, [theme]);
 

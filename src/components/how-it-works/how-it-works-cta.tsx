@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Rocket } from 'lucide-react';
+import styles from '@/assets/styles/client/components/how-it-works.module.scss';
 
 const HowItWorksCTA: React.FC = () => {
   const handleScrollToContact = () => {
@@ -12,20 +13,19 @@ const HowItWorksCTA: React.FC = () => {
   };
 
   return (
-    <div className="text-center mt-16">
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
-        <h3 className="text-2xl font-bold mb-4">
-          Ready to start your project?
-        </h3>
-        <p className="text-gray-600 mb-6">
-          Average completion time: <span className="font-semibold">8-15 days</span> • 24/7 support • 100% quality guarantee
+    <div className={styles.cta_wrap}>
+      <div className={styles.cta_card}>
+        <h3 className={styles.cta_title}>Ready to start your project?</h3>
+        <p className={styles.cta_desc}>
+          Average completion time: <strong>8–15 days</strong> · 24/7 support · 100% quality guarantee
         </p>
         <button
+          type="button"
           onClick={handleScrollToContact}
-          className="btn-primary inline-flex items-center gap-2 px-8 py-3"
+          className={styles.cta_btn}
         >
-          Contact Us
-          <Rocket className="h-4 w-4" />
+          Let's talk
+          <Rocket className="w-4 h-4" aria-hidden />
         </button>
       </div>
     </div>
