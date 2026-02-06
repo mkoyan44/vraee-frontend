@@ -125,8 +125,8 @@
     display: none;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 3rem;
+    gap: 1rem;
+    margin-top: 2rem;
     padding: 1rem 0 2rem;
 
     @media screen and (min-width: 768px) {
@@ -135,42 +135,50 @@
   }
 
   .nav_btn {
-    position: static !important;
-    transform: unset !important;
-    width: 40px !important;
-    height: 40px !important;
-    background: rgba(var(--color-bg), 0.95) !important;
-    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    min-width: 2.75rem !important;
+    min-height: 2.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+    background: rgb(var(--btn-primary-bg)) !important;
+    color: rgb(var(--btn-primary-text)) !important;
+    border: none !important;
     border-radius: 50% !important;
-    transition: all 0.3s ease !important;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    cursor: pointer;
 
     &::before,
     &::after {
-      background: #333 !important; /* Dark color that's visible on all backgrounds */
-      opacity: 0.8 !important;
+      display: none !important;
+    }
+
+    .nav_icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: currentColor;
+      flex-shrink: 0;
     }
 
     &:hover {
-      background: var(--color-primary) !important;
-      border-color: var(--color-primary) !important;
+      background: rgb(var(--btn-primary-hover-bg)) !important;
+      color: rgb(var(--btn-primary-hover-text)) !important;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-
-      &::before,
-      &::after {
-        background: white !important;
-        opacity: 1 !important;
-      }
     }
 
     &.swiper-button-disabled {
       opacity: 0.4 !important;
-
-      &::before,
-      &::after {
-        background: #999 !important;
-        opacity: 0.4 !important;
-      }
+      cursor: not-allowed !important;
     }
   }
 }

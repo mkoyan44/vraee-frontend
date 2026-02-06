@@ -2,6 +2,7 @@
 import React, {useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Pagination} from 'swiper/modules';
+import {ChevronLeft, ChevronRight} from 'lucide-react';
 import styles from "@/assets/styles/client/components/reviews.module.scss";
 import Icon from "@/components/icon/icon";
 
@@ -57,8 +58,12 @@ const Reviews: React.FC = () => {
                 <h2>Reviews from our clients</h2>
                 <div className={styles.wrapper}>
                     <div className={styles.navigation_wrapper}>
-                        <button ref={prevRef} className={`${styles.nav_btn} swiper-button-prev`} aria-label="Previous review" />
-                        <button ref={nextRef} className={`${styles.nav_btn} swiper-button-next`} aria-label="Next review" />
+                        <button ref={prevRef} className={`${styles.nav_btn} swiper-button-prev`} aria-label="Previous review">
+                            <ChevronLeft className={styles.nav_icon} aria-hidden />
+                        </button>
+                        <button ref={nextRef} className={`${styles.nav_btn} swiper-button-next`} aria-label="Next review">
+                            <ChevronRight className={styles.nav_icon} aria-hidden />
+                        </button>
                     </div>
                     <Swiper
                         modules={[Navigation, Pagination]}

@@ -20,8 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;  /* Further reduced for tighter spacing */
-    min-height: 2rem; /* Ensure consistent vertical centering */
+    gap: 1rem;
+    min-height: 2rem;
   }
   .menu {
     display: flex;
@@ -53,10 +53,13 @@
     }
 
     @media screen and (min-width: 1200px) {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      gap: 2rem;
       margin-left: 0;
     }
 
@@ -68,11 +71,22 @@
       padding-top: 1rem;
     }
   }
-  .buttons {
+  .buttons_mobile {
     display: flex;
     align-items: center;
-    gap: 1.5rem;  /* Reduced for tighter button spacing */
-    margin-left: auto;
+    gap: 1rem;
+    @media screen and (min-width: 1200px) {
+      display: none;
+    }
+  }
+
+  .buttons {
+    display: none;
+    @media screen and (min-width: 1200px) {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
   }
   .menu_link {
     display: inline-block;
@@ -115,8 +129,14 @@
       }
     }
   }
-  .header_link{
+  .header_link {
     display: inline-block;
+  }
+
+  .btn-primary.header_link {
+    padding: 0.4375rem 1.125rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
   }
   .burger{
     display: flex;

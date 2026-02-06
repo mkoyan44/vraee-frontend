@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "@/assets/styles/client/components/hero.module.scss";
+import HeroDiagramClient from "./hero-diagram-client";
 
 const Hero: React.FC = ()=> {
     return (
@@ -14,8 +15,8 @@ const Hero: React.FC = ()=> {
                         </div>
                         <a href="/contact" className="btn-primary">Get Your Quote Today</a>
                     </div>
-                    <div className={styles.hero_image}>
-                        <img src="/hero-image.png" alt="Professional 3D jewelry visualization and product rendering services"/>
+                    <div className={`${styles.hero_image} ${styles.hero_imageDiagram}`}>
+                        <HeroDiagramClient />
                     </div>
                 </div>
             </div>

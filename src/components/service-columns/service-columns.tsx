@@ -7,7 +7,7 @@ interface ServiceColumnsProps {
 }
 
 const ServiceColumns: React.FC<ServiceColumnsProps> = ({ serviceSlug }) => {
-    // Default content for sculpting/sketching
+    // Default content for sculpting
     let items = [
         {
             title: 'What We Need from You',

@@ -2,9 +2,10 @@
     <!-- Text: VR -->
     <text x="0" y="12" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13px" fill="#161617" letter-spacing="-0.025em">VR</text>
 
-    <!-- Stylized 'A' (Outline Shape ) - Координаты скорректированы для плотного прилегания -->
-    <path d="M28 12 L35 0 L42 12" stroke="#161617" stroke-width="1.5" fill="none"/>
+    <!-- Stylized 'A' (^) - two equal strokes, apex centered at (26,0) -->
+    <line x1="26" y1="0" x2="19" y2="12" stroke="#161617" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="26" y1="0" x2="33" y2="12" stroke="#161617" stroke-width="1.5" stroke-linecap="round"/>
 
     <!-- Text: EE -->
-    <text x="44" y="12" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13px" fill="#161617" letter-spacing="-0.025em">EE</text>
+    <text x="35" y="12" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13px" fill="#161617" letter-spacing="-0.025em">EE</text>
 </svg>

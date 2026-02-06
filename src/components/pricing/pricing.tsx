@@ -105,15 +105,15 @@ const Pricing: React.FC = () => {
                                         )}
 
                                         <div 
-                                            className="h-full border transition-all duration-300 group-hover:shadow-lg"
+                                            className="h-full border-2 rounded-xl transition-all duration-300 group-hover:shadow-lg"
                                             style={{
                                                 backgroundColor: tier.popular 
                                                     ? 'rgba(var(--btn-primary-bg), 0.03)' 
                                                     : 'rgba(var(--color-bg), 0.5)',
                                                 borderColor: tier.popular 
                                                     ? 'rgb(var(--btn-primary-bg))' 
-                                                    : 'rgba(var(--color-border), 0.3)',
-                                                borderWidth: tier.popular ? '2px' : '1px',
+                                                    : 'rgba(var(--color-border), 0.55)',
+                                                borderWidth: tier.popular ? '2.5px' : '2px',
                                             }}
                                             onMouseEnter={(e) => {
                                                 if (!tier.popular) {
@@ -123,7 +123,7 @@ const Pricing: React.FC = () => {
                                             }}
                                             onMouseLeave={(e) => {
                                                 if (!tier.popular) {
-                                                    e.currentTarget.style.borderColor = 'rgba(var(--color-border), 0.3)';
+                                                    e.currentTarget.style.borderColor = 'rgba(var(--color-border), 0.55)';
                                                     e.currentTarget.style.backgroundColor = 'rgba(var(--color-bg), 0.5)';
                                                 }
                                             }}

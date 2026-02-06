@@ -23,8 +23,8 @@ const services = [
     techStack: ["ZBrush", "Blender"],
     image: "/portfolio/rendring/White_Side_00000.jpg",
     cta: "Learn More About Organic Sculpting",
-    ctaLink: "/services/sketching",
-    serviceLink: "/services/sketching"
+    ctaLink: "/services/sculpting",
+    serviceLink: "/services/sculpting"
   },
   {
     id: 3,

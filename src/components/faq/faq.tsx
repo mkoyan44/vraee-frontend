@@ -98,8 +98,9 @@ const Faq: React.FC = () => {
                                     refs.current.set(item.id, el)
                                 }}
                                 className={styles.item_description}
-                                dangerouslySetInnerHTML={{__html: item.description}}
-                            />
+                            >
+                                <div className={styles.item_description_inner} dangerouslySetInnerHTML={{__html: item.description}} />
+                            </div>
                         </div>
                     ))}
                 </div>
