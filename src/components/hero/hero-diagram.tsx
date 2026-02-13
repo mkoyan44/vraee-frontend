@@ -12,7 +12,6 @@ export default function HeroDiagram() {
     motion.div,
     {
       className: styles.diagramWrap,
-      'aria-hidden': true,
       initial: false,
       animate: { opacity: 1, scale: 1 },
     },
