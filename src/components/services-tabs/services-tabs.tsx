@@ -102,6 +102,7 @@ const ServicesTabs: React.FC = ()=> {
                     <ul
                         ref={ulRef}
                         className={styles.tabs_nav}
+                        role="tablist"
                     >
                         {tabs.map((tab, i) => {
                             const IconComponent = tab.icon;
